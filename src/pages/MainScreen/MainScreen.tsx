@@ -1,4 +1,4 @@
-import CitiesCard from '../../components/cities-card/cities-card';
+import CitiesCard from '../../components/CitiesCard/CitiesCard';
 
 type MainScreenProps = {
   placesCount: number;
