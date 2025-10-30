@@ -1,8 +1,8 @@
 type CitiesCardProps = {
-  isPremium: boolean;
+  isPremium?: boolean;
   imageSrc: string;
   price: number;
-  isInBookmarks: boolean;
+  isInBookmarks?: boolean;
   rating: number;
   name: string;
   type: string;

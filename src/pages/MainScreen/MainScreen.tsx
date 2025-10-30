@@ -100,13 +100,11 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   isPremium
                   imageSrc="img/apartment-01.jpg"
                   price={120}
-                  isInBookmarks={false}
                   rating={80}
                   name="Beautiful &amp; luxurious apartment at great location"
                   type="Apartment"
                 />
                 <CitiesCard
-                  isPremium={false}
                   imageSrc="img/room.jpg"
                   price={80}
                   isInBookmarks
@@ -115,10 +113,8 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   type="Room"
                 />
                 <CitiesCard
-                  isPremium={false}
                   imageSrc="img/apartment-02.jpg"
                   price={132}
-                  isInBookmarks={false}
                   rating={80}
                   name="Canal View Prinsengracht"
                   type="Apartment"
@@ -127,13 +123,11 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   isPremium
                   imageSrc="img/apartment-03.jpg"
                   price={180}
-                  isInBookmarks={false}
                   rating={100}
                   name="Nice, cozy, warm big bed apartment"
                   type="Apartment"
                 />
                 <CitiesCard
-                  isPremium={false}
                   imageSrc="img/room.jpg"
                   price={80}
                   isInBookmarks
