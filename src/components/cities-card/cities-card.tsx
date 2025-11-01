@@ -1,4 +1,4 @@
-import PremiumMark from "../premium-mark/premium-mark";
+import PremiumMark from '../premium-mark/premium-mark';
 
 type CitiesCardProps = {
   imageSrc: string;
