@@ -1,6 +1,16 @@
+import { Helmet } from 'react-helmet-async';
+import {useParams} from 'react-router-dom';
+
+
 function OfferScreen(): JSX.Element {
+  const params = useParams();
+  // пока нет проверки на params.id - число.
   return (
     <div className="page">
+      <Helmet>
+        <title>6 cities. Offer {params.id}</title>
+      </Helmet>
+
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

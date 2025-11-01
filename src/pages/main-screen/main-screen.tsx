@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import CitiesCard from '../../components/cities-card/cities-card';
 
 type MainScreenProps = {
@@ -8,6 +9,10 @@ type MainScreenProps = {
 function MainScreen({placesCount}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
+
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
