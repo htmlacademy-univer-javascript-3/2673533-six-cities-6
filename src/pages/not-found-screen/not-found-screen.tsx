@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import HeaderLogo from '../../components/header-logo/header-logo';
+import HeaderNav from '../../components/header-nav/header-nav';
 
 function NotFoundScreen(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function NotFoundScreen(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <HeaderLogo />
+            <HeaderNav />
           </div>
         </div>
       </header>
