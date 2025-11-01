@@ -1,3 +1,5 @@
+import PremiumMark from "../premium-mark/premium-mark";
+
 type CitiesCardProps = {
   imageSrc: string;
   price: number;
@@ -12,11 +14,7 @@ type CitiesCardProps = {
 function CitiesCard({ isPremium, imageSrc, price, isInBookmarks, rating, name, type }: CitiesCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
-      {isPremium && (
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      )}
+      {isPremium && (<PremiumMark />)}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={imageSrc} width="260" height="200" alt="Place image" />
