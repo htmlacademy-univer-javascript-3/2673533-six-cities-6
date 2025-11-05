@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
+import { AppRoute } from '../../const';
 
 function NotFoundScreen(): JSX.Element {
   return (
@@ -27,7 +28,7 @@ function NotFoundScreen(): JSX.Element {
               <p className="login__text">The page you are looking for does not exist.</p>
               <Link
                 className="login__submit form__submit button"
-                to="/"
+                to={AppRoute.Main}
                 style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
               >
                 Back to main page
