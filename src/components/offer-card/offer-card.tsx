@@ -30,7 +30,7 @@ function OfferCard({ offer, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.E
           <BookmarkButton isInBookmarks={isInBookmarks} />
         </div>
         <Rating ratingValue={rating} />
-        <OfferName value={name} />
+        <OfferName offerName={name} offerId={id} />
         <OfferType value={type} />
       </div>
     </article>

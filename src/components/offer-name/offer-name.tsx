@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const";
+
 type OfferNameProps = {
-  value: string;
+  offerName: string;
+  offerId: number;
 }
 
-function OfferName({ value }: OfferNameProps): JSX.Element {
+function OfferName({ offerName, offerId }: OfferNameProps): JSX.Element {
   return (
     <h2 className="place-card__name">
-      <a href="#">{value}</a>
+      <Link to={AppRoute.Offer.replace(':id', String(offerId))}>
+        {offerName}
+      </Link>
     </h2>
   );
 }

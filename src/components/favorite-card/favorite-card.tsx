@@ -12,7 +12,7 @@ type FavoriteCardProps = {
 }
 
 function FavoriteCard({ offer }: FavoriteCardProps): JSX.Element {
-  const { isPremium, imageSrc, price, isInBookmarks, rating, name, type } = offer;
+  const { id, isPremium, imageSrc, price, isInBookmarks, rating, name, type } = offer;
   return (
     <article className="favorites__card place-card">
       {isPremium && (<PremiumMark />)}
@@ -23,7 +23,7 @@ function FavoriteCard({ offer }: FavoriteCardProps): JSX.Element {
           <BookmarkButton isInBookmarks={isInBookmarks} />
         </div>
         <Rating ratingValue={rating} />
-        <OfferName value={name} />
+        <OfferName offerName={name} offerId={id} />
         <OfferType value={type} />
       </div>
     </article>
