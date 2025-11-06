@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
+import FavoritesLocation from '../../components/favorites-location/favorites-location';
 
 
 function FavoritesScreen(): JSX.Element {
@@ -25,13 +26,7 @@ function FavoritesScreen(): JSX.Element {
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
               <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
+                <FavoritesLocation city='Amsterdam' />
                 <div className="favorites__places">
                   <article className="favorites__card place-card">
                     <div className="place-card__mark">
@@ -103,13 +98,7 @@ function FavoritesScreen(): JSX.Element {
               </li>
 
               <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
+                <FavoritesLocation city='Cologne' />
                 <div className="favorites__places">
                   <article className="favorites__card place-card">
                     <div className="favorites__image-wrapper place-card__image-wrapper">

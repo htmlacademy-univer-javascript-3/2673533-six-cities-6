@@ -38,7 +38,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
             path={AppRoute.Favourites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={AuthorizationStatus.Auth} // для теста страницы favorites
               >
                 <FavoritesScreen />
               </PrivateRoute>
