@@ -39,6 +39,6 @@ export const offers: Offers = [
     name: 'Nice, cozy, warm big bed apartment',
     type: 'Apartment',
     isPremium: true,
-    isInBookmarks: false,
+    isInBookmarks: true,
   },
 ]
