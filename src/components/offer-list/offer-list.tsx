@@ -9,20 +9,24 @@ type OfferListProps = {
 function OfferList({ offers }: OfferListProps): JSX.Element {
   const [activeOfferCard, setActiveOfferCard] = useState<number | null>(null);
 
+  const handleMouseEnter = (offerCardId: number) => {
+    setActiveOfferCard(offerCardId);
+    console.log(activeOfferCard); // для теста + чтобы значение использовалось как-то
+  }
+
+  const handleMouseLeave = () => {
+    setActiveOfferCard(null);
+    console.log(activeOfferCard); // аналогично
+  }
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
         <OfferCard
           key={offer.id}
           offer={offer}
-          onMouseEnter={(offerCardId) => {
-            setActiveOfferCard(offerCardId);
-            console.log(activeOfferCard); // для теста + чтобы значение использовалось как-то
-          }}
-          onMouseLeave={() => {
-            setActiveOfferCard(null);
-            console.log(activeOfferCard); // аналогично
-          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
       ))}
     </div>
