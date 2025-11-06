@@ -40,7 +40,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth} // для теста страницы favorites
               >
-                <FavoritesScreen />
+                <FavoritesScreen favoriteOffers={offers.filter(offer => offer.isInBookmarks)}/>
               </PrivateRoute>
             }
           />

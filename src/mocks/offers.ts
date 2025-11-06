@@ -1,3 +1,4 @@
+import { City } from '../const';
 import { Offers } from '../types/offer';
 
 export const offers: Offers = [
@@ -8,6 +9,7 @@ export const offers: Offers = [
     rating: 80,
     name: 'Beautiful &amp; luxurious apartment at great location',
     type: 'Apartment',
+    city: City.Amsterdam,
     isPremium: true,
     isInBookmarks: false,
   },
@@ -18,6 +20,7 @@ export const offers: Offers = [
     rating: 80,
     name: 'Wood and stone place',
     type: 'Room',
+    city: City.Brussels,
     isPremium: false,
     isInBookmarks: true,
   },
@@ -28,6 +31,7 @@ export const offers: Offers = [
     rating: 80,
     name: 'Canal View Prinsengracht',
     type: 'Apartment',
+    city: City.Cologne,
     isPremium: false,
     isInBookmarks: false,
   },
@@ -38,6 +42,7 @@ export const offers: Offers = [
     rating: 100,
     name: 'Nice, cozy, warm big bed apartment',
     type: 'Apartment',
+    city: City.Dusseldorf,
     isPremium: true,
     isInBookmarks: true,
   },

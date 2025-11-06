@@ -1,3 +1,5 @@
+import { City } from "../const";
+
 export type Offer = {
   id: number;
   imageSrc: string;
@@ -5,6 +7,7 @@ export type Offer = {
   rating: number;
   name: string;
   type: string;
+  city: City;
   isPremium: boolean;
   isInBookmarks: boolean;
 };

@@ -1,5 +1,7 @@
+import { City } from "../../const";
+
 type FavoritesLocationProps = {
-  city: string;
+  city: City;
 }
 
 function FavoritesLocation({ city }: FavoritesLocationProps): JSX.Element {
