@@ -1,14 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
-import OfferCard from '../../components/offer-card/offer-card';
+import { Offers } from '../../types/offer';
+import OfferList from '../../components/offer-list/offer-list';
 
 type MainScreenProps = {
   placesCount: number;
+  offers: Offers;
 }
 
 
-function MainScreen({placesCount}: MainScreenProps): JSX.Element {
+function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -82,47 +84,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <OfferCard
-                  isPremium
-                  imageSrc="img/apartment-01.jpg"
-                  price={120}
-                  rating={80}
-                  name="Beautiful &amp; luxurious apartment at great location"
-                  type="Apartment"
-                />
-                <OfferCard
-                  imageSrc="img/room.jpg"
-                  price={80}
-                  isInBookmarks
-                  rating={80}
-                  name="Wood and stone place"
-                  type="Room"
-                />
-                <OfferCard
-                  imageSrc="img/apartment-02.jpg"
-                  price={132}
-                  rating={80}
-                  name="Canal View Prinsengracht"
-                  type="Apartment"
-                />
-                <OfferCard
-                  isPremium
-                  imageSrc="img/apartment-03.jpg"
-                  price={180}
-                  rating={100}
-                  name="Nice, cozy, warm big bed apartment"
-                  type="Apartment"
-                />
-                <OfferCard
-                  imageSrc="img/room.jpg"
-                  price={80}
-                  isInBookmarks
-                  rating={80}
-                  name="Wood and stone place"
-                  type="Room"
-                />
-              </div>
+              <OfferList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

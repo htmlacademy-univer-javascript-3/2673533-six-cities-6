@@ -1,19 +1,21 @@
+import { Offer } from '../../types/offer';
 import PremiumMark from '../premium-mark/premium-mark';
 
 type OfferCardProps = {
-  imageSrc: string;
-  price: number;
-  rating: number;
-  name: string;
-  type: string;
-  isPremium?: boolean;
-  isInBookmarks?: boolean;
+  offer: Offer;
+  onMouseEnter: (offerCardId: number) => void;
+  onMouseLeave: () => void;
 }
 
 
-function OfferCard({ isPremium, imageSrc, price, isInBookmarks, rating, name, type }: OfferCardProps): JSX.Element {
+function OfferCard({ offer, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
+  const { id, isPremium, imageSrc, price, isInBookmarks, rating, name, type } = offer;
   return (
-    <article className="cities__card place-card">
+    <article 
+      className="cities__card place-card" 
+      onMouseEnter={ () => onMouseEnter(id) }
+      onMouseLeave={onMouseLeave}
+    >
       {isPremium && (<PremiumMark />)}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
