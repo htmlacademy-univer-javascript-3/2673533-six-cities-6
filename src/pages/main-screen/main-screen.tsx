@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-import CitiesCard from '../../components/cities-card/cities-card';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
+import OfferCard from '../../components/offer-card/offer-card';
 
 type MainScreenProps = {
   placesCount: number;
@@ -83,7 +83,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CitiesCard
+                <OfferCard
                   isPremium
                   imageSrc="img/apartment-01.jpg"
                   price={120}
@@ -91,7 +91,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   name="Beautiful &amp; luxurious apartment at great location"
                   type="Apartment"
                 />
-                <CitiesCard
+                <OfferCard
                   imageSrc="img/room.jpg"
                   price={80}
                   isInBookmarks
@@ -99,14 +99,14 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   name="Wood and stone place"
                   type="Room"
                 />
-                <CitiesCard
+                <OfferCard
                   imageSrc="img/apartment-02.jpg"
                   price={132}
                   rating={80}
                   name="Canal View Prinsengracht"
                   type="Apartment"
                 />
-                <CitiesCard
+                <OfferCard
                   isPremium
                   imageSrc="img/apartment-03.jpg"
                   price={180}
@@ -114,7 +114,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
                   name="Nice, cozy, warm big bed apartment"
                   type="Apartment"
                 />
-                <CitiesCard
+                <OfferCard
                   imageSrc="img/room.jpg"
                   price={80}
                   isInBookmarks

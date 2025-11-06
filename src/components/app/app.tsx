@@ -7,12 +7,14 @@ import OfferScreen from '../../pages/offer-screen/offer-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
+import { Offers } from '../../types/offer';
 
 type AppProps = {
   placesCount: number;
+  offers: Offers;
 }
 
-function App({ placesCount }: AppProps): JSX.Element {
+function App({ placesCount, offers }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>

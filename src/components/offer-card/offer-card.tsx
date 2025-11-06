@@ -1,6 +1,6 @@
 import PremiumMark from '../premium-mark/premium-mark';
 
-type CitiesCardProps = {
+type OfferCardProps = {
   imageSrc: string;
   price: number;
   rating: number;
@@ -11,7 +11,7 @@ type CitiesCardProps = {
 }
 
 
-function CitiesCard({ isPremium, imageSrc, price, isInBookmarks, rating, name, type }: CitiesCardProps): JSX.Element {
+function OfferCard({ isPremium, imageSrc, price, isInBookmarks, rating, name, type }: OfferCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       {isPremium && (<PremiumMark />)}
@@ -48,4 +48,4 @@ function CitiesCard({ isPremium, imageSrc, price, isInBookmarks, rating, name, t
   );
 }
 
-export default CitiesCard;
+export default OfferCard;
