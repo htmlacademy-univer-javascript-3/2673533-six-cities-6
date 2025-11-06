@@ -1,4 +1,4 @@
-import { City } from "../../const";
+import { City } from '../../const';
 
 type FavoritesLocationProps = {
   city: City;

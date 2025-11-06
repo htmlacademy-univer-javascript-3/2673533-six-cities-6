@@ -1,7 +1,7 @@
-import { City } from "../../const";
-import { Offers } from "../../types/offer";
-import FavoriteCard from "../favorite-card/favorite-card";
-import FavoritesLocation from "../favorites-location/favorites-location";
+import { City } from '../../const';
+import { Offers } from '../../types/offer';
+import FavoriteCard from '../favorite-card/favorite-card';
+import FavoritesLocation from '../favorites-location/favorites-location';
 
 type FavoritesListByCityProps = {
   city: City;
@@ -9,7 +9,7 @@ type FavoritesListByCityProps = {
 }
 
 function FavoritesListByCity({ city, offers }: FavoritesListByCityProps): JSX.Element | null {
-  const cityOffers = offers.filter(offer => offer.city === city);
+  const cityOffers = offers.filter((offer) => offer.city === city);
 
   if (cityOffers.length === 0) {
     return null;

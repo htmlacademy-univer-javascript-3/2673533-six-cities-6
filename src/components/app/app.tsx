@@ -21,10 +21,12 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainScreen 
-                        placesCount={placesCount}
-                        offers={offers} 
-                      />}
+            element={
+              <MainScreen
+                placesCount={placesCount}
+                offers={offers}
+              />
+            }
           />
           <Route
             path={AppRoute.Login}
@@ -40,7 +42,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth} // для теста страницы favorites
               >
-                <FavoritesScreen favoriteOffers={offers.filter(offer => offer.isInBookmarks)}/>
+                <FavoritesScreen favoriteOffers={offers.filter((offer) => offer.isInBookmarks)} />
               </PrivateRoute>
             }
           />

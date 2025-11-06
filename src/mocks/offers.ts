@@ -46,4 +46,4 @@ export const offers: Offers = [
     isPremium: true,
     isInBookmarks: true,
   },
-]
+];

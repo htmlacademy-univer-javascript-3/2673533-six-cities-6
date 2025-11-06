@@ -1,4 +1,4 @@
-import { City } from "../const";
+import { City } from '../const';
 
 export type Offer = {
   id: number;

@@ -1,7 +1,7 @@
-import { FormEvent, useState } from "react";
-import ReviewHelp from "../review-help/review-help";
-import ReviewStar from "../review-star/review-star";
-import ReviewTextarea from "../review-textarea/review-textarea";
+import { FormEvent, useState } from 'react';
+import ReviewHelp from '../review-help/review-help';
+import ReviewStar from '../review-star/review-star';
+import ReviewTextarea from '../review-textarea/review-textarea';
 
 function ReviewForm(): JSX.Element {
   const [rating, setRating] = useState('');
@@ -9,16 +9,15 @@ function ReviewForm(): JSX.Element {
 
   const handleReviewTextChange = (newText: string) => {
     setReviewText(newText);
-  }
+  };
 
   const handleRatingChange = (newRating: string) => {
     setRating(newRating);
-  }
+  };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    console.log(rating, reviewText); // тест. Пока некуда отправлять данные формы
-  }
+    evt.preventDefault(); // Пока некуда отправлять данные формы
+  };
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
@@ -33,9 +32,9 @@ function ReviewForm(): JSX.Element {
       <ReviewTextarea reviewText={reviewText} onReviewTextChange={handleReviewTextChange}/>
       <div className="reviews__button-wrapper">
         <ReviewHelp />
-        <button 
+        <button
           className="reviews__submit form__submit button"
-          type="submit" 
+          type="submit"
           disabled={!rating || reviewText.length < 50}
         >
           Submit

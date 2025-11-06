@@ -8,7 +8,7 @@ type ReviewStarProps = {
 function ReviewStar({ rating, title, selected, onRatingChange } : ReviewStarProps): JSX.Element {
   return (
     <>
-      <input 
+      <input
         className="form__rating-input visually-hidden"
         name="rating"
         value={rating}
