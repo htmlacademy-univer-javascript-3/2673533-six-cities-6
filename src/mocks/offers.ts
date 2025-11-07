@@ -5,7 +5,7 @@ export const offers: Offers = [
   {
     id: '1',
     previewImage: 'img/apartment-01.jpg',
-    images: ['img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg'],
+    images: ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-small-03.jpg', 'img/apartment-03.jpg', 'img/apartment-small-04.jpg', 'img/room.jpg'],
     insideItems: ['Mirror', 'Cup', 'Table', 'Chair', 'Sofa', 'Book'],
     price: 120,
     rating: 80,
@@ -18,7 +18,7 @@ export const offers: Offers = [
   {
     id: '2',
     previewImage: 'img/room.jpg',
-    images: ['img/room.jpg', 'img/room.jpg', 'img/room.jpg'],
+    images: ['img/apartment-small-03.jpg', 'img/apartment-03.jpg', 'img/apartment-small-04.jpg'],
     insideItems: ['Table', '7 chairs', 'Brick wall'],
     price: 80,
     rating: 80,
@@ -31,7 +31,7 @@ export const offers: Offers = [
   {
     id: '3',
     previewImage: 'img/apartment-02.jpg',
-    images: ['img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg'],
+    images: ['img/apartment-03.jpg', 'img/apartment-small-04.jpg', 'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg'],
     insideItems: ['TV', '2 Tables', 'Sofa', 'Carpet', 'Window'],
     price: 132,
     rating: 80,
@@ -44,7 +44,7 @@ export const offers: Offers = [
   {
     id: '4',
     previewImage: 'img/apartment-03.jpg',
-    images: ['img/apartment-03.jpg'],
+    images: ['img/studio-01.jpg'],
     insideItems: ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
     price: 180,
     rating: 100,

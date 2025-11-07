@@ -8,9 +8,9 @@ function OfferGallery({ images } : OfferGalleryProps): JSX.Element {
   return (
     <div className="offer__gallery-container container">
       <div className="offer__gallery">
-        {images.map((src, index) => (
+        {images.map((src) => (
           <OfferGalleryImage
-            key={`${src}-${index}`}
+            key={src}// При условии, что все фотографии уникальны
             src={src}
           />
         ))}

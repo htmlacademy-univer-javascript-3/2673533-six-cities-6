@@ -7,9 +7,9 @@ type OfferListProps = {
 }
 
 function OfferList({ offers }: OfferListProps): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeOfferCard, setActiveOfferCard] = useState<string | null>(null);
-
-  // activeOfferCard не используется пока
+  // Сверху заглушка для линтера, пока не используется activeOfferCard
 
   const handleMouseEnter = (offerCardId: string) => {
     setActiveOfferCard(offerCardId);
