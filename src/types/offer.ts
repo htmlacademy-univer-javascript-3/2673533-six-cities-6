@@ -1,8 +1,10 @@
 import { City } from '../const';
 
 export type Offer = {
-  id: number;
-  imageSrc: string;
+  id: string;
+  previewImage: string;
+  images: string[];
+  insideItems: string[];
   price: number;
   rating: number;
   name: string;

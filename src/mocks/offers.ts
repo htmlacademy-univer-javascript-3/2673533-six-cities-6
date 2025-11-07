@@ -3,8 +3,10 @@ import { Offers } from '../types/offer';
 
 export const offers: Offers = [
   {
-    id: 1,
-    imageSrc: 'img/apartment-01.jpg',
+    id: '1',
+    previewImage: 'img/apartment-01.jpg',
+    images: ['img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg', 'img/apartment-01.jpg'],
+    insideItems: ['Mirror', 'Cup', 'Table', 'Chair', 'Sofa', 'Book'],
     price: 120,
     rating: 80,
     name: 'Beautiful &amp; luxurious apartment at great location',
@@ -14,8 +16,10 @@ export const offers: Offers = [
     isInBookmarks: false,
   },
   {
-    id: 2,
-    imageSrc: 'img/room.jpg',
+    id: '2',
+    previewImage: 'img/room.jpg',
+    images: ['img/room.jpg', 'img/room.jpg', 'img/room.jpg'],
+    insideItems: ['Table', '7 chairs', 'Brick wall'],
     price: 80,
     rating: 80,
     name: 'Wood and stone place',
@@ -25,8 +29,10 @@ export const offers: Offers = [
     isInBookmarks: true,
   },
   {
-    id: 3,
-    imageSrc: 'img/apartment-02.jpg',
+    id: '3',
+    previewImage: 'img/apartment-02.jpg',
+    images: ['img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg', 'img/apartment-02.jpg'],
+    insideItems: ['TV', '2 Tables', 'Sofa', 'Carpet', 'Window'],
     price: 132,
     rating: 80,
     name: 'Canal View Prinsengracht',
@@ -36,8 +42,10 @@ export const offers: Offers = [
     isInBookmarks: false,
   },
   {
-    id: 4,
-    imageSrc: 'img/apartment-03.jpg',
+    id: '4',
+    previewImage: 'img/apartment-03.jpg',
+    images: ['img/apartment-03.jpg'],
+    insideItems: ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
     price: 180,
     rating: 100,
     name: 'Nice, cozy, warm big bed apartment',

@@ -1,11 +1,14 @@
 type BookmarkButtonProps = {
   isInBookmarks: boolean;
+  className: string;
+  width: string;
+  height: string;
 }
 
-function BookmarkButton({ isInBookmarks }: BookmarkButtonProps): JSX.Element {
+function BookmarkButton({ isInBookmarks, className, width, height }: BookmarkButtonProps): JSX.Element {
   return (
-    <button className={`place-card__bookmark-button ${isInBookmarks ? 'place-card__bookmark-button--active' : ''} button`} type="button">
-      <svg className="place-card__bookmark-icon" width="18" height="19">
+    <button className={`${className}__bookmark-button ${isInBookmarks ? `${className}__bookmark-button--active` : ''} button`} type="button">
+      <svg className={`${className}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
       <span className="visually-hidden">{isInBookmarks ? 'In bookmarks' : 'To bookmarks'}</span>

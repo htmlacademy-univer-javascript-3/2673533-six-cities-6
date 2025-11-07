@@ -9,25 +9,25 @@ import Rating from '../rating/rating';
 
 type OfferCardProps = {
   offer: Offer;
-  onMouseEnter: (offerCardId: number) => void;
+  onMouseEnter: (offerCardId: string) => void;
   onMouseLeave: () => void;
 }
 
 
 function OfferCard({ offer, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
-  const { id, isPremium, imageSrc, price, isInBookmarks, rating, name, type } = offer;
+  const { id, isPremium, previewImage, price, isInBookmarks, rating, name, type } = offer;
   return (
     <article
       className="cities__card place-card"
       onMouseEnter={ () => onMouseEnter(id) }
       onMouseLeave={onMouseLeave}
     >
-      {isPremium && (<PremiumMark />)}
-      <OfferImage src={imageSrc} />
+      {isPremium && (<PremiumMark className='place-card__mark'/>)}
+      <OfferImage src={previewImage} />
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <Price priceValue={price} />
-          <BookmarkButton isInBookmarks={isInBookmarks} />
+          <BookmarkButton isInBookmarks={isInBookmarks} className='place-card' width="18" height="19" />
         </div>
         <Rating ratingValue={rating} />
         <OfferName offerName={name} offerId={id} />

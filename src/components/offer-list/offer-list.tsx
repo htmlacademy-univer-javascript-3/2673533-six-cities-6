@@ -7,11 +7,11 @@ type OfferListProps = {
 }
 
 function OfferList({ offers }: OfferListProps): JSX.Element {
-  const [activeOfferCard, setActiveOfferCard] = useState<number | null>(null);
+  const [activeOfferCard, setActiveOfferCard] = useState<string | null>(null);
 
-  setActiveOfferCard(activeOfferCard);// заглушка для линтера
+  // activeOfferCard не используется пока
 
-  const handleMouseEnter = (offerCardId: number) => {
+  const handleMouseEnter = (offerCardId: string) => {
     setActiveOfferCard(offerCardId);
   };
 
