@@ -1,4 +1,4 @@
-import { City } from '../const';
+import { CityName } from '../const';
 import { Offers } from '../types/offer';
 
 export const offers: Offers = [
@@ -11,7 +11,18 @@ export const offers: Offers = [
     rating: 80,
     name: 'Beautiful &amp; luxurious apartment at great location',
     type: 'Apartment',
-    city: City.Amsterdam,
+    city: {
+      name: CityName.Amsterdam,
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
+      }
+    },
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+    },
     isPremium: true,
     isInBookmarks: false,
   },
@@ -24,7 +35,18 @@ export const offers: Offers = [
     rating: 80,
     name: 'Wood and stone place',
     type: 'Room',
-    city: City.Brussels,
+    city: {
+      name: CityName.Amsterdam,
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
+      }
+    },
+    location: {
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+    },
     isPremium: false,
     isInBookmarks: true,
   },
@@ -37,7 +59,18 @@ export const offers: Offers = [
     rating: 80,
     name: 'Canal View Prinsengracht',
     type: 'Apartment',
-    city: City.Cologne,
+    city: {
+      name: CityName.Amsterdam,
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
+      }
+    },
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+    },
     isPremium: false,
     isInBookmarks: false,
   },
@@ -50,7 +83,18 @@ export const offers: Offers = [
     rating: 100,
     name: 'Nice, cozy, warm big bed apartment',
     type: 'Apartment',
-    city: City.Dusseldorf,
+    city: {
+      name: CityName.Amsterdam,
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
+      }
+    },
+    location: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+    },
     isPremium: true,
     isInBookmarks: true,
   },

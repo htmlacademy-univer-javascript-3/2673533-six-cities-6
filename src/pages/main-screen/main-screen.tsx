@@ -3,6 +3,8 @@ import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
 import { Offers } from '../../types/offer';
 import OfferList from '../../components/offer-list/offer-list';
+import MainMap from '../../components/main-map/main-map';
+import { useState } from 'react';
 
 type MainScreenProps = {
   placesCount: number;
@@ -11,6 +13,12 @@ type MainScreenProps = {
 
 
 function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
+  const [activeOfferId, setActiveOfferId] = useState('');
+
+  const handleActiveOfferIdChange = (newActiveOfferId: string) => {
+    setActiveOfferId(newActiveOfferId);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -84,10 +92,10 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OfferList offers={offers} />
+              <OfferList offers={offers} onActiveOfferIdChange={handleActiveOfferIdChange}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <MainMap city={offers[0].city} offers={offers} selectedOfferId={activeOfferId}/>
             </div>
           </div>
         </div>

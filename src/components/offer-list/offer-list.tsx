@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import { Offers } from '../../types/offer';
 import OfferCard from '../offer-card/offer-card';
 
 type OfferListProps = {
   offers: Offers;
+  onActiveOfferIdChange: (newActiveOfferId: string) => void;
 }
 
-function OfferList({ offers }: OfferListProps): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_activeOfferCard, setActiveOfferCard] = useState<string | null>(null);
-  // Сверху заглушка для линтера, пока не используется activeOfferCard
-
+function OfferList({ offers, onActiveOfferIdChange }: OfferListProps): JSX.Element {
   const handleMouseEnter = (offerCardId: string) => {
-    setActiveOfferCard(offerCardId);
+    onActiveOfferIdChange(offerCardId);
   };
 
   const handleMouseLeave = () => {
-    setActiveOfferCard(null);
+    onActiveOfferIdChange('');
   };
 
   return (

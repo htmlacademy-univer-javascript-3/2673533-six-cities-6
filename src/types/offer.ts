@@ -1,4 +1,5 @@
-import { City } from '../const';
+import { City } from './city';
+
 
 export type Offer = {
   id: string;
@@ -10,6 +11,10 @@ export type Offer = {
   name: string;
   type: string;
   city: City;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
   isPremium: boolean;
   isInBookmarks: boolean;
 };
