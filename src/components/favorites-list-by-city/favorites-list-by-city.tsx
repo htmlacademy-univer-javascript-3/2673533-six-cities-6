@@ -1,15 +1,15 @@
-import { City } from '../../const';
+import { CityName } from '../../const';
 import { Offers } from '../../types/offer';
 import FavoriteCard from '../favorite-card/favorite-card';
 import FavoritesLocation from '../favorites-location/favorites-location';
 
 type FavoritesListByCityProps = {
-  city: City;
+  cityName: CityName;
   offers: Offers;
 }
 
-function FavoritesListByCity({ city, offers }: FavoritesListByCityProps): JSX.Element | null {
-  const cityOffers = offers.filter((offer) => offer.city === city);
+function FavoritesListByCity({ cityName, offers }: FavoritesListByCityProps): JSX.Element | null {
+  const cityOffers = offers.filter((offer) => offer.city.name === cityName);
 
   if (cityOffers.length === 0) {
     return null;
@@ -17,7 +17,7 @@ function FavoritesListByCity({ city, offers }: FavoritesListByCityProps): JSX.El
 
   return (
     <li className="favorites__locations-items">
-      <FavoritesLocation city={city} />
+      <FavoritesLocation cityName={cityName} />
       <div className="favorites__places">
         {cityOffers.map((offer) => (
           <FavoriteCard key={offer.id} offer={offer} />

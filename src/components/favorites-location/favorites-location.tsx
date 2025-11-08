@@ -1,15 +1,16 @@
-import { City } from '../../const';
+import { CityName } from "../../const";
+
 
 type FavoritesLocationProps = {
-  city: City;
+  cityName: CityName;
 }
 
-function FavoritesLocation({ city }: FavoritesLocationProps): JSX.Element {
+function FavoritesLocation({ cityName }: FavoritesLocationProps): JSX.Element {
   return (
     <div className="favorites__locations locations locations--current">
       <div className="locations__item">
         <a className="locations__item-link" href="#">
-          <span>{city}</span>
+          <span>{cityName}</span>
         </a>
       </div>
     </div>

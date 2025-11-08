@@ -5,7 +5,7 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
-export enum City {
+export enum CityName {
   Paris = 'Paris',
   Cologne = 'Cologne',
   Brussels = 'Brussels',
@@ -14,7 +14,7 @@ export enum City {
   Dusseldorf = 'Dusseldorf',
 }
 
-export const CITIES = Object.values(City);
+export const CITIES = Object.values(CityName);
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
