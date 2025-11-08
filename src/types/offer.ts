@@ -14,7 +14,7 @@ export type Offer = {
   location: {
     latitude: number;
     longitude: number;
-  }
+  };
   isPremium: boolean;
   isInBookmarks: boolean;
 };

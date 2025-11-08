@@ -1,4 +1,4 @@
-import { CityName } from "../const";
+import { CityName } from '../const';
 
 export type City = {
   name: CityName;
@@ -6,5 +6,5 @@ export type City = {
     latitude: number;
     longitude: number;
     zoom: number;
-  }
+  };
 };
