@@ -12,21 +12,21 @@ type MainMapProps = {
   selectedOfferId: string;
 }
 
+const defaultPin = leaflet.icon({
+  iconUrl: Pin.Default,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+const activePin = leaflet.icon({
+  iconUrl: Pin.Active,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 function MainMap({ city, offers, selectedOfferId }: MainMapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-
-  const defaultPin = leaflet.icon({
-    iconUrl: Pin.Default,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
-  const activePin = leaflet.icon({
-    iconUrl: Pin.Active,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
 
   useEffect(() => {
     if (map) {
@@ -41,7 +41,7 @@ function MainMap({ city, offers, selectedOfferId }: MainMapProps) {
           .addTo(map);
       });
     }
-  }, [map, offers, selectedOfferId, defaultPin, activePin]);
+  }, [map, offers, selectedOfferId]);
 
   return (
     <section
