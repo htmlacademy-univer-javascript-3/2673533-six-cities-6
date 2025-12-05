@@ -1,4 +1,4 @@
-import { City } from "./types/city";
+import { City } from './types/city';
 
 export enum AppRoute {
   Main = '/',
@@ -20,7 +20,7 @@ export enum Pin {
 
 export const CITIES: City[] = [
   {
-    name: "Paris",
+    name: 'Paris',
     location: {
       latitude: 48.85661,
       longitude: 2.351499,
@@ -28,7 +28,7 @@ export const CITIES: City[] = [
     }
   },
   {
-    name: "Cologne",
+    name: 'Cologne',
     location: {
       latitude: 50.938361,
       longitude: 6.959974,
@@ -36,7 +36,7 @@ export const CITIES: City[] = [
     }
   },
   {
-    name: "Brussels",
+    name: 'Brussels',
     location: {
       latitude: 50.846557,
       longitude: 4.351697,
@@ -44,7 +44,7 @@ export const CITIES: City[] = [
     }
   },
   {
-    name: "Amsterdam",
+    name: 'Amsterdam',
     location: {
       latitude: 52.37454,
       longitude: 4.897976,
@@ -52,7 +52,7 @@ export const CITIES: City[] = [
     }
   },
   {
-    name: "Hamburg",
+    name: 'Hamburg',
     location: {
       latitude: 53.550341,
       longitude: 10.000654,
@@ -60,7 +60,7 @@ export const CITIES: City[] = [
     }
   },
   {
-    name: "Dusseldorf",
+    name: 'Dusseldorf',
     location: {
       latitude: 51.225402,
       longitude: 6.776314,

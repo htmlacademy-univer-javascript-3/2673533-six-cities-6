@@ -1,7 +1,7 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { setOffers, setCurrentCity, setOffersMainScreen } from "./action";
-import { Offer, OffersList } from "../types/offer";
-import { fetchOffers, fetchOffersMainScreen } from "../cities-logic";
+import { createReducer } from '@reduxjs/toolkit';
+import { setOffers, setCurrentCity, setOffersMainScreen } from './action';
+import { Offer, OffersList } from '../types/offer';
+import { fetchOffers, fetchOffersMainScreen } from '../cities-logic';
 
 
 const initialState: {
@@ -9,7 +9,7 @@ const initialState: {
   offersMainScreen: OffersList;
   offers: Offer[];
 } = {
-  city: "Paris",
+  city: 'Paris',
   offersMainScreen: fetchOffersMainScreen(),
   offers: fetchOffers(),
 };

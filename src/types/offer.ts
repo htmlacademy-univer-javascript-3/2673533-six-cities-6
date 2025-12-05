@@ -27,7 +27,7 @@ export type Offer = {
     latitude: number;
     longitude: number;
     zoom: number;
-  }
+  };
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
@@ -38,7 +38,7 @@ export type Offer = {
     name: string;
     avatarUrl: string;
     isPro: boolean;
-  }
+  };
   images: string[];
   maxAdults: number;
 }
@@ -53,7 +53,7 @@ export type OfferNearby = {
     latitude: number;
     longitude: number;
     zoom: number;
-  }
+  };
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;

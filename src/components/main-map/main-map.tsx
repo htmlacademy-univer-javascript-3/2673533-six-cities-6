@@ -26,7 +26,7 @@ const activePin = leaflet.icon({
 function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
   const mapRef = useRef(null);
 
-  const city = CITIES.find(c => c.name === cityName)!;
+  const city = CITIES.find((c) => c.name === cityName)!;
   const map = useMap(mapRef, city);
 
   useEffect(() => {

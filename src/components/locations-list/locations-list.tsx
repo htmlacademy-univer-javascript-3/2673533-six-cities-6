@@ -1,6 +1,6 @@
-import { CITIES } from "../../const";
-import { useAppDispatch } from "../../hooks";
-import { setCurrentCity } from "../../store/action";
+import { CITIES } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { setCurrentCity } from '../../store/action';
 
 type LocationsListProps = {
   activeCity: string;
@@ -19,11 +19,12 @@ function LocationsList({ activeCity } : LocationsListProps): JSX.Element {
         <ul className="locations__list tabs__list">
           {CITIES.map((city) => (
             <li className="locations__item" key={city.name}>
-              <a className={`locations__item-link tabs__item ${city.name === activeCity ? "tabs__item--active" : ""}`}
+              <a className={`locations__item-link tabs__item ${city.name === activeCity ? 'tabs__item--active' : ''}`}
                 onClick={(evt) => {
                   evt.preventDefault();
                   handleOnCityClick(city.name);
-                }} >
+                }}
+              >
                 <span>{city.name}</span>
               </a>
             </li>
