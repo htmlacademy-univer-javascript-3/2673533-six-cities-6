@@ -1,7 +1,5 @@
-import { CityName } from '../const';
-
 export type City = {
-  name: CityName;
+  name: string;
   location: {
     latitude: number;
     longitude: number;

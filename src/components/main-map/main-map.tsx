@@ -1,14 +1,13 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { City } from '../../types/city';
 import { useEffect, useRef } from 'react';
-import { Pin } from '../../const';
+import { CITIES, Pin } from '../../const';
 import useMap from '../../hooks/use-map';
-import { Offers } from '../../types/offer';
+import { OffersList } from '../../types/offer';
 
 type MainMapProps = {
-  city: City;
-  offers: Offers;
+  cityName: string;
+  offers: OffersList;
   selectedOfferId: string;
 }
 
@@ -24,8 +23,10 @@ const activePin = leaflet.icon({
   iconAnchor: [20, 40],
 });
 
-function MainMap({ city, offers, selectedOfferId }: MainMapProps) {
+function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
   const mapRef = useRef(null);
+
+  const city = CITIES.find((c) => c.name === cityName)!;
   const map = useMap(mapRef, city);
 
   useEffect(() => {

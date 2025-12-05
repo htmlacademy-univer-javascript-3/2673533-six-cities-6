@@ -7,14 +7,8 @@ import OfferScreen from '../../pages/offer-screen/offer-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import { Offers } from '../../types/offer';
 
-type AppProps = {
-  placesCount: number;
-  offers: Offers;
-}
-
-function App({ placesCount, offers }: AppProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -22,10 +16,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
           <Route
             path={AppRoute.Main}
             element={
-              <MainScreen
-                placesCount={placesCount}
-                offers={offers}
-              />
+              <MainScreen />
             }
           />
           <Route
@@ -34,7 +25,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Offer}
-            element={<OfferScreen offers={offers}/>}
+            element={<OfferScreen />}
           />
           <Route
             path={AppRoute.Favourites}
@@ -42,7 +33,7 @@ function App({ placesCount, offers }: AppProps): JSX.Element {
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth} // для теста страницы favorites
               >
-                <FavoritesScreen favoriteOffers={offers.filter((offer) => offer.isInBookmarks)} />
+                <FavoritesScreen />
               </PrivateRoute>
             }
           />
