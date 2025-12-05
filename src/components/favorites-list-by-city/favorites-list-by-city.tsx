@@ -1,15 +1,15 @@
-import { CityName } from '../../const';
-import { Offers } from '../../types/offer';
+import { filterOffersMainScreenByCity } from '../../cities-logic';
+import { OffersList } from '../../types/offer';
 import FavoriteCard from '../favorite-card/favorite-card';
 import FavoritesLocation from '../favorites-location/favorites-location';
 
 type FavoritesListByCityProps = {
-  cityName: CityName;
-  offers: Offers;
+  cityName: string;
+  offers: OffersList;
 }
 
 function FavoritesListByCity({ cityName, offers }: FavoritesListByCityProps): JSX.Element | null {
-  const cityOffers = offers.filter((offer) => offer.city.name === cityName);
+  const cityOffers = filterOffersMainScreenByCity(offers, cityName);
 
   if (cityOffers.length === 0) {
     return null;

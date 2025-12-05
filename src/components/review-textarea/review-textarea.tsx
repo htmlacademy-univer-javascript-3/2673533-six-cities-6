@@ -11,9 +11,8 @@ function ReviewTextarea({ reviewText, onReviewTextChange } : ReviewTextareaProps
       name="review"
       placeholder="Tell how was your stay, what you like and what can be improved"
       onChange={(evt) => onReviewTextChange(evt.target.value)}
-    >
-      {reviewText}
-    </textarea>
+      value={reviewText}
+    />
   );
 }
 

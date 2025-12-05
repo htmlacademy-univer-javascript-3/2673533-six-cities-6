@@ -1,16 +1,15 @@
 import { Helmet } from 'react-helmet-async';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import HeaderNav from '../../components/header-nav/header-nav';
-import { Offers } from '../../types/offer';
 import { AppRoute, CITIES } from '../../const';
 import FavoritesListByCity from '../../components/favorites-list-by-city/favorites-list-by-city';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import { filterOffersByFavorite } from '../../cities-logic';
 
-type FavoritesScreenProps = {
-  favoriteOffers: Offers;
-}
-
-function FavoritesScreen({ favoriteOffers }: FavoritesScreenProps): JSX.Element {
+function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offersMainScreen);
+  const favoriteOffers = filterOffersByFavorite(offers);
   return (
     <div className="page">
       <Helmet>
@@ -31,10 +30,10 @@ function FavoritesScreen({ favoriteOffers }: FavoritesScreenProps): JSX.Element 
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {CITIES.map((cityName) => (
+              {CITIES.map((city) => (
                 <FavoritesListByCity
-                  key={cityName}
-                  cityName={cityName}
+                  key={city.name}
+                  cityName={city.name}
                   offers={favoriteOffers}
                 />
               ))}
