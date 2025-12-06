@@ -1,7 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
+import { OffersList } from '../types/offer';
 
 export const setCurrentCity = createAction<string>('cities/setCurrentCity');
 
-export const setOffersMainScreen = createAction('cities/setOffersMainScreen');
+export const loadOffersMainScreen = createAction<OffersList>('cities/loadOffersMainScreen');
 
 export const setOffers = createAction('cities/setOffers');

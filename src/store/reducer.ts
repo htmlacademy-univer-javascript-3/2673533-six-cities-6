@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setOffers, setCurrentCity, setOffersMainScreen } from './action';
+import { setOffers, setCurrentCity, loadOffersMainScreen } from './action';
 import { Offer, OffersList } from '../types/offer';
 import { fetchOffers, fetchOffersMainScreen } from '../cities-logic';
 
@@ -19,8 +19,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(setOffersMainScreen, (state) => {
-      state.offersMainScreen = fetchOffersMainScreen();
+    .addCase(loadOffersMainScreen, (state, action) => {
+      state.offersMainScreen = action.payload;
     })
     .addCase(setOffers, (state) => {
       state.offers = fetchOffers();
