@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import OfferList from '../../components/offer-list/offer-list';
+import OfferList from '../../components/shared-components/offer-list/offer-list';
 import MainMap from '../../components/main-screen-components/main-map/main-map';
 import { useState } from 'react';
 import LocationsList from '../../components/main-screen-components/locations-list/locations-list';

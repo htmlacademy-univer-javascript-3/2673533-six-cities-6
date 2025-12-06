@@ -1,12 +1,12 @@
 import { HTMLAttributes } from 'react';
-import { OfferDTO } from '../../types/offer';
-import BookmarkButton from '../shared-components/bookmark-button/bookmark-button';
-import OfferImage from '../shared-components/offer-image/offer-image';
-import OfferName from '../shared-components/offer-name/offer-name';
-import OfferType from '../shared-components/offer-type/offer-type';
-import PremiumMark from '../shared-components/premium-mark/premium-mark';
-import Price from '../shared-components/price/price';
-import Rating from '../shared-components/rating/rating';
+import { OfferDTO } from '../../../types/offer';
+import BookmarkButton from '../bookmark-button/bookmark-button';
+import OfferImage from '../offer-image/offer-image';
+import OfferName from '../offer-name/offer-name';
+import OfferType from '../offer-type/offer-type';
+import PremiumMark from '../premium-mark/premium-mark';
+import Price from '../price/price';
+import Rating from '../rating/rating';
 
 type OfferCardProps = {
   offer: OfferDTO;

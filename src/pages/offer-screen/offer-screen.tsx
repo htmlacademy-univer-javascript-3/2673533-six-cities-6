@@ -18,7 +18,7 @@ import OfferHost from '../../components/offer-screen-components/offer-host/offer
 import OfferPrice from '../../components/offer-screen-components/offer-price/offer-price';
 import OfferFeatures from '../../components/offer-screen-components/offer-features/offer-features';
 import Rating from '../../components/shared-components/rating/rating';
-import OfferList from '../../components/offer-list/offer-list';
+import OfferList from '../../components/shared-components/offer-list/offer-list';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
