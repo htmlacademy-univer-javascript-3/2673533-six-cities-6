@@ -1,5 +1,5 @@
 import { City } from './city';
-import { Host } from './host';
+import { User } from './user';
 import { Location } from './location';
 
 type BaseOfferDTO = {
@@ -22,7 +22,7 @@ export type OfferFullDTO = BaseOfferDTO & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: Host;
+  host: User;
   images: string[];
   maxAdults: number;
 };

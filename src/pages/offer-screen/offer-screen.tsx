@@ -7,29 +7,34 @@ import PremiumMark from '../../components/shared-components/premium-mark/premium
 import BookmarkButton from '../../components/shared-components/bookmark-button/bookmark-button';
 import OfferInsideList from '../../components/offer-screen-components/offer-inside-list/offer-inside-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchOfferFullByIdAction } from '../../store/api-actions';
+import { fetchOfferFullByIdAction, fetchReviewsAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { useEffect } from 'react';
-import { clearCurrentOffer } from '../../store/action';
+import { clearCurrentOffer, clearCurrentReviews } from '../../store/action';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 import HeaderNav from '../../components/shared-components/header-nav/header-nav';
+import ReviewList from '../../components/offer-screen-components/review-list/review-list';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
-  const isCurrentOfferLoading = useAppSelector((state) => state.isCurrentOfferLoading);
   const dispatch = useAppDispatch();
+  const isCurrentOfferLoading = useAppSelector((state) => state.isCurrentOfferLoading);
+  const isCurrentReviewsDataLoading = useAppSelector((state) => state.isCurrentReviewsDataLoading);
   const currentOffer = useAppSelector((state) => state.currentOffer);
+  const reviews = useAppSelector((state) => state.currentReviews);
 
   useEffect(() => {
     const offerId = params.id;
     if (offerId) {
       dispatch(fetchOfferFullByIdAction(offerId));
+      dispatch(fetchReviewsAction(offerId));
     } else {
       dispatch(clearCurrentOffer());
+      dispatch(clearCurrentReviews());
     }
   }, [params.id, dispatch]);
 
-  if (isCurrentOfferLoading) {
+  if (isCurrentOfferLoading || isCurrentReviewsDataLoading) {
     return <LoadingScreen />;
   }
 
@@ -113,32 +118,10 @@ function OfferScreen(): JSX.Element {
                   </p>
                 </div>
               </div>
+
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{ width: '80%' }}></span>
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
-                </ul>
+                <ReviewList reviews={reviews} />
                 <ReviewForm />
               </section>
             </div>

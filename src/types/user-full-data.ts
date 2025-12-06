@@ -1,4 +1,4 @@
-export type UserData = {
+export type UserFullData = {
   name: string;
   avatarUrl: string;
   isPro: boolean;

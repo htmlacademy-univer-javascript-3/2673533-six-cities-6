@@ -1,11 +1,12 @@
 type RatingProps = {
+  className: string;
   ratingValue: number;
 }
 
-function Rating({ ratingValue }: RatingProps): JSX.Element {
+function Rating({ className, ratingValue }: RatingProps): JSX.Element {
   return (
-    <div className="place-card__rating rating">
-      <div className="place-card__stars rating__stars">
+    <div className={`${className}__rating rating`}>
+      <div className={`${className}__stars rating__stars`}>
         <span style={{ width: `${ratingValue}%` }}></span>
         <span className="visually-hidden">Rating</span>
       </div>
