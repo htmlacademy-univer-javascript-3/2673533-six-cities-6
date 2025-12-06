@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/header-logo/header-logo';
-import HeaderNav from '../../components/header-nav/header-nav';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 
 function LoadingScreen(): JSX.Element {
   return (

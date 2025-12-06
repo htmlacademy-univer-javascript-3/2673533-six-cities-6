@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { logoutAction } from '../../store/api-actions';
+import { AppRoute, AuthorizationStatus } from '../../../const';
+import { useAppDispatch } from '../../../hooks';
+import { logoutAction } from '../../../store/api-actions';
 
 type LogInOutButtonProps = {
   authorizationStatus: AuthorizationStatus;

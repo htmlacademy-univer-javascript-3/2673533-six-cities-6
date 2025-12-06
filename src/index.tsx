@@ -7,7 +7,7 @@ import { checkAuthAction, fetchOffersAction } from './store/api-actions';
 import { HelmetProvider } from 'react-helmet-async';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HistoryRouter from './components/history-route/history-route';
+import HistoryRouter from './components/routes/history-route/history-route';
 import browserHistory from './browser-history';
 
 store.dispatch(fetchOffersAction());

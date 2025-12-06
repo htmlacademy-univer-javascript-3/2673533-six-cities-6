@@ -1,5 +1,5 @@
-import { AuthorizationStatus } from '../../const';
-import { useAppSelector } from '../../hooks';
+import { AuthorizationStatus } from '../../../const';
+import { useAppSelector } from '../../../hooks';
 import Email from '../email/email';
 import LogInOutButton from '../log-in-out-button/log-in-out-button';
 

@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/header-logo/header-logo';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 
 
 function LoginScreen(): JSX.Element {

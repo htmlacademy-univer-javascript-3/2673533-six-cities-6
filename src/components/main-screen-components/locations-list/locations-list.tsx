@@ -1,6 +1,6 @@
-import { CITIES } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { setCurrentCity } from '../../store/action';
+import { CITIES } from '../../../const';
+import { useAppDispatch } from '../../../hooks';
+import { setCurrentCity } from '../../../store/action';
 
 type LocationsListProps = {
   activeCity: string;

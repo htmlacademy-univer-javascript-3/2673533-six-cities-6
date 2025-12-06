@@ -1,18 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import HeaderLogo from '../../components/header-logo/header-logo';
-import HeaderNav from '../../components/header-nav/header-nav';
-import ReviewForm from '../../components/review-form/review-form';
+import ReviewForm from '../../components/offer-screen-components/review-form/review-form';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import OfferGallery from '../../components/offer-gallery/offer-gallery';
-import PremiumMark from '../../components/premium-mark/premium-mark';
-import BookmarkButton from '../../components/bookmark-button/bookmark-button';
-import OfferInsideList from '../../components/offer-inside-list/offer-inside-list';
+import OfferGallery from '../../components/offer-screen-components/offer-gallery/offer-gallery';
+import PremiumMark from '../../components/shared-components/premium-mark/premium-mark';
+import BookmarkButton from '../../components/shared-components/bookmark-button/bookmark-button';
+import OfferInsideList from '../../components/offer-screen-components/offer-inside-list/offer-inside-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchOfferFullByIdAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { useEffect } from 'react';
 import { clearCurrentOffer } from '../../store/action';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();

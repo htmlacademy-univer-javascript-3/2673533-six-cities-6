@@ -1,5 +1,5 @@
-import { filterOffersMainScreenByCity } from '../../cities-logic';
-import { Offers } from '../../types/offer';
+import { filterOffersMainScreenByCity } from '../../../cities-logic';
+import { Offers } from '../../../types/offer';
 import FavoriteCard from '../favorite-card/favorite-card';
 import FavoritesLocation from '../favorites-location/favorites-location';
 

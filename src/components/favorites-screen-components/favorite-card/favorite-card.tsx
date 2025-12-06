@@ -1,11 +1,11 @@
-import { OfferDTO } from '../../types/offer';
-import BookmarkButton from '../bookmark-button/bookmark-button';
+import { OfferDTO } from '../../../types/offer';
+import BookmarkButton from '../../shared-components/bookmark-button/bookmark-button';
 import FavoriteOfferImage from '../favorite-offer-image/favorite-offer-image';
-import OfferName from '../offer-name/offer-name';
-import OfferType from '../offer-type/offer-type';
-import PremiumMark from '../premium-mark/premium-mark';
-import Price from '../price/price';
-import Rating from '../rating/rating';
+import OfferName from '../../shared-components/offer-name/offer-name';
+import OfferType from '../../shared-components/offer-type/offer-type';
+import PremiumMark from '../../shared-components/premium-mark/premium-mark';
+import Price from '../../shared-components/price/price';
+import Rating from '../../shared-components/rating/rating';
 
 type FavoriteCardProps = {
   offer: OfferDTO;

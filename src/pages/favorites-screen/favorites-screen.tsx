@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/header-logo/header-logo';
-import HeaderNav from '../../components/header-nav/header-nav';
 import { AppRoute, CITIES } from '../../const';
-import FavoritesListByCity from '../../components/favorites-list-by-city/favorites-list-by-city';
+import FavoritesListByCity from '../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { filterOffersByFavorite } from '../../cities-logic';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 
 function FavoritesScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);

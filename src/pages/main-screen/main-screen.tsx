@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/header-logo/header-logo';
-import HeaderNav from '../../components/header-nav/header-nav';
 import OfferList from '../../components/offer-list/offer-list';
-import MainMap from '../../components/main-map/main-map';
+import MainMap from '../../components/main-screen-components/main-map/main-map';
 import { useState } from 'react';
-import LocationsList from '../../components/locations-list/locations-list';
+import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
 import { useAppSelector } from '../../hooks';
 import { filterOffersMainScreenByCity } from '../../cities-logic';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 
 
 function MainScreen(): JSX.Element {

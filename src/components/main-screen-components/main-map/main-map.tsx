@@ -1,9 +1,9 @@
 import leaflet, { Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
-import { ACTIVE_PIN, CITIES, DEFAULT_PIN } from '../../const';
-import useMap from '../../hooks/use-map';
-import { Offers } from '../../types/offer';
+import { ACTIVE_PIN, CITIES, DEFAULT_PIN } from '../../../const';
+import useMap from '../../../hooks/use-map';
+import { Offers } from '../../../types/offer';
 
 type MainMapProps = {
   cityName: string;
