@@ -1,10 +1,25 @@
 import { City } from './types/city';
 
+export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
+export const REQUEST_TIMEOUT = 5000;
+
 export enum AppRoute {
   Main = '/',
   Login = '/login',
   Favourites = '/favorites',
   Offer = '/offer/:id',
+}
+
+export enum APIRoute {
+  Offers = '/offers',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Favorite = '/favorite',
+  OfferById = '/offers/:id',
+  NearbyOffers = '/offers/:id/nearby',
+  FavoriteStatus = '/favorite/:id/:status',
+  CommentsByOfferId = '/comments/:id',
 }
 
 export enum AuthorizationStatus {

@@ -1,13 +1,11 @@
 import axios, {AxiosInstance, InternalAxiosRequestConfig} from 'axios';
 import { getToken } from './token';
-
-const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
-const TIMEOUT = 5000;
+import { REQUEST_TIMEOUT, SERVER_URL } from '../const';
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     baseURL: SERVER_URL,
-    timeout: TIMEOUT,
+    timeout: REQUEST_TIMEOUT,
   });
 
   api.interceptors.request.use(
