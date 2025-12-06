@@ -1,6 +1,6 @@
-import { Review } from "../../../types/review";
-import Rating from "../../shared-components/rating/rating";
-import ReviewUser from "../review-user/review-user";
+import { Review } from '../../../types/review';
+import Rating from '../../shared-components/rating/rating';
+import ReviewUser from '../review-user/review-user';
 
 type ReviewListItemProps = {
   review: Review;
@@ -20,7 +20,7 @@ function ReviewListItem({ review } : ReviewListItemProps): JSX.Element {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime={review.date.split("T")[0]}>{displayDate}</time>
+        <time className="reviews__time" dateTime={review.date.split('T')[0]}>{displayDate}</time>
       </div>
     </li>
   );

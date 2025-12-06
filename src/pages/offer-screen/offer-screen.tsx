@@ -65,8 +65,8 @@ function OfferScreen(): JSX.Element {
     isFavorite: isFavorite,
     isPremium: isPremium,
     rating: rating,
-    previewImage: ""
-  }
+    previewImage: ''
+  };
 
   return (
     <div className="page">

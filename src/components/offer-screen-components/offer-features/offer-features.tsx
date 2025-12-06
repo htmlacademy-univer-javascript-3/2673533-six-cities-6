@@ -5,8 +5,8 @@ type OfferFeaturesProps = {
 }
 
 function OfferFeatures({ type, bedrooms, maxAdults }: OfferFeaturesProps): JSX.Element {
-  const bedroomsForm = bedrooms === 1 ? "Bedroom" : "Bedrooms";
-  const maxAdultsForm = maxAdults === 1 ? "adult" : "adults";
+  const bedroomsForm = bedrooms === 1 ? 'Bedroom' : 'Bedrooms';
+  const maxAdultsForm = maxAdults === 1 ? 'adult' : 'adults';
 
   return (
     <ul className="offer__features">

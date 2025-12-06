@@ -18,7 +18,7 @@ function OfferList({ offers, cardName, listName, onActiveOfferIdChange }: OfferL
   } : undefined;
 
   return (
-    <div className={`${listName} places__list ${cardName === "cities" ? "tabs__content" : ""}`}>
+    <div className={`${listName} places__list ${cardName === 'cities' ? 'tabs__content' : ''}`}>
       {offers.map((offer) => (
         <OfferCard
           key={offer.id}
