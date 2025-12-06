@@ -12,6 +12,8 @@ export const clearCurrentOffer = createAction('data/clearCurrentOffer');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 
+export const setUserEmail = createAction<string>('user/setUserEmail');
+
 export const setOffersDataLoadingStatus = createAction<boolean>('data/setOffersDataLoadingStatus');
 
 export const setCurrentOfferLoadingStatus = createAction<boolean>('data/setCurrentOfferLoadingStatus');

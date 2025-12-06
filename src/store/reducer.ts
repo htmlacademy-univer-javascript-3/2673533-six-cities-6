@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer } from './action';
+import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer, setUserEmail } from './action';
 import { OfferFullDTO, Offers } from '../types/offer';
 import { AuthorizationStatus } from '../const';
-
 
 const initialState: {
   city: string;
@@ -11,6 +10,7 @@ const initialState: {
   currentOffer: OfferFullDTO | null;
   isCurrentOfferLoading: boolean;
   authorizationStatus: AuthorizationStatus;
+  userEmail: string | null;
 } = {
   city: 'Paris',
   offers: [],
@@ -18,6 +18,7 @@ const initialState: {
   currentOffer: null,
   isCurrentOfferLoading: false,
   authorizationStatus: AuthorizationStatus.Unknown,
+  userEmail: null,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -39,6 +40,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(clearCurrentOffer, (state) => {
       state.currentOffer = null;
+    })
+    .addCase(setUserEmail, (state, action) => {
+      state.userEmail = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
