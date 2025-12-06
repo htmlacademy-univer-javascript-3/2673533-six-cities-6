@@ -8,13 +8,31 @@ import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import PremiumMark from '../../components/premium-mark/premium-mark';
 import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 import OfferInsideList from '../../components/offer-inside-list/offer-inside-list';
-import { getOfferById } from '../../cities-logic';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchOfferFullByIdAction } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
+import { useEffect } from 'react';
+import { clearCurrentOffer } from '../../store/action';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
-  const offers = useAppSelector((state) => state.offers);
-  const currentOffer = getOfferById(offers, params.id);
+  const isCurrentOfferLoading = useAppSelector((state) => state.isCurrentOfferLoading);
+  const dispatch = useAppDispatch();
+  const currentOffer = useAppSelector((state) => state.currentOffer);
+
+  useEffect(() => {
+    const offerId = params.id;
+    if (offerId) {
+      dispatch(fetchOfferFullByIdAction(offerId));
+    } else {
+      dispatch(clearCurrentOffer());
+    }
+  }, [params.id, dispatch]);
+
+  if (isCurrentOfferLoading) {
+    return <LoadingScreen />;
+  }
+
   if (!currentOffer) {
     return <NotFoundScreen />;
   }

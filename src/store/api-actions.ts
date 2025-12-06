@@ -1,9 +1,9 @@
 import { AxiosInstance } from "axios";
 import { AppDispatch, State } from "../types/state";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Offers } from "../types/offer";
+import { OfferFullDTO, Offers } from "../types/offer";
 import { APIRoute, AuthorizationStatus } from "../const";
-import { loadOffers, requireAuthorization, setOffersDataLoadingStatus } from "./action";
+import { loadCurrentOffer, loadOffers, requireAuthorization, setCurrentOfferLoadingStatus, setOffersDataLoadingStatus } from "./action";
 import { AuthData } from "../types/auth-data";
 import { UserData } from "../types/user-data";
 import { dropToken, saveToken } from "../services/token";
@@ -19,6 +19,20 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
     const {data} = await api.get<Offers>(APIRoute.Offers);
     dispatch(setOffersDataLoadingStatus(false));
     dispatch(loadOffers(data));
+  },
+);
+
+export const fetchOfferFullByIdAction = createAsyncThunk<void, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchOfferFullByIdAction',
+  async (offerId, {dispatch, extra: api}) => {
+    dispatch(setCurrentOfferLoadingStatus(true));
+    const {data} = await api.get<OfferFullDTO>(APIRoute.OfferById.replace(":id", offerId));
+    dispatch(setCurrentOfferLoadingStatus(false));
+    dispatch(loadCurrentOffer(data));
   },
 );
 
