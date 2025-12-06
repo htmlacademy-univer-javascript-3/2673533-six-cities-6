@@ -40,12 +40,10 @@ function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
     }
   }, [map, offers, selectedOfferId]);
 
-  useEffect(() => {
-    return () => {
-      if (map) {
-        clearMarkers();
-      }
-    };
+  useEffect(() => () => {
+    if (map) {
+      clearMarkers();
+    }
   }, [map]);
 
   return (
