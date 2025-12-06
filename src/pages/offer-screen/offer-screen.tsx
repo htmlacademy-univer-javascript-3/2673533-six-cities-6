@@ -14,6 +14,10 @@ import { clearCurrentOffer, clearCurrentReviews } from '../../store/action';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 import ReviewList from '../../components/offer-screen-components/review-list/review-list';
+import OfferHost from '../../components/offer-screen-components/offer-host/offer-host';
+import OfferPrice from '../../components/offer-screen-components/offer-price/offer-price';
+import OfferFeatures from '../../components/offer-screen-components/offer-features/offer-features';
+import Rating from '../../components/shared-components/rating/rating';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
@@ -69,58 +73,15 @@ function OfferScreen(): JSX.Element {
                 <h1 className="offer__name">{title}</h1>
                 <BookmarkButton isInBookmarks={isFavorite} className='offer' width="31" height="33" />
               </div>
-
-              <div className="offer__rating rating">
-                <div className="offer__stars rating__stars">
-                  <span style={{ width: `${rating}%` }}></span>
-                  <span className="visually-hidden">Rating</span>
-                </div>
-                <span className="offer__rating-value rating__value">4.8</span>
-              </div>
-
-              <ul className="offer__features">
-                <li className="offer__feature offer__feature--entire">
-                  {type}
-                </li>
-                <li className="offer__feature offer__feature--bedrooms">
-                  {bedrooms} Bedrooms
-                </li>
-                <li className="offer__feature offer__feature--adults">
-                  Max {maxAdults} adults
-                </li>
-              </ul>
-
-              <div className="offer__price">
-                <b className="offer__price-value">&euro;{price}</b>
-                <span className="offer__price-text">&nbsp;night</span>
-              </div>
-
+              <Rating className="offer" ratingValue={rating}>
+                <span className="offer__rating-value rating__value">{rating}</span>
+              </Rating>
+              <OfferFeatures type={type} bedrooms={bedrooms} maxAdults={maxAdults} />
+              <OfferPrice price={price} />
               <OfferInsideList items={goods} />
-
-              <div className="offer__host">
-                <h2 className="offer__host-title">Meet the host</h2>
-                <div className="offer__host-user user">
-                  <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="offer__avatar user__avatar" src={host.avatarUrl} width="74" height="74" alt="Host avatar" />
-                  </div>
-                  <span className="offer__user-name">
-                    {host.name}
-                  </span>
-                  {host.isPro && (
-                    <span className="offer__user-status">
-                      Pro
-                    </span>
-                  )}
-                </div>
-                <div className="offer__description">
-                  <p className="offer__text">
-                    {description}
-                  </p>
-                </div>
-              </div>
-
+              <OfferHost host={host} description={description} />
               <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ReviewList reviews={reviews} />
                 <ReviewForm />
               </section>
