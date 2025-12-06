@@ -1,64 +1,30 @@
 import { City } from './city';
+import { Host } from './host';
+import { Location } from './location';
 
-export type OfferMainScreen = {
+type BaseOfferDTO = {
   id: string;
   title: string;
   type: string;
   price: number;
   city: City;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
+  location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
+};
+
+export type OfferDTO = BaseOfferDTO & {
   previewImage: string;
-}
+};
 
-export type Offer = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: City;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
+export type OfferFullDTO = BaseOfferDTO & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  host: Host;
   images: string[];
   maxAdults: number;
-}
+};
 
-export type OfferNearby = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: City;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  previewImage: string;
-}
-
-export type OffersList = OfferMainScreen[];
-export type OffersNearby = OfferNearby[];
+export type Offers = OfferDTO[];

@@ -1,19 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setOffers, setCurrentCity, loadOffersMainScreen, requireAuthorization } from './action';
-import { Offer, OffersList } from '../types/offer';
-import { fetchOffers, fetchOffersMainScreen } from '../cities-logic';
+import { setCurrentCity, loadOffers, requireAuthorization } from './action';
+import { Offers } from '../types/offer';
 import { AuthorizationStatus } from '../const';
 
 
 const initialState: {
   city: string;
-  offersMainScreen: OffersList;
-  offers: Offer[];
+  offers: Offers;
   authorizationStatus: AuthorizationStatus;
 } = {
   city: 'Paris',
-  offersMainScreen: fetchOffersMainScreen(),
-  offers: fetchOffers(),
+  offers: [],
   authorizationStatus: AuthorizationStatus.Unknown,
 };
 
@@ -22,11 +19,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(loadOffersMainScreen, (state, action) => {
-      state.offersMainScreen = action.payload;
-    })
-    .addCase(setOffers, (state) => {
-      state.offers = fetchOffers();
+    .addCase(loadOffers, (state, action) => {
+      state.offers = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

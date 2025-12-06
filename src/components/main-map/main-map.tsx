@@ -3,11 +3,11 @@ import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
 import { CITIES, Pin } from '../../const';
 import useMap from '../../hooks/use-map';
-import { OffersList } from '../../types/offer';
+import { Offers } from '../../types/offer';
 
 type MainMapProps = {
   cityName: string;
-  offers: OffersList;
+  offers: Offers;
   selectedOfferId: string;
 }
 

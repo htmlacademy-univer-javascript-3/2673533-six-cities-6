@@ -1,4 +1,4 @@
-import { OfferMainScreen } from '../../types/offer';
+import { OfferDTO } from '../../types/offer';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import FavoriteOfferImage from '../favorite-offer-image/favorite-offer-image';
 import OfferName from '../offer-name/offer-name';
@@ -8,7 +8,7 @@ import Price from '../price/price';
 import Rating from '../rating/rating';
 
 type FavoriteCardProps = {
-  offer: OfferMainScreen;
+  offer: OfferDTO;
 }
 
 function FavoriteCard({ offer }: FavoriteCardProps): JSX.Element {
