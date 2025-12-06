@@ -8,7 +8,7 @@ import { useAppSelector } from '../../hooks';
 import { filterOffersByFavorite } from '../../cities-logic';
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offersMainScreen);
+  const offers = useAppSelector((state) => state.offers);
   const favoriteOffers = filterOffersByFavorite(offers);
   return (
     <div className="page">

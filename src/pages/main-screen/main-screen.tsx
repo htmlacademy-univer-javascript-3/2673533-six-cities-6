@@ -12,7 +12,7 @@ import { filterOffersMainScreenByCity } from '../../cities-logic';
 function MainScreen(): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState('');
   const activeCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offersMainScreen);
+  const offers = useAppSelector((state) => state.offers);
 
   const currentOffers = filterOffersMainScreenByCity(offers, activeCity);
 

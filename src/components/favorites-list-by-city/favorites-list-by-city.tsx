@@ -1,11 +1,11 @@
 import { filterOffersMainScreenByCity } from '../../cities-logic';
-import { OffersList } from '../../types/offer';
+import { Offers } from '../../types/offer';
 import FavoriteCard from '../favorite-card/favorite-card';
 import FavoritesLocation from '../favorites-location/favorites-location';
 
 type FavoritesListByCityProps = {
   cityName: string;
-  offers: OffersList;
+  offers: Offers;
 }
 
 function FavoritesListByCity({ cityName, offers }: FavoritesListByCityProps): JSX.Element | null {

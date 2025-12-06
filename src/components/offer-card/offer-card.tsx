@@ -1,4 +1,4 @@
-import { OfferMainScreen } from '../../types/offer';
+import { OfferDTO } from '../../types/offer';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import OfferImage from '../offer-image/offer-image';
 import OfferName from '../offer-name/offer-name';
@@ -8,7 +8,7 @@ import Price from '../price/price';
 import Rating from '../rating/rating';
 
 type OfferCardProps = {
-  offer: OfferMainScreen;
+  offer: OfferDTO;
   onMouseEnter: (offerCardId: string) => void;
   onMouseLeave: () => void;
 }

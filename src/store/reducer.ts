@@ -1,17 +1,23 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setOffers, setCurrentCity, setOffersMainScreen } from './action';
-import { Offer, OffersList } from '../types/offer';
-import { fetchOffers, fetchOffersMainScreen } from '../cities-logic';
+import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer } from './action';
+import { OfferFullDTO, Offers } from '../types/offer';
+import { AuthorizationStatus } from '../const';
 
 
 const initialState: {
   city: string;
-  offersMainScreen: OffersList;
-  offers: Offer[];
+  offers: Offers;
+  isOffersDataLoading: boolean;
+  currentOffer: OfferFullDTO | null;
+  isCurrentOfferLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
 } = {
   city: 'Paris',
-  offersMainScreen: fetchOffersMainScreen(),
-  offers: fetchOffers(),
+  offers: [],
+  isOffersDataLoading: false,
+  currentOffer: null,
+  isCurrentOfferLoading: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -19,11 +25,23 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(setOffersMainScreen, (state) => {
-      state.offersMainScreen = fetchOffersMainScreen();
+    .addCase(loadOffers, (state, action) => {
+      state.offers = action.payload;
     })
-    .addCase(setOffers, (state) => {
-      state.offers = fetchOffers();
+    .addCase(setOffersDataLoadingStatus, (state, action) => {
+      state.isOffersDataLoading = action.payload;
+    })
+    .addCase(loadCurrentOffer, (state, action) => {
+      state.currentOffer = action.payload;
+    })
+    .addCase(setCurrentOfferLoadingStatus, (state, action) => {
+      state.isCurrentOfferLoading = action.payload;
+    })
+    .addCase(clearCurrentOffer, (state) => {
+      state.currentOffer = null;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 

@@ -1,4 +1,8 @@
 import { City } from './types/city';
+import leaflet from 'leaflet';
+
+export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
+export const REQUEST_TIMEOUT = 5000;
 
 export enum AppRoute {
   Main = '/',
@@ -7,16 +11,35 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
+export enum APIRoute {
+  Offers = '/offers',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Favorite = '/favorite',
+  OfferById = '/offers/:id',
+  NearbyOffers = '/offers/:id/nearby',
+  FavoriteStatus = '/favorite/:id/:status',
+  CommentsByOfferId = '/comments/:id',
+}
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
 
-export enum Pin {
-  Default = 'img/pin.svg',
-  Active = 'img/pin-active.svg',
-}
+export const DEFAULT_PIN = leaflet.icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+export const ACTIVE_PIN = leaflet.icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
 
 export const CITIES: City[] = [
   {
