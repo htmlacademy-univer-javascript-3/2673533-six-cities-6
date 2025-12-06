@@ -15,12 +15,11 @@ export enum APIRoute {
   Offers = '/offers',
   Login = '/login',
   Logout = '/logout',
-  Comments = '/comments',
   Favorite = '/favorite',
+  Comments = '/comments/:id',
   OfferById = '/offers/:id',
   NearbyOffers = '/offers/:id/nearby',
-  FavoriteStatus = '/favorite/:id/:status',
-  CommentsByOfferId = '/comments/:id',
+  FavoriteStatus = '/favorite/:id/:status'
 }
 
 export enum AuthorizationStatus {

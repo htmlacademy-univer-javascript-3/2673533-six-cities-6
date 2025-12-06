@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/header-logo/header-logo';
-import HeaderNav from '../../components/header-nav/header-nav';
-import OfferList from '../../components/offer-list/offer-list';
-import MainMap from '../../components/main-map/main-map';
+import OfferList from '../../components/shared-components/offer-list/offer-list';
+import MainMap from '../../components/main-screen-components/main-map/main-map';
 import { useState } from 'react';
-import LocationsList from '../../components/locations-list/locations-list';
+import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
 import { useAppSelector } from '../../hooks';
-import { filterOffersMainScreenByCity } from '../../cities-logic';
+import { filterOffersByCity } from '../../cities-logic';
+import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 
 
 function MainScreen(): JSX.Element {
@@ -14,7 +14,7 @@ function MainScreen(): JSX.Element {
   const activeCity = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
 
-  const currentOffers = filterOffersMainScreenByCity(offers, activeCity);
+  const currentOffers = filterOffersByCity(offers, activeCity);
 
   const handleActiveOfferIdChange = (newActiveOfferId: string) => {
     setActiveOfferId(newActiveOfferId);
@@ -58,10 +58,10 @@ function MainScreen(): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OfferList offers={currentOffers} onActiveOfferIdChange={handleActiveOfferIdChange}/>
+              <OfferList offers={currentOffers} cardName="cities" listName="cities__places-list" onActiveOfferIdChange={handleActiveOfferIdChange}/>
             </section>
             <div className="cities__right-section">
-              <MainMap cityName={activeCity} offers={currentOffers} selectedOfferId={activeOfferId}/>
+              <MainMap cityName={activeCity} className="cities" offers={currentOffers} selectedOfferId={activeOfferId}/>
             </div>
           </div>
         </div>
