@@ -8,6 +8,7 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import LoginRoute from '../login-route/login-route';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -29,7 +30,11 @@ function App(): JSX.Element {
       />
       <Route
         path={AppRoute.Login}
-        element={<LoginScreen />}
+        element={
+          <LoginRoute>
+            <LoginScreen />
+          </LoginRoute>
+        }
       />
       <Route
         path={AppRoute.Offer}
