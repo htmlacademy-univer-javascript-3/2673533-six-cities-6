@@ -22,7 +22,7 @@ function LoginScreen(): JSX.Element {
         password: passwordRef.current.value
       }));
     }
-  }
+  };
 
   return (
     <div className="page page--gray page--login">

@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import { AppRoute, AuthorizationStatus } from "../../const";
-import { useAppDispatch } from "../../hooks";
-import { logoutAction } from "../../store/api-actions";
+import { Link, useNavigate } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { logoutAction } from '../../store/api-actions';
 
 type LogInOutButtonProps = {
   authorizationStatus: AuthorizationStatus;
@@ -9,8 +9,8 @@ type LogInOutButtonProps = {
 
 function LogInOutButton({ authorizationStatus }: LogInOutButtonProps): JSX.Element {
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
-  const text = isAuth ? "Sign out" : "Sign in";
-  const to = isAuth ? "#" : AppRoute.Login;
+  const text = isAuth ? 'Sign out' : 'Sign in';
+  const to = isAuth ? '#' : AppRoute.Login;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function LogInOutButton({ authorizationStatus }: LogInOutButtonProps): JSX.Eleme
           navigate(AppRoute.Main);
         });
     }
-  }
+  };
 
   return (
     <li className="header__nav-item">

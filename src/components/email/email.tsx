@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../const";
-import { useAppSelector } from "../../hooks";
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 function Email(): JSX.Element {
   const userData = useAppSelector((state) => state.userData);
