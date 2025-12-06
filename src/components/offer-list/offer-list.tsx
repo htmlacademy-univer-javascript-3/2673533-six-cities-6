@@ -3,24 +3,27 @@ import OfferCard from '../offer-card/offer-card';
 
 type OfferListProps = {
   offers: Offers;
-  onActiveOfferIdChange: (newActiveOfferId: string) => void;
+  listName: string;
+  cardName: string;
+  onActiveOfferIdChange?: (newActiveOfferId: string) => void;
 }
 
-function OfferList({ offers, onActiveOfferIdChange }: OfferListProps): JSX.Element {
-  const handleMouseEnter = (offerCardId: string) => {
+function OfferList({ offers, cardName, listName, onActiveOfferIdChange }: OfferListProps): JSX.Element {
+  const handleMouseEnter = onActiveOfferIdChange ? (offerCardId: string) => {
     onActiveOfferIdChange(offerCardId);
-  };
+  } : undefined;
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = onActiveOfferIdChange ? () => {
     onActiveOfferIdChange('');
-  };
+  } : undefined;
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${listName} places__list ${cardName === "cities" ? "tabs__content" : ""}`}>
       {offers.map((offer) => (
         <OfferCard
           key={offer.id}
           offer={offer}
+          cardName={cardName}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         />

@@ -58,7 +58,7 @@ function MainScreen(): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OfferList offers={currentOffers} onActiveOfferIdChange={handleActiveOfferIdChange}/>
+              <OfferList offers={currentOffers} cardName="cities" listName="cities__places-list" onActiveOfferIdChange={handleActiveOfferIdChange}/>
             </section>
             <div className="cities__right-section">
               <MainMap cityName={activeCity} offers={currentOffers} selectedOfferId={activeOfferId}/>

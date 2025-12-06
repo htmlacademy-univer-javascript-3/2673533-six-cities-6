@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer, setUserData, loadCurrentReviews, setCurrentReviewsLoadingStatus, clearCurrentReviews } from './action';
+import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer, setUserData, loadCurrentReviews, setCurrentReviewsLoadingStatus, clearCurrentReviews, loadOffersNearby, setOffersNearbyLoadingStatus, clearOffersNearby } from './action';
 import { OfferFullDTO, Offers } from '../types/offer';
 import { AuthorizationStatus } from '../const';
 import { UserFullData } from '../types/user-full-data';
@@ -15,6 +15,8 @@ const initialState: {
   userData: UserFullData | null;
   currentReviews: Reviews;
   isCurrentReviewsDataLoading: boolean;
+  offersNearby: Offers;
+  isOffersNearbyDataLoading: boolean;
 } = {
   city: 'Paris',
   offers: [],
@@ -25,6 +27,8 @@ const initialState: {
   userData: null,
   currentReviews: [],
   isCurrentReviewsDataLoading: false,
+  offersNearby: [],
+  isOffersNearbyDataLoading: false,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -61,6 +65,15 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(clearCurrentReviews, (state) => {
       state.currentReviews = [];
+    })
+    .addCase(loadOffersNearby, (state, action) => {
+      state.offersNearby = action.payload;
+    })
+    .addCase(setOffersNearbyLoadingStatus, (state, action) => {
+      state.isOffersNearbyDataLoading = action.payload;
+    })
+    .addCase(clearOffersNearby, (state) => {
+      state.offersNearby = [];
     });
 });
 

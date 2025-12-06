@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import { OfferDTO } from '../../types/offer';
 import BookmarkButton from '../shared-components/bookmark-button/bookmark-button';
 import OfferImage from '../shared-components/offer-image/offer-image';
@@ -9,21 +10,26 @@ import Rating from '../shared-components/rating/rating';
 
 type OfferCardProps = {
   offer: OfferDTO;
-  onMouseEnter: (offerCardId: string) => void;
-  onMouseLeave: () => void;
+  cardName: string;
+  onMouseEnter?: (offerCardId: string) => void;
+  onMouseLeave?: () => void;
 }
 
-
-function OfferCard({ offer, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
+function OfferCard({ offer, cardName, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
   const { id, isPremium, previewImage, price, isFavorite, rating, title, type } = offer;
+  const props: HTMLAttributes<HTMLElement> = {
+    className: `${cardName}__card place-card`,
+  };
+
+  if (onMouseEnter && onMouseLeave) {
+    props.onMouseEnter = () => onMouseEnter(id);
+    props.onMouseLeave = onMouseLeave;
+  }
+
   return (
-    <article
-      className="cities__card place-card"
-      onMouseEnter={ () => onMouseEnter(id) }
-      onMouseLeave={onMouseLeave}
-    >
-      {isPremium && (<PremiumMark className='place-card__mark'/>)}
-      <OfferImage src={previewImage} />
+    <article {...props}>
+      {isPremium && (<PremiumMark className='place-card__mark' />)}
+      <OfferImage src={previewImage} cardName={cardName} />
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <Price priceValue={price} />

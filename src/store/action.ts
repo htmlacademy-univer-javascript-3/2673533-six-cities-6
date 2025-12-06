@@ -27,3 +27,9 @@ export const loadCurrentReviews = createAction<Reviews>('data/loadCurrentReviews
 export const clearCurrentReviews = createAction('data/clearCurrentReviews');
 
 export const setCurrentReviewsLoadingStatus = createAction<boolean>('data/setCurrentReviewsLoadingStatus');
+
+export const loadOffersNearby = createAction<Offers>('data/loadOffersNearby');
+
+export const setOffersNearbyLoadingStatus = createAction<boolean>('data/setOffersNearbyLoadingStatus');
+
+export const clearOffersNearby = createAction('data/clearOffersNearby');

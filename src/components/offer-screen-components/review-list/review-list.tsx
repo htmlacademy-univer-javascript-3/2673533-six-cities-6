@@ -9,7 +9,7 @@ function ReviewList({ reviews } : ReviewListProps): JSX.Element {
   return (
     <ul className="reviews__list">
       {reviews.map((review) => (
-        <ReviewListItem review={review} />
+        <ReviewListItem review={review} key={review.id}/>
       ))}
     </ul>
   );

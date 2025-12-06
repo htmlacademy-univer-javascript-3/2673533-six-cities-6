@@ -5,12 +5,13 @@ type OfferGalleryProps = {
 }
 
 function OfferGallery({ images } : OfferGalleryProps): JSX.Element {
+  const displayImages = images.slice(0, 6);
   return (
     <div className="offer__gallery-container container">
       <div className="offer__gallery">
-        {images.map((src) => (
+        {displayImages.map((src) => (
           <OfferGalleryImage
-            key={src}// При условии, что все фотографии уникальны
+            key={src}
             src={src}
           />
         ))}
