@@ -1,7 +1,7 @@
-import leaflet from 'leaflet';
+import leaflet, { Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
-import { CITIES, Pin } from '../../const';
+import { ACTIVE_PIN, CITIES, DEFAULT_PIN } from '../../const';
 import useMap from '../../hooks/use-map';
 import { Offers } from '../../types/offer';
 
@@ -11,45 +11,45 @@ type MainMapProps = {
   selectedOfferId: string;
 }
 
-const defaultPin = leaflet.icon({
-  iconUrl: Pin.Default,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
-
-const activePin = leaflet.icon({
-  iconUrl: Pin.Active,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
-
 function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
   const mapRef = useRef(null);
+  const markersRef = useRef<Marker[]>([]);
 
   const city = CITIES.find((c) => c.name === cityName)!;
   const map = useMap(mapRef, city);
 
+  const clearMarkers = () => {
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+  };
+
   useEffect(() => {
     if (map) {
+      clearMarkers();
       offers.forEach((offer) => {
-        leaflet
+        const marker = leaflet
           .marker({
             lat: offer.location.latitude,
             lng: offer.location.longitude,
           }, {
-            icon: (offer.id === selectedOfferId) ? activePin : defaultPin,
+            icon: (offer.id === selectedOfferId) ? ACTIVE_PIN : DEFAULT_PIN,
           })
           .addTo(map);
+        markersRef.current.push(marker);
       });
     }
   }, [map, offers, selectedOfferId]);
 
+  useEffect(() => {
+    return () => {
+      if (map) {
+        clearMarkers();
+      }
+    };
+  }, [map]);
+
   return (
-    <section
-      className="cities__map map"
-      ref={mapRef}
-    >
-    </section>
+    <section className="cities__map map" ref={mapRef} />
   );
 }
 
