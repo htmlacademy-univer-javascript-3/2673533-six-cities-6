@@ -19,6 +19,8 @@ import OfferPrice from '../../components/offer-screen-components/offer-price/off
 import OfferFeatures from '../../components/offer-screen-components/offer-features/offer-features';
 import Rating from '../../components/shared-components/rating/rating';
 import OfferList from '../../components/shared-components/offer-list/offer-list';
+import MainMap from '../../components/main-screen-components/main-map/main-map';
+import { OfferDTO } from '../../types/offer';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
@@ -26,7 +28,7 @@ function OfferScreen(): JSX.Element {
   const isCurrentOfferLoading = useAppSelector((state) => state.isCurrentOfferLoading);
   const isCurrentReviewsDataLoading = useAppSelector((state) => state.isCurrentReviewsDataLoading);
   const isOffersNearbyDataLoading = useAppSelector((state) => state.isOffersNearbyDataLoading);
-  const currentOffer = useAppSelector((state) => state.currentOffer);
+  const currentOfferFull = useAppSelector((state) => state.currentOffer);
   const reviews = useAppSelector((state) => state.currentReviews);
   const offersNearby = useAppSelector((state) => state.offersNearby).slice(0, 3);
 
@@ -47,11 +49,24 @@ function OfferScreen(): JSX.Element {
     return <LoadingScreen />;
   }
 
-  if (!currentOffer) {
+  if (!currentOfferFull) {
     return <NotFoundScreen />;
   }
 
-  const { isPremium, price, isFavorite, rating, title, type, images, goods, bedrooms, maxAdults, host, description } = currentOffer;
+  const { isPremium, price, isFavorite, rating, title, type, images, goods, bedrooms, maxAdults, host, description } = currentOfferFull;
+
+  const currentOffer: OfferDTO = {
+    id: currentOfferFull.id,
+    title: title,
+    type: type,
+    price: price,
+    city: currentOfferFull.city,
+    location: currentOfferFull.location,
+    isFavorite: isFavorite,
+    isPremium: isPremium,
+    rating: rating,
+    previewImage: ""
+  }
 
   return (
     <div className="page">
@@ -92,7 +107,7 @@ function OfferScreen(): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <MainMap cityName={currentOfferFull.city.name} offers={offersNearby.concat(currentOffer)} selectedOfferId={currentOfferFull.id} className="offer" />
         </section>
         <div className="container">
           <section className="near-places places">

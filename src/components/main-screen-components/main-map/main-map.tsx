@@ -9,9 +9,10 @@ type MainMapProps = {
   cityName: string;
   offers: Offers;
   selectedOfferId: string;
+  className: string;
 }
 
-function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
+function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps) {
   const mapRef = useRef(null);
   const markersRef = useRef<Marker[]>([]);
 
@@ -47,7 +48,7 @@ function MainMap({ cityName, offers, selectedOfferId }: MainMapProps) {
   }, [map]);
 
   return (
-    <section className="cities__map map" ref={mapRef} />
+    <section className={`${className}__map map`} ref={mapRef} />
   );
 }
 

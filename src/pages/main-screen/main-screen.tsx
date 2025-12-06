@@ -61,7 +61,7 @@ function MainScreen(): JSX.Element {
               <OfferList offers={currentOffers} cardName="cities" listName="cities__places-list" onActiveOfferIdChange={handleActiveOfferIdChange}/>
             </section>
             <div className="cities__right-section">
-              <MainMap cityName={activeCity} offers={currentOffers} selectedOfferId={activeOfferId}/>
+              <MainMap cityName={activeCity} className="cities" offers={currentOffers} selectedOfferId={activeOfferId}/>
             </div>
           </div>
         </div>
