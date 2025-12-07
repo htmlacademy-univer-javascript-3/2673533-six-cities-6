@@ -28,6 +28,15 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum SortType {
+  Popular = 'Popular',
+  PriceLowToHigh = 'Price: low to high',
+  PriceHighToLow = 'Price: high to low',
+  TopRatedFirst = 'Top rated first',
+}
+
+export const SortTypes = Object.values(SortType);
+
 export const DEFAULT_PIN = leaflet.icon({
   iconUrl: 'img/pin.svg',
   iconSize: [40, 40],
