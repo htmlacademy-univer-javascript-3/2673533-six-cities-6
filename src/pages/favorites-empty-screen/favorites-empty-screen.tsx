@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/shared-components/header/header";
 import { AppRoute } from "../../const";
+import { Helmet } from "react-helmet-async";
 
 function FavoritesEmptyScreen(): JSX.Element {
   return (
     <div className="page page--favorites-empty">
+      <Helmet>
+        <title>6 cities. Favorites</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--favorites page__main--favorites-empty">
         <div className="page__favorites-container container">

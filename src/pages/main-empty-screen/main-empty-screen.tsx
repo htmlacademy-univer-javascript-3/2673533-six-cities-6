@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import LocationsList from "../../components/main-screen-components/locations-list/locations-list";
 import Header from "../../components/shared-components/header/header";
 
@@ -5,9 +6,12 @@ type MainEmptyScreenProps = {
   activeCity: string;
 }
 
-function MainEmptyScreen({ activeCity } : MainEmptyScreenProps): JSX.Element {
+function MainEmptyScreen({ activeCity }: MainEmptyScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
