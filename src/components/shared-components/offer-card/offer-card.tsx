@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, memo } from 'react';
 import { OfferDTO } from '../../../types/offer';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import OfferImage from '../offer-image/offer-image';
@@ -7,23 +7,32 @@ import OfferType from '../offer-type/offer-type';
 import PremiumMark from '../premium-mark/premium-mark';
 import Price from '../price/price';
 import Rating from '../rating/rating';
+import { useAppDispatch } from '../../../hooks';
+import { setActiveOfferId } from '../../../store/main-screen-process/main-screen-process';
 
 type OfferCardProps = {
   offer: OfferDTO;
   cardName: string;
-  onMouseEnter?: (offerCardId: string) => void;
-  onMouseLeave?: () => void;
 }
 
-function OfferCard({ offer, cardName, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
+function OfferCard({ offer, cardName }: OfferCardProps): JSX.Element {
   const { id, isPremium, previewImage, price, isFavorite, rating, title, type } = offer;
+  const dispatch = useAppDispatch();
   const props: HTMLAttributes<HTMLElement> = {
     className: `${cardName}__card place-card`,
   };
 
-  if (onMouseEnter && onMouseLeave) {
-    props.onMouseEnter = () => onMouseEnter(id);
-    props.onMouseLeave = onMouseLeave;
+  const handleOnMouseEnter = (offerCardId: string) => {
+    dispatch(setActiveOfferId(offerCardId));
+  }
+
+  const handleOnMouseLeave = () => {
+    dispatch(setActiveOfferId(''));
+  }
+
+  if (cardName === 'cities') {
+    props.onMouseEnter = () => handleOnMouseEnter(id);
+    props.onMouseLeave = handleOnMouseLeave;
   }
 
   return (
@@ -43,4 +52,4 @@ function OfferCard({ offer, cardName, onMouseEnter, onMouseLeave }: OfferCardPro
   );
 }
 
-export default OfferCard;
+export default memo(OfferCard);

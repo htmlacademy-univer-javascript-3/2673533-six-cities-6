@@ -5,10 +5,11 @@ import { AppRoute } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
+import { getActiveCity } from '../../store/main-screen-process/selectors';
 
 
 function LoginScreen(): JSX.Element {
-  const currentCity = useAppSelector((state) => state.city);
+  const currentCity = useAppSelector(getActiveCity);
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);

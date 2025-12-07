@@ -4,6 +4,8 @@ import leaflet from 'leaflet';
 export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;
 
+export const INITIAL_CITY = 'Paris';
+
 export enum AppRoute {
   Main = '/',
   Login = '/login',
@@ -26,6 +28,15 @@ export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
+}
+
+export enum NameSpace {
+  OffersData = "OFFERS_DATA",
+  OfferByIdData = "OFFERS_BY_ID_DATA",
+  CommentsData = "COMMENTS_DATA",
+  OffersNearbyData = "OFFERS_NEARBY_DATA",
+  User = 'USER',
+  MainScreen = 'MAIN_SCREEN'
 }
 
 export enum SortType {

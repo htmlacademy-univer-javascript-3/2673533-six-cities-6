@@ -3,7 +3,7 @@ import ReviewHelp from '../review-help/review-help';
 import ReviewStar from '../review-star/review-star';
 import ReviewTextarea from '../review-textarea/review-textarea';
 import { useAppDispatch } from '../../../hooks';
-import { fetchReviewsAction, postCommentAction } from '../../../store/api-actions';
+import { fetchCommentsAction, postCommentAction } from '../../../store/api-actions';
 
 type ReviewFormProps = {
   offerId: string;
@@ -30,7 +30,7 @@ function ReviewForm({ offerId } : ReviewFormProps): JSX.Element {
         rating: Number(rating),
         offerId: offerId,
       }));
-      dispatch(fetchReviewsAction(offerId));
+      dispatch(fetchCommentsAction(offerId));
     }
   };
 

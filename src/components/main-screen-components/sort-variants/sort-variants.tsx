@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { SortType } from '../../../const';
-import { setCurrentSortType } from '../../../store/action';
 import SortList from '../sort-list/sort-list';
+import { getActiveSortType } from '../../../store/main-screen-process/selectors';
+import { setActiveSortType } from '../../../store/main-screen-process/main-screen-process';
 
 function SortVariants(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const currentSort = useAppSelector((state) => state.currentSort);
+  const currentSort = useAppSelector(getActiveSortType);
 
   const handleSortClick = (sortType: SortType) => {
-    dispatch(setCurrentSortType(sortType));
+    dispatch(setActiveSortType(sortType));
     setIsOpen(false);
   };
 

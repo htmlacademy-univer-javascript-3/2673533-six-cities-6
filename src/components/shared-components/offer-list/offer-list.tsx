@@ -5,18 +5,9 @@ type OfferListProps = {
   offers: Offers;
   listName: string;
   cardName: string;
-  onActiveOfferIdChange?: (newActiveOfferId: string) => void;
 }
 
-function OfferList({ offers, cardName, listName, onActiveOfferIdChange }: OfferListProps): JSX.Element {
-  const handleMouseEnter = onActiveOfferIdChange ? (offerCardId: string) => {
-    onActiveOfferIdChange(offerCardId);
-  } : undefined;
-
-  const handleMouseLeave = onActiveOfferIdChange ? () => {
-    onActiveOfferIdChange('');
-  } : undefined;
-
+function OfferList({ offers, cardName, listName }: OfferListProps): JSX.Element {
   return (
     <div className={`${listName} places__list ${cardName === 'cities' ? 'tabs__content' : ''}`}>
       {offers.map((offer) => (
@@ -24,8 +15,6 @@ function OfferList({ offers, cardName, listName, onActiveOfferIdChange }: OfferL
           key={offer.id}
           offer={offer}
           cardName={cardName}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         />
       ))}
     </div>
