@@ -3,23 +3,15 @@ import OfferList from '../../components/shared-components/offer-list/offer-list'
 import MainMap from '../../components/main-screen-components/main-map/main-map';
 import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
 import { useAppSelector } from '../../hooks';
-import { filterOffersByCity, sortOffers } from '../../cities-logic';
 import SortVariants from '../../components/main-screen-components/sort-variants/sort-variants';
-import { useMemo } from 'react';
 import Header from '../../components/shared-components/header/header';
-import { getOffers } from '../../store/offers-data/selectors';
-import { getActiveCity, getActiveSortType } from '../../store/main-screen-process/selectors';
+import { selectSortedOffersByCity } from '../../store/offers-data/selectors';
+import { getActiveCity } from '../../store/main-screen-process/selectors';
 
 
 function MainScreen(): JSX.Element {
-  const offers = useAppSelector(getOffers);
-  const currentSort = useAppSelector(getActiveSortType);
   const activeCity = useAppSelector(getActiveCity);
-
-  const sortedCurrentOffers = useMemo(() => {
-    const currentOffers = filterOffersByCity(offers, activeCity);
-    return sortOffers(currentOffers, currentSort);
-  }, [offers, activeCity, currentSort]);
+  const sortedCurrentOffers = useAppSelector(selectSortedOffersByCity);
 
   return (
     <div className="page page--gray page--main">
