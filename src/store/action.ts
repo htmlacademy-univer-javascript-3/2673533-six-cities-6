@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import { OfferFullDTO, Offers } from '../types/offer';
-import { AppRoute, AuthorizationStatus } from '../const';
+import { AppRoute, AuthorizationStatus, SortType } from '../const';
 import { UserFullData } from '../types/user-full-data';
 import { Reviews } from '../types/review';
 
@@ -33,3 +33,5 @@ export const loadOffersNearby = createAction<Offers>('data/loadOffersNearby');
 export const setOffersNearbyLoadingStatus = createAction<boolean>('data/setOffersNearbyLoadingStatus');
 
 export const clearOffersNearby = createAction('data/clearOffersNearby');
+
+export const setCurrentSortType = createAction<SortType>('data/setCurrentSortType');

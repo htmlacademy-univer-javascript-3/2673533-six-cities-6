@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer, setUserData, loadCurrentReviews, setCurrentReviewsLoadingStatus, clearCurrentReviews, loadOffersNearby, setOffersNearbyLoadingStatus, clearOffersNearby } from './action';
+import { setCurrentCity, loadOffers, requireAuthorization, setOffersDataLoadingStatus, setCurrentOfferLoadingStatus, clearCurrentOffer, loadCurrentOffer, setUserData, loadCurrentReviews, setCurrentReviewsLoadingStatus, clearCurrentReviews, loadOffersNearby, setOffersNearbyLoadingStatus, clearOffersNearby, setCurrentSortType } from './action';
 import { OfferFullDTO, Offers } from '../types/offer';
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, SortType } from '../const';
 import { UserFullData } from '../types/user-full-data';
 import { Reviews } from '../types/review';
 
@@ -17,6 +17,7 @@ const initialState: {
   isCurrentReviewsDataLoading: boolean;
   offersNearby: Offers;
   isOffersNearbyDataLoading: boolean;
+  currentSort: SortType;
 } = {
   city: 'Paris',
   offers: [],
@@ -29,6 +30,7 @@ const initialState: {
   isCurrentReviewsDataLoading: false,
   offersNearby: [],
   isOffersNearbyDataLoading: false,
+  currentSort: SortType.Popular,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -71,6 +73,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOffersNearbyLoadingStatus, (state, action) => {
       state.isOffersNearbyDataLoading = action.payload;
+    })
+    .addCase(setCurrentSortType, (state, action) => {
+      state.currentSort = action.payload;
     })
     .addCase(clearOffersNearby, (state) => {
       state.offersNearby = [];
