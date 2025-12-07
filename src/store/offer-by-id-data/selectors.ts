@@ -1,6 +1,6 @@
-import { NameSpace } from "../../const";
-import { OfferFullDTO } from "../../types/offer";
-import { State } from "../../types/state";
+import { NameSpace } from '../../const';
+import { OfferFullDTO } from '../../types/offer';
+import { State } from '../../types/state';
 
 
 export const getOfferById = (state: State): OfferFullDTO | null => state[NameSpace.OfferByIdData].offerById;

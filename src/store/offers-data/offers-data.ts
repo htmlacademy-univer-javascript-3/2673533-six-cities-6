@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { NameSpace } from "../../const";
-import { fetchOffersAction } from "../api-actions";
-import { OffersData } from "../../types/state";
+import { createSlice } from '@reduxjs/toolkit';
+import { NameSpace } from '../../const';
+import { fetchOffersAction } from '../api-actions';
+import { OffersData } from '../../types/state';
 
 const initialState: OffersData = {
   offers: [],

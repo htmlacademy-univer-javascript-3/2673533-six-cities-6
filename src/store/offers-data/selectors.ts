@@ -1,9 +1,9 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { NameSpace } from "../../const";
-import { Offers } from "../../types/offer";
-import { State } from "../../types/state";
-import { getActiveCity, getActiveSortType } from "../main-screen-process/selectors";
-import { filterOffersByCity, sortOffers } from "../../cities-logic";
+import { createSelector } from '@reduxjs/toolkit';
+import { NameSpace } from '../../const';
+import { Offers } from '../../types/offer';
+import { State } from '../../types/state';
+import { getActiveCity, getActiveSortType } from '../main-screen-process/selectors';
+import { filterOffersByCity, sortOffers } from '../../cities-logic';
 
 
 export const getOffers = (state: State): Offers => state[NameSpace.OffersData].offers;

@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { CommentsData } from "../../types/state";
-import { NameSpace } from "../../const";
-import { fetchCommentsAction } from "../api-actions";
+import { createSlice } from '@reduxjs/toolkit';
+import { CommentsData } from '../../types/state';
+import { NameSpace } from '../../const';
+import { fetchCommentsAction } from '../api-actions';
 
 const initialState: CommentsData = {
   comments: [],

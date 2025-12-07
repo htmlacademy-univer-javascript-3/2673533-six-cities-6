@@ -1,4 +1,4 @@
-import { HTMLAttributes, memo } from 'react';
+import { HTMLAttributes } from 'react';
 import { OfferDTO } from '../../../types/offer';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import OfferImage from '../offer-image/offer-image';
@@ -24,11 +24,11 @@ function OfferCard({ offer, cardName }: OfferCardProps): JSX.Element {
 
   const handleOnMouseEnter = (offerCardId: string) => {
     dispatch(setActiveOfferId(offerCardId));
-  }
+  };
 
   const handleOnMouseLeave = () => {
     dispatch(setActiveOfferId(''));
-  }
+  };
 
   if (cardName === 'cities') {
     props.onMouseEnter = () => handleOnMouseEnter(id);
@@ -52,4 +52,4 @@ function OfferCard({ offer, cardName }: OfferCardProps): JSX.Element {
   );
 }
 
-export default memo(OfferCard);
+export default OfferCard;

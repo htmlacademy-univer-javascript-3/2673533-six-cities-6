@@ -1,5 +1,5 @@
-import { NameSpace, SortType } from "../../const";
-import { State } from "../../types/state";
+import { NameSpace, SortType } from '../../const';
+import { State } from '../../types/state';
 
 export const getActiveCity = (state: State): string => state[NameSpace.MainScreen].activeCity;
 export const getActiveOfferId = (state: State): string => state[NameSpace.MainScreen].activeOfferId;

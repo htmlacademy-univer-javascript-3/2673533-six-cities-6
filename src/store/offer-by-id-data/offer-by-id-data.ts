@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { OfferByIdData } from "../../types/state";
-import { NameSpace } from "../../const";
-import { fetchOfferByIdAction } from "../api-actions";
+import { createSlice } from '@reduxjs/toolkit';
+import { OfferByIdData } from '../../types/state';
+import { NameSpace } from '../../const';
+import { fetchOfferByIdAction } from '../api-actions';
 
 const initialState: OfferByIdData = {
   offerById: null,

@@ -17,8 +17,9 @@ type MainMapProps = {
 function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps) {
   const mapRef = useRef(null);
   const markersRef = useRef<Marker[]>([]);
+  const activeOfferIdFromStore = useAppSelector(getActiveOfferId);
 
-  const activeOfferId = selectedOfferId || useAppSelector(getActiveOfferId);
+  const activeOfferId = selectedOfferId || activeOfferIdFromStore;
 
   const city = CITIES.find((c) => c.name === cityName)!;
   const map = useMap(mapRef, city);

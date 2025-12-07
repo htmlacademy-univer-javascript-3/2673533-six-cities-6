@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { OffersNearbyData } from "../../types/state";
-import { NameSpace } from "../../const";
-import { fetchOffersNearbyAction } from "../api-actions";
+import { createSlice } from '@reduxjs/toolkit';
+import { OffersNearbyData } from '../../types/state';
+import { NameSpace } from '../../const';
+import { fetchOffersNearbyAction } from '../api-actions';
 
 const initialState: OffersNearbyData = {
   offersNearby: [],

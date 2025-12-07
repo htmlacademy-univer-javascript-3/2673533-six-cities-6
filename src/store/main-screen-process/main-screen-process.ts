@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { INITIAL_CITY, NameSpace, SortType } from "../../const";
-import { MainScreenProcess } from "../../types/state";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { INITIAL_CITY, NameSpace, SortType } from '../../const';
+import { MainScreenProcess } from '../../types/state';
 
 
 const initialState: MainScreenProcess = {

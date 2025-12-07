@@ -1,11 +1,11 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import { NameSpace } from "../const";
-import { offersData } from "./offers-data/offers-data";
-import { offerByIdData } from "./offer-by-id-data/offer-by-id-data";
-import { offersNearbyData } from "./offers-nearby-data/offers-nearby-data";
-import { commentsData } from "./comments-data/comments-data";
-import { userProcess } from "./user-process/user-process";
-import { mainScreenProcess } from "./main-screen-process/main-screen-process";
+import { combineReducers } from '@reduxjs/toolkit';
+import { NameSpace } from '../const';
+import { offersData } from './offers-data/offers-data';
+import { offerByIdData } from './offer-by-id-data/offer-by-id-data';
+import { offersNearbyData } from './offers-nearby-data/offers-nearby-data';
+import { commentsData } from './comments-data/comments-data';
+import { userProcess } from './user-process/user-process';
+import { mainScreenProcess } from './main-screen-process/main-screen-process';
 
 
 export const rootReducer = combineReducers({

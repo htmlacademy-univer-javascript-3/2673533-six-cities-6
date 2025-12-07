@@ -31,10 +31,10 @@ export enum AuthorizationStatus {
 }
 
 export enum NameSpace {
-  OffersData = "OFFERS_DATA",
-  OfferByIdData = "OFFERS_BY_ID_DATA",
-  CommentsData = "COMMENTS_DATA",
-  OffersNearbyData = "OFFERS_NEARBY_DATA",
+  OffersData = 'OFFERS_DATA',
+  OfferByIdData = 'OFFERS_BY_ID_DATA',
+  CommentsData = 'COMMENTS_DATA',
+  OffersNearbyData = 'OFFERS_NEARBY_DATA',
   User = 'USER',
   MainScreen = 'MAIN_SCREEN'
 }
