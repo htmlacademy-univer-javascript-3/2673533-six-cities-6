@@ -7,11 +7,18 @@ import SortVariants from '../../components/main-screen-components/sort-variants/
 import Header from '../../components/shared-components/header/header';
 import { selectSortedOffersByCity } from '../../store/offers-data/selectors';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
+import MainEmptyScreen from '../main-empty-screen/main-empty-screen';
 
 
 function MainScreen(): JSX.Element {
   const activeCity = useAppSelector(getActiveCity);
   const sortedCurrentOffers = useAppSelector(selectSortedOffersByCity);
+
+  if (sortedCurrentOffers.length === 0) {
+    return (
+      <MainEmptyScreen activeCity={activeCity} />
+    );
+  }
 
   return (
     <div className="page page--gray page--main">
