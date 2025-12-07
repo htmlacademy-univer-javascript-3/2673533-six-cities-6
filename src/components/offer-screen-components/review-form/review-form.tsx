@@ -29,7 +29,7 @@ function ReviewForm({ offerId } : ReviewFormProps): JSX.Element {
         comment: reviewText,
         rating: Number(rating),
         offerId: offerId,
-      }))
+      }));
       dispatch(fetchReviewsAction(offerId));
     }
   };

@@ -105,7 +105,7 @@ export const postCommentAction = createAsyncThunk<void, NewComment, {
 }>(
   'comments/postComment',
   async ({comment, rating, offerId}, {extra: api}) => {
-    await api.post<Review>(APIRoute.Comments.replace(":id", offerId), {comment, rating});
+    await api.post<Review>(APIRoute.Comments.replace(':id', offerId), {comment, rating});
   },
 );
 
