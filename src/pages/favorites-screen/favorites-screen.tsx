@@ -4,9 +4,17 @@ import FavoritesListByCity from '../../components/favorites-screen-components/fa
 import { Link } from 'react-router-dom';
 import Header from '../../components/shared-components/header/header';
 import { Offers } from '../../types/offer';
+import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
 
 function FavoritesScreen(): JSX.Element {
   const favoriteOffers: Offers = [];
+
+  if (favoriteOffers.length === 0) {
+    return (
+      <FavoritesEmptyScreen />
+    );
+  }
+  
   return (
     <div className="page">
       <Helmet>
