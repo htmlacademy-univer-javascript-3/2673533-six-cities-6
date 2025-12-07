@@ -6,13 +6,14 @@ import { offersNearbyData } from './offers-nearby-data/offers-nearby-data';
 import { commentsData } from './comments-data/comments-data';
 import { userProcess } from './user-process/user-process';
 import { mainScreenProcess } from './main-screen-process/main-screen-process';
-
+import { favoritesData } from './favorites-data/favorites-data';
 
 export const rootReducer = combineReducers({
   [NameSpace.OffersData]: offersData.reducer,
   [NameSpace.OfferByIdData]: offerByIdData.reducer,
   [NameSpace.OffersNearbyData]: offersNearbyData.reducer,
   [NameSpace.CommentsData]: commentsData.reducer,
+  [NameSpace.FavoritesData]: favoritesData.reducer,
   [NameSpace.MainScreen]: mainScreenProcess.reducer,
   [NameSpace.User]: userProcess.reducer,
 });

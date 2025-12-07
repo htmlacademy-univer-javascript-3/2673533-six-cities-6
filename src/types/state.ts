@@ -16,6 +16,13 @@ export type OffersData = {
   hasError: boolean;
 };
 
+export type FavoritesData = {
+  favorites: Offers;
+  favoritesCount: number;
+  isFavoritesDataLoading: boolean;
+  hasError: boolean;
+};
+
 export type OfferByIdData = {
   offerById: OfferFullDTO | null;
   isOfferByIdDataLoading: boolean;

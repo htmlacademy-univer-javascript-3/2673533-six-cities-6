@@ -7,8 +7,9 @@ import { redirectToRoute } from './action';
 import { AuthData } from '../types/auth-data';
 import { UserFullData } from '../types/user-full-data';
 import { dropToken, saveToken } from '../services/token';
-import { Comment, Comments } from '../types/comment';
+import { Comments } from '../types/comment';
 import { NewComment } from '../types/new-comment';
+import { NewFavoriteStatus } from '../types/new-favorite-status';
 
 export const fetchOffersAction = createAsyncThunk<Offers, undefined, {
   dispatch: AppDispatch;
@@ -30,6 +31,18 @@ export const fetchCommentsAction = createAsyncThunk<Comments, string, {
   'data/fetchComments',
   async (offerId, {extra: api}) => {
     const {data} = await api.get<Comments>(APIRoute.Comments.replace(':id', offerId));
+    return data;
+  },
+);
+
+export const fetchFavoritesAction = createAsyncThunk<Offers, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFavorites',
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<Offers>(APIRoute.Favorite);
     return data;
   },
 );
@@ -91,7 +104,18 @@ export const postCommentAction = createAsyncThunk<void, NewComment, {
 }>(
   'comments/postComment',
   async ({comment, rating, offerId}, {extra: api}) => {
-    await api.post<Comment>(APIRoute.Comments.replace(':id', offerId), {comment, rating});
+    await api.post(APIRoute.Comments.replace(':id', offerId), {comment, rating});
+  },
+);
+
+export const postFavoriteStatusAction = createAsyncThunk<void, NewFavoriteStatus, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/postFavoriteStatus',
+  async ({offerId, status}, {extra: api}) => {
+    await api.post(APIRoute.FavoriteStatus.replace(':id', offerId).replace(':status', status.toString()));
   },
 );
 
