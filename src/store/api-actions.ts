@@ -7,7 +7,8 @@ import { loadCurrentOffer, loadCurrentReviews, loadOffers, loadOffersNearby, red
 import { AuthData } from '../types/auth-data';
 import { UserFullData } from '../types/user-full-data';
 import { dropToken, saveToken } from '../services/token';
-import { Reviews } from '../types/review';
+import { Review, Reviews } from '../types/review';
+import { NewComment } from '../types/new-comment';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -94,6 +95,17 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     dispatch(setUserData(data));
     dispatch(requireAuthorization(AuthorizationStatus.Auth));
     dispatch(redirectToRoute(AppRoute.Main));
+  },
+);
+
+export const postCommentAction = createAsyncThunk<void, NewComment, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/postComment',
+  async ({comment, rating, offerId}, {extra: api}) => {
+    await api.post<Review>(APIRoute.Comments.replace(':id', offerId), {comment, rating});
   },
 );
 
