@@ -20,6 +20,8 @@ export type FavoritesData = {
   favorites: Offers;
   favoritesCount: number;
   isFavoritesDataLoading: boolean;
+  isFavoriteStatusUpdating: boolean;
+  isStatusUpdateSuccess: boolean | null;
   hasError: boolean;
 };
 
