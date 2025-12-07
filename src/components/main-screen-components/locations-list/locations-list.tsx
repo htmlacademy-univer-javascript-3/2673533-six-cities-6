@@ -1,6 +1,6 @@
 import { CITIES } from '../../../const';
 import { useAppDispatch } from '../../../hooks';
-import { setCurrentCity } from '../../../store/action';
+import { setActiveCity } from '../../../store/main-screen-process/main-screen-process';
 
 type LocationsListProps = {
   activeCity: string;
@@ -10,7 +10,7 @@ function LocationsList({ activeCity } : LocationsListProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleOnCityClick = (cityName: string) => {
-    dispatch(setCurrentCity(cityName));
+    dispatch(setActiveCity(cityName));
   };
 
   return (

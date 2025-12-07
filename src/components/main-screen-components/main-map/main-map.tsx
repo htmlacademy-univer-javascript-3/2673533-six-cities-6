@@ -4,17 +4,22 @@ import { useEffect, useRef } from 'react';
 import { ACTIVE_PIN, CITIES, DEFAULT_PIN } from '../../../const';
 import useMap from '../../../hooks/use-map';
 import { Offers } from '../../../types/offer';
+import { useAppSelector } from '../../../hooks';
+import { getActiveOfferId } from '../../../store/main-screen-process/selectors';
 
 type MainMapProps = {
   cityName: string;
   offers: Offers;
-  selectedOfferId: string;
+  selectedOfferId?: string;
   className: string;
 }
 
 function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps) {
   const mapRef = useRef(null);
   const markersRef = useRef<Marker[]>([]);
+  const activeOfferIdFromStore = useAppSelector(getActiveOfferId);
+
+  const activeOfferId = selectedOfferId || activeOfferIdFromStore;
 
   const city = CITIES.find((c) => c.name === cityName)!;
   const map = useMap(mapRef, city);
@@ -33,13 +38,13 @@ function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps)
             lat: offer.location.latitude,
             lng: offer.location.longitude,
           }, {
-            icon: (offer.id === selectedOfferId) ? ACTIVE_PIN : DEFAULT_PIN,
+            icon: (offer.id === activeOfferId) ? ACTIVE_PIN : DEFAULT_PIN,
           })
           .addTo(map);
         markersRef.current.push(marker);
       });
     }
-  }, [map, offers, selectedOfferId]);
+  }, [map, offers, activeOfferId]);
 
   useEffect(() => () => {
     if (map) {

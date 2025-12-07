@@ -7,12 +7,9 @@ import PremiumMark from '../../components/shared-components/premium-mark/premium
 import BookmarkButton from '../../components/shared-components/bookmark-button/bookmark-button';
 import OfferInsideList from '../../components/offer-screen-components/offer-inside-list/offer-inside-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchOfferFullByIdAction, fetchOffersNearbyAction, fetchReviewsAction } from '../../store/api-actions';
+import { fetchOfferByIdAction, fetchOffersNearbyAction, fetchCommentsAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { useEffect } from 'react';
-import { clearCurrentOffer, clearCurrentReviews, clearOffersNearby } from '../../store/action';
-import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
-import HeaderNav from '../../components/shared-components/header-nav/header-nav';
 import ReviewList from '../../components/offer-screen-components/review-list/review-list';
 import OfferHost from '../../components/offer-screen-components/offer-host/offer-host';
 import OfferPrice from '../../components/offer-screen-components/offer-price/offer-price';
@@ -22,27 +19,35 @@ import OfferList from '../../components/shared-components/offer-list/offer-list'
 import MainMap from '../../components/main-screen-components/main-map/main-map';
 import { OfferDTO } from '../../types/offer';
 import { AuthorizationStatus } from '../../const';
+import Header from '../../components/shared-components/header/header';
+import { getOfferById, getOfferByIdDataLoadingStatus } from '../../store/offer-by-id-data/selectors';
+import { getComments, getCommentsDataLoadingStatus } from '../../store/comments-data/selectors';
+import { getOffersNearby, getOffersNearbyDataLoadingStatus } from '../../store/offers-nearby-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { clearOfferById } from '../../store/offer-by-id-data/offer-by-id-data';
+import { clearComments } from '../../store/comments-data/comments-data';
+import { clearOffersNearby } from '../../store/offers-nearby-data/offers-nearby-data';
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
   const dispatch = useAppDispatch();
-  const isCurrentOfferLoading = useAppSelector((state) => state.isCurrentOfferLoading);
-  const isCurrentReviewsDataLoading = useAppSelector((state) => state.isCurrentReviewsDataLoading);
-  const isOffersNearbyDataLoading = useAppSelector((state) => state.isOffersNearbyDataLoading);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const currentOfferFull = useAppSelector((state) => state.currentOffer);
-  const reviews = useAppSelector((state) => state.currentReviews);
-  const offersNearby = useAppSelector((state) => state.offersNearby).slice(0, 3);
+  const isCurrentOfferLoading = useAppSelector(getOfferByIdDataLoadingStatus);
+  const isCurrentReviewsDataLoading = useAppSelector(getCommentsDataLoadingStatus);
+  const isOffersNearbyDataLoading = useAppSelector(getOffersNearbyDataLoadingStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const currentOfferFull = useAppSelector(getOfferById);
+  const reviews = useAppSelector(getComments);
+  const offersNearby = useAppSelector(getOffersNearby).slice(0, 3);
 
   useEffect(() => {
     const offerId = params.id;
     if (offerId) {
-      dispatch(fetchOfferFullByIdAction(offerId));
-      dispatch(fetchReviewsAction(offerId));
+      dispatch(fetchOfferByIdAction(offerId));
+      dispatch(fetchCommentsAction(offerId));
       dispatch(fetchOffersNearbyAction(offerId));
     } else {
-      dispatch(clearCurrentOffer());
-      dispatch(clearCurrentReviews());
+      dispatch(clearOfferById());
+      dispatch(clearComments());
       dispatch(clearOffersNearby());
     }
   }, [params.id, dispatch]);
@@ -75,16 +80,7 @@ function OfferScreen(): JSX.Element {
       <Helmet>
         <title>6 cities. {title}</title>
       </Helmet>
-
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <HeaderLogo />
-            <HeaderNav />
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery images={images} />
@@ -109,7 +105,7 @@ function OfferScreen(): JSX.Element {
               </section>
             </div>
           </div>
-          <MainMap cityName={currentOfferFull.city.name} offers={offersNearby.concat(currentOffer)} selectedOfferId={id} className="offer" />
+          <MainMap cityName={currentOffer.city.name} offers={offersNearby.concat(currentOffer)} selectedOfferId={id} className="offer" />
         </section>
         <div className="container">
           <section className="near-places places">

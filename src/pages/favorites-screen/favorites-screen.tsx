@@ -2,29 +2,17 @@ import { Helmet } from 'react-helmet-async';
 import { AppRoute, CITIES } from '../../const';
 import FavoritesListByCity from '../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../hooks';
-import { filterOffersByFavorite } from '../../cities-logic';
-import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
-import HeaderNav from '../../components/shared-components/header-nav/header-nav';
+import Header from '../../components/shared-components/header/header';
+import { Offers } from '../../types/offer';
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
-  const favoriteOffers = filterOffersByFavorite(offers);
+  const favoriteOffers: Offers = [];
   return (
     <div className="page">
       <Helmet>
         <title>6 cities. Favorites</title>
       </Helmet>
-
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <HeaderLogo />
-            <HeaderNav />
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">

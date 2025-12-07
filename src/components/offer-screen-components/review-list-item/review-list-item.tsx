@@ -1,9 +1,9 @@
-import { Review } from '../../../types/review';
+import { Comment } from '../../../types/comment';
 import Rating from '../../shared-components/rating/rating';
 import ReviewUser from '../review-user/review-user';
 
 type ReviewListItemProps = {
-  review: Review;
+  review: Comment;
 }
 
 function ReviewListItem({ review } : ReviewListItemProps): JSX.Element {
