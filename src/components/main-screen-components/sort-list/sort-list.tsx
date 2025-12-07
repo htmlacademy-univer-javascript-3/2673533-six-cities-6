@@ -1,5 +1,5 @@
-import { SortType, SortTypes } from "../../../const";
-import SortListItem from "../sort-list-item/sort-list-item";
+import { SortType, SortTypes } from '../../../const';
+import SortListItem from '../sort-list-item/sort-list-item';
 
 type SortListProps = {
   currentSortType: SortType;

@@ -18,7 +18,7 @@ function MainScreen(): JSX.Element {
 
   const currentOffers = filterOffersByCity(offers, activeCity);
   const sortedCurrentOffers = sortOffers(currentOffers, currentSort);
-  
+
   const handleActiveOfferIdChange = (newActiveOfferId: string) => {
     setActiveOfferId(newActiveOfferId);
   };
@@ -46,7 +46,6 @@ function MainScreen(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{sortedCurrentOffers.length} places to stay in {activeCity}</b>
-              
 
 
               <SortVariants />

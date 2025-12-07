@@ -20,4 +20,4 @@ export const sortOffers = (offers: Offers, sortType: SortType) => {
     case SortType.TopRatedFirst:
       return offersCopy.sort((a, b) => b.rating - a.rating);
   }
-}
+};

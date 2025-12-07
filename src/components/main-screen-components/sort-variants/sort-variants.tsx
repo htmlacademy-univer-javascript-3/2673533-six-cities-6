@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { SortType } from "../../../const";
-import { setCurrentSortType } from "../../../store/action";
-import SortList from "../sort-list/sort-list";
+import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { SortType } from '../../../const';
+import { setCurrentSortType } from '../../../store/action';
+import SortList from '../sort-list/sort-list';
 
 function SortVariants(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
