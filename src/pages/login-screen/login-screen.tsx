@@ -19,12 +19,10 @@ function LoginScreen(): JSX.Element {
     evt.preventDefault();
     const isPasswordCorrect = checkPassword(passwordRef.current?.value);
     if (loginRef.current === null) {
-      toast.error("Login is incorrect.");
-    }
-    else if (!isPasswordCorrect || passwordRef.current === null) {
-      toast.error("Password is incorrect. It should contain at least one Number and one Letter.");
-    }
-    else {
+      toast.error('Login is incorrect.');
+    } else if (!isPasswordCorrect || passwordRef.current === null) {
+      toast.error('Password is incorrect. It should contain at least one Number and one Letter.');
+    } else {
       dispatch(loginAction({
         email: loginRef.current.value,
         password: passwordRef.current.value

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/shared-components/header/header';
-import './loading-screen.css'
+import './loading-screen.css';
 
 function LoadingScreen(): JSX.Element {
   return (

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import Header from '../../components/shared-components/header/header';
-import './not-found-screen.css'
+import './not-found-screen.css';
 
 function NotFoundScreen(): JSX.Element {
   return (

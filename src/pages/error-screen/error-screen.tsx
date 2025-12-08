@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/shared-components/header/header';
-import './error-screen.css'
+import './error-screen.css';
 
 type ErrorScreenProps = {
   restarter: () => void;

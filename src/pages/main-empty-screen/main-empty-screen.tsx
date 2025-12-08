@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet-async";
-import LocationsList from "../../components/main-screen-components/locations-list/locations-list";
-import Header from "../../components/shared-components/header/header";
+import { Helmet } from 'react-helmet-async';
+import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
+import Header from '../../components/shared-components/header/header';
 
 type MainEmptyScreenProps = {
   activeCity: string;

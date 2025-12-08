@@ -59,15 +59,13 @@ function OfferScreen(): JSX.Element {
     }
     setRestart(false);
   }, [offerId, dispatch, restart]);
-  
+
   if (isCurrentOfferLoading || isCurrentReviewsDataLoading || isOffersNearbyDataLoading) {
     return <LoadingScreen />;
-  }
-  else if (isNotFound) {
+  } else if (isNotFound) {
     return <NotFoundScreen />;
-  }
-  else if (offerByIdHasError || commentsHasError || offersNearbyHasError || !currentOfferFull) {
-    return <ErrorScreen restarter={() => setRestart(true)}/>
+  } else if (offerByIdHasError || commentsHasError || offersNearbyHasError || !currentOfferFull) {
+    return <ErrorScreen restarter={() => setRestart(true)}/>;
   }
 
   const { id, isPremium, price, isFavorite, rating, title, type, images, goods, bedrooms, maxAdults, host, description } = currentOfferFull;

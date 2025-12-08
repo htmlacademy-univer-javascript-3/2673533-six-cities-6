@@ -1,10 +1,10 @@
-import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { postFavoriteStatusAction } from "../../../store/api-actions";
-import { addToFavoritesCount } from "../../../store/favorites-data/favorites-data";
-import { getAuthorizationStatus } from "../../../store/user-process/selectors";
-import { AppRoute, AuthorizationStatus } from "../../../const";
+import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { postFavoriteStatusAction } from '../../../store/api-actions';
+import { addToFavoritesCount } from '../../../store/favorites-data/favorites-data';
+import { getAuthorizationStatus } from '../../../store/user-process/selectors';
+import { AppRoute, AuthorizationStatus } from '../../../const';
 
 type BookmarkButtonProps = {
   offerId: string;
@@ -21,25 +21,25 @@ function BookmarkButton({ offerId, isFavorite, className, width, height }: Bookm
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(async () => {
+  const handleOnClick = useCallback(() => {
     if (authorizationStatus === AuthorizationStatus.NoAuth) {
       navigate(AppRoute.Login);
-    }
-    else if (!isUpdating) {
+    } else if (!isUpdating) {
       setIsUpdating(true);
-      try {
-        await dispatch(postFavoriteStatusAction({
-          offerId,
-          status: currentIsFavorite ? 0 : 1
-        })).unwrap().then(() => {
+      dispatch(postFavoriteStatusAction({
+        offerId,
+        status: currentIsFavorite ? 0 : 1
+      }))
+        .unwrap()
+        .then(() => {
           dispatch(addToFavoritesCount(currentIsFavorite ? -1 : 1));
-          setCurrentIsFavorite(prev => !prev);
+          setCurrentIsFavorite((prev) => !prev);
+        })
+        .finally(() => {
+          setIsUpdating(false);
         });
-      } finally {
-        setIsUpdating(false);
-      }
     }
-  }, [dispatch, offerId, currentIsFavorite, isUpdating]);
+  }, [dispatch, offerId, currentIsFavorite, isUpdating, authorizationStatus, navigate]);
 
   const newClassName = `${className}__bookmark-button ${currentIsFavorite ? `${className}__bookmark-button--active` : ''} button`;
 
