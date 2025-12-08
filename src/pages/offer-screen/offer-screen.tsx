@@ -20,11 +20,11 @@ import MainMap from '../../components/main-screen-components/main-map/main-map';
 import { OfferDTO } from '../../types/offer';
 import { AuthorizationStatus } from '../../const';
 import Header from '../../components/shared-components/header/header';
-import { getOfferById, getOfferByIdDataLoadingStatus, getOfferByIdErrorStatus } from '../../store/offer-by-id-data/selectors';
+import { getOfferById, getOfferByIdDataLoadingStatus, getOfferByIdErrorStatus, getOfferByIdNotFoundStatus } from '../../store/offer-by-id-data/selectors';
 import { getComments, getCommentsDataLoadingStatus, getCommentsErrorStatus } from '../../store/comments-data/selectors';
 import { getOffersNearby, getOffersNearbyDataLoadingStatus, getOffersNearbyErrorStatus } from '../../store/offers-nearby-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import { clearOfferById } from '../../store/offer-by-id-data/offer-by-id-data';
+import { clearNotFound, clearOfferById } from '../../store/offer-by-id-data/offer-by-id-data';
 import { clearComments } from '../../store/comments-data/comments-data';
 import { clearOffersNearby } from '../../store/offers-nearby-data/offers-nearby-data';
 import ErrorScreen from '../error-screen/error-screen';
@@ -43,9 +43,11 @@ function OfferScreen(): JSX.Element {
   const offerByIdHasError = useAppSelector(getOfferByIdErrorStatus);
   const commentsHasError = useAppSelector(getCommentsErrorStatus);
   const offersNearbyHasError = useAppSelector(getOffersNearbyErrorStatus);
+  const isNotFound = useAppSelector(getOfferByIdNotFoundStatus);
   const offerId = params.id;
 
   useEffect(() => {
+    dispatch(clearNotFound());
     if (offerId) {
       dispatch(fetchOfferByIdAction(offerId));
       dispatch(fetchCommentsAction(offerId));
@@ -57,17 +59,15 @@ function OfferScreen(): JSX.Element {
     }
     setRestart(false);
   }, [offerId, dispatch, restart]);
-
-  if (offerByIdHasError || commentsHasError || offersNearbyHasError) {
-    return <ErrorScreen restarter={() => setRestart(true)}/>
-  }
-
+  
   if (isCurrentOfferLoading || isCurrentReviewsDataLoading || isOffersNearbyDataLoading) {
     return <LoadingScreen />;
   }
-
-  if (!currentOfferFull) {
+  else if (isNotFound) {
     return <NotFoundScreen />;
+  }
+  else if (offerByIdHasError || commentsHasError || offersNearbyHasError || !currentOfferFull) {
+    return <ErrorScreen restarter={() => setRestart(true)}/>
   }
 
   const { id, isPremium, price, isFavorite, rating, title, type, images, goods, bedrooms, maxAdults, host, description } = currentOfferFull;

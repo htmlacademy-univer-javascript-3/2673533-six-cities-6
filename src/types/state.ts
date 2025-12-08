@@ -29,6 +29,7 @@ export type OfferByIdData = {
   offerById: OfferFullDTO | null;
   isOfferByIdDataLoading: boolean;
   hasError: boolean;
+  isNotFound: boolean;
 };
 
 export type OffersNearbyData = {
