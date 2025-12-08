@@ -16,7 +16,7 @@ import OfferPrice from '../../components/offer-screen-components/offer-price/off
 import OfferFeatures from '../../components/offer-screen-components/offer-features/offer-features';
 import Rating from '../../components/shared-components/rating/rating';
 import OfferList from '../../components/shared-components/offer-list/offer-list';
-import MainMap from '../../components/main-screen-components/main-map/main-map';
+import MainMap from '../../components/shared-components/main-map/main-map';
 import { OfferDTO } from '../../types/offer';
 import { AuthorizationStatus } from '../../const';
 import Header from '../../components/shared-components/header/header';

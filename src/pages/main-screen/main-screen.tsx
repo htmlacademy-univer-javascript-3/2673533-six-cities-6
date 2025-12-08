@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
 import OfferList from '../../components/shared-components/offer-list/offer-list';
-import MainMap from '../../components/main-screen-components/main-map/main-map';
+import MainMap from '../../components/shared-components/main-map/main-map';
 import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import SortVariants from '../../components/main-screen-components/sort-variants/sort-variants';
