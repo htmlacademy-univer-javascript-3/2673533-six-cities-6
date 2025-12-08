@@ -5,25 +5,35 @@ import LocationsList from '../../components/main-screen-components/locations-lis
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import SortVariants from '../../components/main-screen-components/sort-variants/sort-variants';
 import Header from '../../components/shared-components/header/header';
-import { getOffersDataLoadingStatus, selectSortedOffersByCity } from '../../store/offers-data/selectors';
+import { getOffersDataLoadingStatus, getOffersErrorStatus, selectSortedOffersByCity } from '../../store/offers-data/selectors';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
 import MainEmptyScreen from '../main-empty-screen/main-empty-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchOffersAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import ErrorScreen from '../error-screen/error-screen';
 
 
 function MainScreen(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [restart, setRestart] = useState(false);
   const activeCity = useAppSelector(getActiveCity);
   const sortedCurrentOffers = useAppSelector(selectSortedOffersByCity);
   const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const hasError = useAppSelector(getOffersErrorStatus);
 
   useEffect(() => {
     dispatch(fetchOffersAction());
-  }, [dispatch, activeCity, authorizationStatus]);
+    setRestart(false);
+  }, [dispatch, activeCity, authorizationStatus, restart]);
+
+  if (hasError) {
+    return (
+      <ErrorScreen restarter={() => setRestart(true)}/>
+    );
+  }
 
   if (isOffersLoading) {
     return <LoadingScreen />;

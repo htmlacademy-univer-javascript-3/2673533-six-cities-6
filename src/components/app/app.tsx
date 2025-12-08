@@ -10,23 +10,14 @@ import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import LoginRoute from '../routes/login-route/login-route';
 import { getAuthCheckedStatus, getAuthorizationStatus } from '../../store/user-process/selectors';
-import { getOffersErrorStatus } from '../../store/offers-data/selectors';
-import ErrorScreen from '../../pages/error-screen/error-screen';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isAuthChecked = useAppSelector(getAuthCheckedStatus);
-  const hasError = useAppSelector(getOffersErrorStatus);
 
   if (!isAuthChecked) {
     return (
       <LoadingScreen />
-    );
-  }
-
-  if (hasError) {
-    return (
-      <ErrorScreen />
     );
   }
 

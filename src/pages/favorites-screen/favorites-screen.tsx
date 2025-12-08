@@ -5,19 +5,29 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/shared-components/header/header';
 import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { getFavorites, getFavoritesDataLoadingStatus } from '../../store/favorites-data/selectors';
-import { useEffect } from 'react';
+import { getFavorites, getFavoritesDataLoadingStatus, getFavoritesErrorStatus } from '../../store/favorites-data/selectors';
+import { useEffect, useState } from 'react';
 import { fetchFavoritesAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
+import ErrorScreen from '../error-screen/error-screen';
 
 function FavoritesScreen(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [restart, setRestart] = useState(false);
   const favoriteOffers = useAppSelector(getFavorites);
   const isFavoritesLoading = useAppSelector(getFavoritesDataLoadingStatus);
+  const hasError = useAppSelector(getFavoritesErrorStatus);
 
   useEffect(() => {
     dispatch(fetchFavoritesAction());
-  }, [dispatch]);
+    setRestart(false);
+  }, [dispatch, restart]);
+
+  if (hasError) {
+    return (
+      <ErrorScreen restarter={() => setRestart(true)}/>
+    );
+  }
 
   if (isFavoritesLoading) {
     return <LoadingScreen />;
