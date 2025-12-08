@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/shared-components/header/header';
+import './error-screen.css'
 
 type ErrorScreenProps = {
   restarter: () => void;
@@ -12,12 +13,14 @@ function ErrorScreen({ restarter } : ErrorScreenProps): JSX.Element {
         <title>6 cities. Error</title>
       </Helmet>
       <Header />
-      <main className="page__main page__main--not-found">
-        <div className="page__login-container container">
-          <section className="login">
-            <h1 className="login__title">Something went wrong...</h1>
-            <div className="login__form form">
-              <button className="login__text" onClick={restarter}>Try again🙂</button>
+      <main className="page__main page__main--error">
+        <div className="page__error-container container">
+          <section className="error">
+            <h1 className="error__title">Something went wrong with loading data from server...</h1>
+            <div className="error__form form">
+              <button className="error__button button" onClick={restarter}>
+                Try again
+              </button>
             </div>
           </section>
         </div>
