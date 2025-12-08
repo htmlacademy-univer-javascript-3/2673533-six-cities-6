@@ -6,6 +6,8 @@ import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
+import { checkPassword } from '../../cities-logic';
+import { toast } from 'react-toastify';
 
 
 function LoginScreen(): JSX.Element {
@@ -16,8 +18,14 @@ function LoginScreen(): JSX.Element {
 
   const handleOnSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    if (loginRef.current !== null && passwordRef.current !== null) {
+    const isPasswordCorrect = checkPassword(passwordRef.current?.value);
+    if (loginRef.current === null) {
+      toast.error("Login is incorrect.");
+    }
+    else if (!isPasswordCorrect || passwordRef.current === null) {
+      toast.error("Password is incorrect. It should contain at least one Number and one Letter.");
+    }
+    else {
       dispatch(loginAction({
         email: loginRef.current.value,
         password: passwordRef.current.value
