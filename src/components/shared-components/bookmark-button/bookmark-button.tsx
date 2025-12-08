@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { postFavoriteStatusAction } from "../../../store/api-actions";
 import { addToFavoritesCount } from "../../../store/favorites-data/favorites-data";
 import { getAuthorizationStatus } from "../../../store/user-process/selectors";
 import { AppRoute, AuthorizationStatus } from "../../../const";
-import { useNavigate } from "react-router-dom";
 
 type BookmarkButtonProps = {
   offerId: string;

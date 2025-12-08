@@ -1,5 +1,5 @@
-import { City } from './types/city';
 import leaflet from 'leaflet';
+import { City } from './types/city';
 
 export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;

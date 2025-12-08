@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { AppRoute, CITIES } from '../../const';
 import FavoritesListByCity from '../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city';
-import { Link } from 'react-router-dom';
 import Header from '../../components/shared-components/header/header';
 import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getFavorites, getFavoritesDataLoadingStatus, getFavoritesErrorStatus } from '../../store/favorites-data/selectors';
-import { useEffect, useState } from 'react';
 import { fetchFavoritesAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import ErrorScreen from '../error-screen/error-screen';

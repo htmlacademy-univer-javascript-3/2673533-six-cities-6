@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Header from "../../components/shared-components/header/header";
 import { AppRoute } from "../../const";
-import { Helmet } from "react-helmet-async";
 
 function FavoritesEmptyScreen(): JSX.Element {
   return (

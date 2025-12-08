@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import OfferList from '../../components/shared-components/offer-list/offer-list';
 import MainMap from '../../components/main-screen-components/main-map/main-map';
 import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
@@ -8,7 +9,6 @@ import Header from '../../components/shared-components/header/header';
 import { getOffersDataLoadingStatus, getOffersErrorStatus, selectSortedOffersByCity } from '../../store/offers-data/selectors';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
 import MainEmptyScreen from '../main-empty-screen/main-empty-screen';
-import { useEffect, useState } from 'react';
 import { fetchOffersAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';

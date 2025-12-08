@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import ReviewForm from '../../components/offer-screen-components/review-form/review-form';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import OfferGallery from '../../components/offer-screen-components/offer-gallery/offer-gallery';
@@ -9,7 +10,6 @@ import OfferInsideList from '../../components/offer-screen-components/offer-insi
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchOfferByIdAction, fetchOffersNearbyAction, fetchCommentsAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
-import { useEffect, useState } from 'react';
 import ReviewList from '../../components/offer-screen-components/review-list/review-list';
 import OfferHost from '../../components/offer-screen-components/offer-host/offer-host';
 import OfferPrice from '../../components/offer-screen-components/offer-price/offer-price';

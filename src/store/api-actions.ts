@@ -1,6 +1,6 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError, AxiosInstance } from 'axios';
 import { AppDispatch, State } from '../types/state';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OfferFullDTO, Offers } from '../types/offer';
 import { APIRoute, AppRoute } from '../const';
 import { redirectToRoute } from './action';

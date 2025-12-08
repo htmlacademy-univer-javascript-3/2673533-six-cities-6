@@ -1,14 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { toast } from 'react-toastify';
 import { FormEvent, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { AppRoute } from '../../const';
 import { loginAction } from '../../store/api-actions';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
 import { checkPassword } from '../../cities-logic';
-import { toast } from 'react-toastify';
-
 
 function LoginScreen(): JSX.Element {
   const currentCity = useAppSelector(getActiveCity);

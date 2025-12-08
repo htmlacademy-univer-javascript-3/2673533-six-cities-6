@@ -1,5 +1,5 @@
-import MainScreen from '../../pages/main-screen/main-screen';
 import { Route, Routes } from 'react-router-dom';
+import MainScreen from '../../pages/main-screen/main-screen';
 import { AppRoute } from '../../const';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import OfferScreen from '../../pages/offer-screen/offer-screen';

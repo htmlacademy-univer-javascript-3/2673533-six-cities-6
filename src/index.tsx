@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom/client';
-import App from './components/app/app';
-import { store } from './store';
 import { Provider } from 'react-redux';
-import { checkAuthAction, fetchFavoritesAction, fetchOffersAction } from './store/api-actions';
 import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import App from './components/app/app';
+import { store } from './store';
+import { checkAuthAction, fetchFavoritesAction, fetchOffersAction } from './store/api-actions';
 import HistoryRouter from './components/routes/history-route/history-route';
 import browserHistory from './browser-history';
 
