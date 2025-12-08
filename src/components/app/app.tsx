@@ -10,16 +10,15 @@ import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import LoginRoute from '../routes/login-route/login-route';
 import { getAuthCheckedStatus, getAuthorizationStatus } from '../../store/user-process/selectors';
-import { getOffersDataLoadingStatus, getOffersErrorStatus } from '../../store/offers-data/selectors';
+import { getOffersErrorStatus } from '../../store/offers-data/selectors';
 import ErrorScreen from '../../pages/error-screen/error-screen';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isAuthChecked = useAppSelector(getAuthCheckedStatus);
-  const isOffersDataLoading = useAppSelector(getOffersDataLoadingStatus);
   const hasError = useAppSelector(getOffersErrorStatus);
 
-  if (!isAuthChecked || isOffersDataLoading) {
+  if (!isAuthChecked) {
     return (
       <LoadingScreen />
     );

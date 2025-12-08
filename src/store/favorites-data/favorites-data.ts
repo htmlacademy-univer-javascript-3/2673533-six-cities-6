@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FavoritesData } from '../../types/state';
 import { NameSpace } from '../../const';
 import { fetchFavoritesAction, postFavoriteStatusAction } from '../api-actions';
@@ -15,7 +15,11 @@ const initialState: FavoritesData = {
 export const favoritesData = createSlice({
   name: NameSpace.FavoritesData,
   initialState,
-  reducers: {},
+  reducers: {
+    addToFavoritesCount: (state, action: PayloadAction<number>) => {
+      state.favoritesCount += action.payload;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchFavoritesAction.pending, (state) => {
@@ -45,3 +49,5 @@ export const favoritesData = createSlice({
       });
   }
 });
+
+export const {addToFavoritesCount} = favoritesData.actions;

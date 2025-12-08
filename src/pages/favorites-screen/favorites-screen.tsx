@@ -3,18 +3,32 @@ import { AppRoute, CITIES } from '../../const';
 import FavoritesListByCity from '../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city';
 import { Link } from 'react-router-dom';
 import Header from '../../components/shared-components/header/header';
-import { Offers } from '../../types/offer';
 import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getFavorites, getFavoritesDataLoadingStatus } from '../../store/favorites-data/selectors';
+import { useEffect } from 'react';
+import { fetchFavoritesAction } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 function FavoritesScreen(): JSX.Element {
-  const favoriteOffers: Offers = [];
+  const dispatch = useAppDispatch();
+  const favoriteOffers = useAppSelector(getFavorites);
+  const isFavoritesLoading = useAppSelector(getFavoritesDataLoadingStatus);
+
+  useEffect(() => {
+    dispatch(fetchFavoritesAction());
+  }, [dispatch]);
+
+  if (isFavoritesLoading) {
+    return <LoadingScreen />;
+  }
 
   if (favoriteOffers.length === 0) {
     return (
       <FavoritesEmptyScreen />
     );
   }
-  
+
   return (
     <div className="page">
       <Helmet>

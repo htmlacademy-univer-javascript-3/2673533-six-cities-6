@@ -2,17 +2,32 @@ import { Helmet } from 'react-helmet-async';
 import OfferList from '../../components/shared-components/offer-list/offer-list';
 import MainMap from '../../components/main-screen-components/main-map/main-map';
 import LocationsList from '../../components/main-screen-components/locations-list/locations-list';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import SortVariants from '../../components/main-screen-components/sort-variants/sort-variants';
 import Header from '../../components/shared-components/header/header';
-import { selectSortedOffersByCity } from '../../store/offers-data/selectors';
+import { getOffersDataLoadingStatus, selectSortedOffersByCity } from '../../store/offers-data/selectors';
 import { getActiveCity } from '../../store/main-screen-process/selectors';
 import MainEmptyScreen from '../main-empty-screen/main-empty-screen';
+import { useEffect } from 'react';
+import { fetchOffersAction } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 
 function MainScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   const activeCity = useAppSelector(getActiveCity);
   const sortedCurrentOffers = useAppSelector(selectSortedOffersByCity);
+  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+
+  useEffect(() => {
+    dispatch(fetchOffersAction());
+  }, [dispatch, activeCity, authorizationStatus]);
+
+  if (isOffersLoading) {
+    return <LoadingScreen />;
+  }
 
   if (sortedCurrentOffers.length === 0) {
     return (

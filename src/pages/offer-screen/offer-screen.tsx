@@ -89,7 +89,7 @@ function OfferScreen(): JSX.Element {
               {isPremium && (<PremiumMark className='offer__mark' />)}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">{title}</h1>
-                <BookmarkButton isInBookmarks={isFavorite} className='offer' width="31" height="33" />
+                <BookmarkButton offerId={id} isFavorite={isFavorite} className='offer' width="31" height="33" />
               </div>
               <Rating className="offer" ratingValue={rating}>
                 <span className="offer__rating-value rating__value">{rating}</span>
