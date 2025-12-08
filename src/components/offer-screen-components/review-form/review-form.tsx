@@ -29,8 +29,9 @@ function ReviewForm({ offerId } : ReviewFormProps): JSX.Element {
         comment: reviewText,
         rating: Number(rating),
         offerId: offerId,
-      }));
-      dispatch(fetchCommentsAction(offerId));
+      })).unwrap().then(() => {
+        dispatch(fetchCommentsAction(offerId));
+      });
     }
   };
 

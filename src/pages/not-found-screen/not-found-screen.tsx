@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
-import HeaderNav from '../../components/shared-components/header-nav/header-nav';
+import Header from '../../components/shared-components/header/header';
+import './not-found-screen.css';
 
 function NotFoundScreen(): JSX.Element {
   return (
@@ -10,26 +10,19 @@ function NotFoundScreen(): JSX.Element {
       <Helmet>
         <title>6 cities. Not found</title>
       </Helmet>
-
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <HeaderLogo />
-            <HeaderNav />
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <main className="page__main page__main--not-found">
-        <div className="page__login-container container">
-          <section className="login">
-            <h1 className="login__title">404. Page not found</h1>
-            <div className="login__form form">
-              <p className="login__text">The page you are looking for does not exist.</p>
+        <div className="page__not-found-container container">
+          <section className="not-found">
+            <div className="not-found__number">404</div>
+            <h1 className="not-found__title">Page not found</h1>
+            <p className="not-found__description">
+              The page you are looking for does not exist or has been moved.
+            </p>
+            <div className="not-found__actions">
               <Link
-                className="login__submit form__submit button"
+                className="not-found__button button"
                 to={AppRoute.Main}
-                style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
               >
                 Back to main page
               </Link>

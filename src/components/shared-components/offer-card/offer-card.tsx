@@ -42,7 +42,7 @@ function OfferCard({ offer, cardName }: OfferCardProps): JSX.Element {
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <Price priceValue={price} />
-          <BookmarkButton isInBookmarks={isFavorite} className='place-card' width="18" height="19" />
+          <BookmarkButton offerId={offer.id} isFavorite={isFavorite} className='place-card' width="18" height="19" />
         </div>
         <Rating className="place-card" ratingValue={rating} />
         <OfferName offerName={title} offerId={id} />

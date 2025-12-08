@@ -1,5 +1,5 @@
-import MainScreen from '../../pages/main-screen/main-screen';
 import { Route, Routes } from 'react-router-dom';
+import MainScreen from '../../pages/main-screen/main-screen';
 import { AppRoute } from '../../const';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import OfferScreen from '../../pages/offer-screen/offer-screen';
@@ -10,24 +10,14 @@ import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import LoginRoute from '../routes/login-route/login-route';
 import { getAuthCheckedStatus, getAuthorizationStatus } from '../../store/user-process/selectors';
-import { getOffersDataLoadingStatus, getOffersErrorStatus } from '../../store/offers-data/selectors';
-import ErrorScreen from '../../pages/error-screen/error-screen';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isAuthChecked = useAppSelector(getAuthCheckedStatus);
-  const isOffersDataLoading = useAppSelector(getOffersDataLoadingStatus);
-  const hasError = useAppSelector(getOffersErrorStatus);
 
-  if (!isAuthChecked || isOffersDataLoading) {
+  if (!isAuthChecked) {
     return (
       <LoadingScreen />
-    );
-  }
-
-  if (hasError) {
-    return (
-      <ErrorScreen />
     );
   }
 

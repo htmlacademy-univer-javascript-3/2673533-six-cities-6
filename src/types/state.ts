@@ -16,10 +16,20 @@ export type OffersData = {
   hasError: boolean;
 };
 
+export type FavoritesData = {
+  favorites: Offers;
+  favoritesCount: number;
+  isFavoritesDataLoading: boolean;
+  isFavoriteStatusUpdating: boolean;
+  isStatusUpdateSuccess: boolean | null;
+  hasError: boolean;
+};
+
 export type OfferByIdData = {
   offerById: OfferFullDTO | null;
   isOfferByIdDataLoading: boolean;
   hasError: boolean;
+  isNotFound: boolean;
 };
 
 export type OffersNearbyData = {

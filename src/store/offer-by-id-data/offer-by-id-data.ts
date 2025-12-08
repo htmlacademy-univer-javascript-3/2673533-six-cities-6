@@ -7,6 +7,7 @@ const initialState: OfferByIdData = {
   offerById: null,
   isOfferByIdDataLoading: false,
   hasError: false,
+  isNotFound: false,
 };
 
 export const offerByIdData = createSlice({
@@ -15,6 +16,9 @@ export const offerByIdData = createSlice({
   reducers: {
     clearOfferById: (state) => {
       state.offerById = null;
+    },
+    clearNotFound: (state) => {
+      state.isNotFound = false;
     }
   },
   extraReducers(builder) {
@@ -27,11 +31,12 @@ export const offerByIdData = createSlice({
         state.offerById = action.payload;
         state.isOfferByIdDataLoading = false;
       })
-      .addCase(fetchOfferByIdAction.rejected, (state) => {
+      .addCase(fetchOfferByIdAction.rejected, (state, action) => {
         state.isOfferByIdDataLoading = false;
         state.hasError = true;
+        state.isNotFound = action.payload === 404;
       });
   }
 });
 
-export const {clearOfferById} = offerByIdData.actions;
+export const {clearOfferById, clearNotFound} = offerByIdData.actions;

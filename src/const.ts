@@ -1,5 +1,5 @@
-import { City } from './types/city';
 import leaflet from 'leaflet';
+import { City } from './types/city';
 
 export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;
@@ -35,6 +35,7 @@ export enum NameSpace {
   OfferByIdData = 'OFFERS_BY_ID_DATA',
   CommentsData = 'COMMENTS_DATA',
   OffersNearbyData = 'OFFERS_NEARBY_DATA',
+  FavoritesData = 'FAVORITES_DATA',
   User = 'USER',
   MainScreen = 'MAIN_SCREEN'
 }

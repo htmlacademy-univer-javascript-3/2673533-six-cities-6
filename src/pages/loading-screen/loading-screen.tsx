@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
-import HeaderNav from '../../components/shared-components/header-nav/header-nav';
+import Header from '../../components/shared-components/header/header';
+import './loading-screen.css';
 
 function LoadingScreen(): JSX.Element {
   return (
@@ -8,22 +8,14 @@ function LoadingScreen(): JSX.Element {
       <Helmet>
         <title>6 cities. Loading</title>
       </Helmet>
-
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <HeaderLogo />
-            <HeaderNav />
-          </div>
-        </div>
-      </header>
-
-      <main className="page__main page__main--not-found">
-        <div className="page__login-container container">
-          <section className="login">
-            <h1 className="login__title">Loading...</h1>
-            <div className="login__form form">
-              <p className="login__text">Fetching some data from server. Please wait🙂</p>
+      <Header />
+      <main className="page__main page__main--loading">
+        <div className="page__loading-container container">
+          <section className="loading">
+            <div className="loading__spinner"></div>
+            <h1 className="loading__title">Loading...</h1>
+            <div className="loading__message">
+              <p className="loading__text">Fetching some data from server. Please wait🙂</p>
             </div>
           </section>
         </div>

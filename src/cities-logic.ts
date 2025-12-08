@@ -17,3 +17,12 @@ export const sortOffers = (offers: Offers, sortType: SortType) => {
       return offersCopy.sort((a, b) => b.rating - a.rating);
   }
 };
+
+export const checkPassword = (password: string | undefined): boolean => {
+  if (!password || password.trim().length === 0) {
+    return false;
+  }
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasDigit = /\d/.test(password);
+  return hasLetter && hasDigit;
+};

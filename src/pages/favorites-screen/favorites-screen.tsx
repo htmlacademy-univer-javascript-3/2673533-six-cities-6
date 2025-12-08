@@ -1,12 +1,44 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { AppRoute, CITIES } from '../../const';
 import FavoritesListByCity from '../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city';
-import { Link } from 'react-router-dom';
 import Header from '../../components/shared-components/header/header';
-import { Offers } from '../../types/offer';
+import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getFavorites, getFavoritesDataLoadingStatus, getFavoritesErrorStatus } from '../../store/favorites-data/selectors';
+import { fetchFavoritesAction } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
+import ErrorScreen from '../error-screen/error-screen';
 
 function FavoritesScreen(): JSX.Element {
-  const favoriteOffers: Offers = [];
+  const dispatch = useAppDispatch();
+  const [restart, setRestart] = useState(false);
+  const favoriteOffers = useAppSelector(getFavorites);
+  const isFavoritesLoading = useAppSelector(getFavoritesDataLoadingStatus);
+  const hasError = useAppSelector(getFavoritesErrorStatus);
+
+  useEffect(() => {
+    dispatch(fetchFavoritesAction());
+    setRestart(false);
+  }, [dispatch, restart]);
+
+  if (hasError) {
+    return (
+      <ErrorScreen restarter={() => setRestart(true)}/>
+    );
+  }
+
+  if (isFavoritesLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (favoriteOffers.length === 0) {
+    return (
+      <FavoritesEmptyScreen />
+    );
+  }
+
   return (
     <div className="page">
       <Helmet>

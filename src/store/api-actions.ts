@@ -1,14 +1,15 @@
-import { AxiosInstance } from 'axios';
-import { AppDispatch, State } from '../types/state';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosError, AxiosInstance } from 'axios';
+import { AppDispatch, State } from '../types/state';
 import { OfferFullDTO, Offers } from '../types/offer';
 import { APIRoute, AppRoute } from '../const';
 import { redirectToRoute } from './action';
 import { AuthData } from '../types/auth-data';
 import { UserFullData } from '../types/user-full-data';
 import { dropToken, saveToken } from '../services/token';
-import { Comment, Comments } from '../types/comment';
+import { Comments } from '../types/comment';
 import { NewComment } from '../types/new-comment';
+import { NewFavoriteStatus } from '../types/new-favorite-status';
 
 export const fetchOffersAction = createAsyncThunk<Offers, undefined, {
   dispatch: AppDispatch;
@@ -16,8 +17,8 @@ export const fetchOffersAction = createAsyncThunk<Offers, undefined, {
   extra: AxiosInstance;
 }>(
   'data/fetchOffers',
-  async (_arg, {extra: api}) => {
-    const {data} = await api.get<Offers>(APIRoute.Offers);
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<Offers>(APIRoute.Offers);
     return data;
   },
 );
@@ -28,8 +29,20 @@ export const fetchCommentsAction = createAsyncThunk<Comments, string, {
   extra: AxiosInstance;
 }>(
   'data/fetchComments',
-  async (offerId, {extra: api}) => {
-    const {data} = await api.get<Comments>(APIRoute.Comments.replace(':id', offerId));
+  async (offerId, { extra: api }) => {
+    const { data } = await api.get<Comments>(APIRoute.Comments.replace(':id', offerId));
+    return data;
+  },
+);
+
+export const fetchFavoritesAction = createAsyncThunk<Offers, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFavorites',
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<Offers>(APIRoute.Favorite);
     return data;
   },
 );
@@ -40,8 +53,8 @@ export const fetchOffersNearbyAction = createAsyncThunk<Offers, string, {
   extra: AxiosInstance;
 }>(
   'data/fetchOffersNearby',
-  async (offerId, {extra: api}) => {
-    const {data} = await api.get<Offers>(APIRoute.NearbyOffers.replace(':id', offerId));
+  async (offerId, { extra: api }) => {
+    const { data } = await api.get<Offers>(APIRoute.NearbyOffers.replace(':id', offerId));
     return data;
   },
 );
@@ -50,11 +63,19 @@ export const fetchOfferByIdAction = createAsyncThunk<OfferFullDTO, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
+  rejectValue: number | undefined;
 }>(
   'data/fetchOfferByIdAction',
-  async (offerId, {extra: api}) => {
-    const {data} = await api.get<OfferFullDTO>(APIRoute.OfferById.replace(':id', offerId));
-    return data;
+  async (offerId, { extra: api, rejectWithValue }) => {
+    try {
+      const { data } = await api.get<OfferFullDTO>(APIRoute.OfferById.replace(':id', offerId));
+      return data;
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.status);
+      }
+      return rejectWithValue(undefined);
+    }
   },
 );
 
@@ -64,8 +85,8 @@ export const checkAuthAction = createAsyncThunk<UserFullData, undefined, {
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
-  async (_arg, {extra: api}) => {
-    const {data} = await api.get<UserFullData>(APIRoute.Login);
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<UserFullData>(APIRoute.Login);
     return data;
   },
 );
@@ -76,8 +97,8 @@ export const loginAction = createAsyncThunk<UserFullData, AuthData, {
   extra: AxiosInstance;
 }>(
   'user/login',
-  async ({email, password}, {dispatch, extra: api}) => {
-    const {data} = await api.post<UserFullData>(APIRoute.Login, {email, password});
+  async ({ email, password }, { dispatch, extra: api }) => {
+    const { data } = await api.post<UserFullData>(APIRoute.Login, { email, password });
     saveToken(data.token);
     dispatch(redirectToRoute(AppRoute.Main));
     return data;
@@ -90,8 +111,19 @@ export const postCommentAction = createAsyncThunk<void, NewComment, {
   extra: AxiosInstance;
 }>(
   'comments/postComment',
-  async ({comment, rating, offerId}, {extra: api}) => {
-    await api.post<Comment>(APIRoute.Comments.replace(':id', offerId), {comment, rating});
+  async ({ comment, rating, offerId }, { extra: api }) => {
+    await api.post(APIRoute.Comments.replace(':id', offerId), { comment, rating });
+  },
+);
+
+export const postFavoriteStatusAction = createAsyncThunk<void, NewFavoriteStatus, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/postFavoriteStatus',
+  async ({ offerId, status }, { extra: api }) => {
+    await api.post(APIRoute.FavoriteStatus.replace(':id', offerId).replace(':status', status.toString()));
   },
 );
 
@@ -101,7 +133,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   extra: AxiosInstance;
 }>(
   'user/logout',
-  async (_arg, {extra: api}) => {
+  async (_arg, { extra: api }) => {
     await api.delete(APIRoute.Logout);
     dropToken();
   },
