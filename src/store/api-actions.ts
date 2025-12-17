@@ -71,8 +71,9 @@ export const fetchOfferByIdAction = createAsyncThunk<OfferFullDTO, string, {
       const { data } = await api.get<OfferFullDTO>(APIRoute.OfferById.replace(':id', offerId));
       return data;
     } catch (error) {
-      if (error instanceof AxiosError) {
-        return rejectWithValue(error.response?.status);
+      const axiosError = error as any;
+      if (axiosError?.isAxiosError && axiosError.response) {
+        return rejectWithValue(axiosError.response.status);
       }
       return rejectWithValue(undefined);
     }
