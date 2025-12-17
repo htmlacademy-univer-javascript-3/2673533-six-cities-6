@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, SortType } from '../const';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { createAPI } from '../services/api';
@@ -95,8 +95,12 @@ export const makeFakeUserData = (): UserFullData => ({
 export const extractActionsTypes = (actions: Action<string>[]) => actions.map(({ type }) => type);
 
 export const makeFakeStore = (initialState?: Partial<State>): State => ({
-  USER: { authorizationStatus: AuthorizationStatus.NoAuth },
-  DATA: { isQuestionsDataLoading: false, questions: [], hasError: false },
-  GAME: { step: 10, mistakes: 2 },
+  OFFERS_DATA: {offers: [], isOffersDataLoading: false, hasError: false},
+  OFFERS_BY_ID_DATA: {offerById: null, isOfferByIdDataLoading: false, hasError: false, isNotFound: false},
+  OFFERS_NEARBY_DATA: {offersNearby: [], isOffersNearbyDataLoading: false, hasError: false},
+  COMMENTS_DATA: {comments: [], isCommentsDataLoading: false, hasError: false},
+  FAVORITES_DATA: {favorites: [], isFavoritesDataLoading: false, isFavoriteStatusUpdating: false, isStatusUpdateSuccess: null, favoritesCount: 0, hasError: false},
+  MAIN_SCREEN: {activeCity: 'Paris', activeOfferId: '', activeSortType: SortType.Popular},
+  USER: { authorizationStatus: AuthorizationStatus.NoAuth, userData: null },
   ...initialState ?? {},
 });
