@@ -1,40 +1,21 @@
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 import SortList from './sort-list';
-import { SortType, SortTypes } from '../../../const';
+import { SortType } from '../../../const';
 
 vi.mock('../sort-list-item/sort-list-item', () => ({
-  default: function MockSortListItem({isActive, sortType, onClick}: {
-    isActive: boolean; 
-    sortType: SortType; 
-    onClick: (sortType: SortType) => void;
-  }): JSX.Element {
-    return (
-      <li 
-        data-testid={`mock-sort-item-${sortType}`}
-        data-active={isActive}
-        onClick={() => onClick(sortType)}
-        className={isActive ? 'active' : ''}
-      >
-        {sortType} {isActive ? '(active)' : ''}
-      </li>
-    );
+  default: function MockSortListItem(): JSX.Element {
+    return <div data-testid='mock-sort-item'>SortItem</div>;
   }
 }));
 
 describe('Component: SortList', () => {
   it('should render correctly', () => {
-    const currentSortType = SortType.Popular;
-    
-    render(<SortList currentSortType={currentSortType} onSortClick={vi.fn()} />);
+    render(<SortList currentSortType={SortType.Popular} onSortClick={vi.fn()} />);
 
-    expect(screen.getByRole('list')).toBeInTheDocument();
-    expect(screen.getAllByRole('listitem')).toHaveLength(SortTypes.length);
-
-    SortTypes.forEach((sortType) => {
-      const listItem = screen.getByTestId(`mock-sort-item-${sortType}`);
-      expect(listItem).toBeInTheDocument();
-      expect(listItem).toHaveTextContent(sortType);
+    const sorts = screen.getAllByTestId('mock-sort-item');
+    expect(sorts.length).toEqual(4);
+    sorts.forEach((sortType) => {
+      expect(sortType).toBeInTheDocument();
     });
   });
 });

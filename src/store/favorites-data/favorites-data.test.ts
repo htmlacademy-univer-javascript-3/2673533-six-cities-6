@@ -1,6 +1,6 @@
-import { makeFakeOffer } from "../../utils/mocks";
-import { fetchFavoritesAction, postFavoriteStatusAction } from "../api-actions";
-import { addToFavoritesCount, favoritesData } from "./favorites-data";
+import { makeFakeOffer } from '../../utils/mocks';
+import { fetchFavoritesAction, postFavoriteStatusAction } from '../api-actions';
+import { addToFavoritesCount, favoritesData } from './favorites-data';
 
 describe('FavoritesData Slice', () => {
   describe('checkInitialState', () => {

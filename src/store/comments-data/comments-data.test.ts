@@ -1,6 +1,6 @@
-import { makeFakeComment } from "../../utils/mocks";
-import { fetchCommentsAction } from "../api-actions";
-import { clearComments, commentsData } from "./comments-data";
+import { makeFakeComment } from '../../utils/mocks';
+import { fetchCommentsAction } from '../api-actions';
+import { clearComments, commentsData } from './comments-data';
 
 describe('CommentsData Slice', () => {
   describe('checkInitialState', () => {

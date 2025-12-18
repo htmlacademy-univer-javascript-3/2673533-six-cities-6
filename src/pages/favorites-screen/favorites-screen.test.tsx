@@ -1,22 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import FavoritesScreen from './favorites-screen';
-import { vi } from 'vitest';
 import { withHistory, withStore } from '../../utils/mock-component';
 import { makeFakeOffer, makeFakeStore } from '../../utils/mocks';
 
 vi.mock('../../components/shared-components/header/header', () => ({
   default: function MockHeader(): JSX.Element {
-    return <header data-testid="mock-header">Header</header>;
+    return <div data-testid="mock-header">Header</div>;
   }
 }));
 
 vi.mock('../../components/favorites-screen-components/favorites-list-by-city/favorites-list-by-city', () => ({
-  default: function MockFavoritesListByCity({ cityName, offers }: { cityName: string; offers: any[] }) {
-    return (
-      <li data-testid={`favorites-list-${cityName.toLowerCase()}`}>
-        Favorites in {cityName}: {offers.length} offers
-      </li>
-    );
+  default: function MockFavoritesListByCity() {
+    return <div data-testid="mock-favorites-list-by-city">ListByCity</div>;
   }
 }));
 
@@ -34,9 +29,7 @@ vi.mock('../loading-screen/loading-screen', () => ({
 
 vi.mock('../error-screen/error-screen', () => ({
   default: function MockErrorScreen(): JSX.Element {
-    return (
-      <div data-testid="mock-error">Error Screen</div>
-    );
+    return <div data-testid="mock-error">Error Screen</div>;
   }
 }));
 
@@ -59,8 +52,12 @@ describe('Screen: FavoritesScreen', () => {
     render(withHistory(withStoreComponent));
 
     expect(screen.getByText('Saved listing')).toBeInTheDocument();
-    expect(screen.getByTestId('favorites-list-paris')).toBeInTheDocument();
-    expect(screen.getByTestId('favorites-list-cologne')).toBeInTheDocument();
+
+    const lists = screen.getAllByTestId('mock-favorites-list-by-city');
+    expect(lists.length).toEqual(6);
+    lists.forEach((list) => {
+      expect(list).toBeInTheDocument();
+    });
     expect(screen.getByTestId('mock-header')).toBeInTheDocument();
   });
 

@@ -1,7 +1,7 @@
-import { AuthorizationStatus } from "../../const";
-import { makeFakeUserData } from "../../utils/mocks";
-import { checkAuthAction, loginAction, logoutAction } from "../api-actions";
-import { userProcess } from "./user-process";
+import { AuthorizationStatus } from '../../const';
+import { makeFakeUserData } from '../../utils/mocks';
+import { checkAuthAction, loginAction, logoutAction } from '../api-actions';
+import { userProcess } from './user-process';
 
 describe('UserProcess Slice', () => {
   describe('checkInitialState', () => {

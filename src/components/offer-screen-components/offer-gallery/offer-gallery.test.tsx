@@ -3,7 +3,7 @@ import OfferGallery from './offer-gallery';
 
 vi.mock('../offer-gallery-image/offer-gallery-image', () => ({
   default: function MockOfferGalleryImage(): JSX.Element {
-    return <div data-testid='mock-gallery-image'>Gallery Image</div>
+    return <div data-testid='mock-gallery-image'>Gallery Image</div>;
   }
 }));
 
@@ -15,7 +15,7 @@ describe('Component: OfferGallery', () => {
   });
 
   it('should render correctly with images', () => {
-    render(<OfferGallery images={['', '', '', '']} />);
+    render(<OfferGallery images={['1', '2', '3', '4']} />);
 
     const result = screen.getAllByTestId('mock-gallery-image');
     expect(result.length).toEqual(4);

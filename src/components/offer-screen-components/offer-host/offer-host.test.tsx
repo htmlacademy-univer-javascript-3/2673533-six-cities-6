@@ -8,7 +8,7 @@ describe('Component: OfferHost', () => {
       name: 'Hello',
       avatarUrl: '',
       isPro: true,
-    }
+    };
     const expectedDescription = '123445678965432';
     render(<OfferHost host={host} description={expectedDescription}/>);
 
@@ -24,7 +24,7 @@ describe('Component: OfferHost', () => {
       name: '',
       avatarUrl: '',
       isPro: false,
-    }
+    };
     render(<OfferHost host={host} description=''/>);
 
     expect(screen.queryByText('Pro')).not.toBeInTheDocument();

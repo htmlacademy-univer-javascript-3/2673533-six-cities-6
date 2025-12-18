@@ -1,5 +1,5 @@
-import { INITIAL_CITY, SortType } from "../../const";
-import { mainScreenProcess, setActiveCity, setActiveOfferId, setActiveSortType } from "./main-screen-process";
+import { INITIAL_CITY, SortType } from '../../const';
+import { mainScreenProcess, setActiveCity, setActiveOfferId, setActiveSortType } from './main-screen-process';
 
 describe('MainScreenProcess Slice', () => {
   describe('checkInitialState', () => {

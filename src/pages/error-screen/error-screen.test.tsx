@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { withHistory } from '../../utils/mock-component';
 import userEvent from '@testing-library/user-event';
+import { withHistory } from '../../utils/mock-component';
 import ErrorScreen from './error-screen';
 
 vi.mock('../../components/shared-components/header/header', () => ({
   default: function MockHeader(): JSX.Element {
-    return <header data-testid="mock-header">Header</header>;
+    return <div data-testid="mock-header">Header</div>;
   }
 }));
 

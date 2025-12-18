@@ -1,10 +1,10 @@
-import { withHistory } from "../../utils/mock-component";
 import { render, screen } from '@testing-library/react';
-import LoadingScreen from "./loading-screen";
+import { withHistory } from '../../utils/mock-component';
+import LoadingScreen from './loading-screen';
 
 vi.mock('../../components/shared-components/header/header', () => ({
   default: function MockHeader(): JSX.Element {
-    return <header data-testid="mock-header">Header</header>;
+    return <div data-testid="mock-header">Header</div>;
   }
 }));
 

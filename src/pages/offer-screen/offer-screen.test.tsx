@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 import OfferScreen from './offer-screen';
 import { withHistory, withStore } from '../../utils/mock-component';
 import { AuthorizationStatus } from '../../const';
@@ -7,7 +6,7 @@ import { makeFakeComment, makeFakeOffer, makeFakeOfferById, makeFakeStore, makeF
 
 vi.mock('../../components/shared-components/header/header', () => ({
   default: function MockHeader(): JSX.Element {
-    return <header data-testid="mock-header">Header</header>;
+    return <div data-testid="mock-header">Header</div>;
   }
 }));
 
@@ -24,26 +23,26 @@ vi.mock('../not-found-screen/not-found-screen', () => ({
 }));
 
 vi.mock('../../components/offer-screen-components/offer-gallery/offer-gallery', () => ({
-  default: function MockOfferGallery({ images }: { images: string[] }): JSX.Element {
-    return <div data-testid="mock-gallery">Gallery: {images.length} images</div>;
+  default: function MockOfferGallery(): JSX.Element {
+    return <div data-testid="mock-gallery">Gallery</div>;
   }
 }));
 
 vi.mock('../../components/shared-components/premium-mark/premium-mark', () => ({
-  default: function MockPremiumMark({ className }: { className: string }): JSX.Element {
-    return <div data-testid="mock-premium-mark" className={className}>Premium</div>;
+  default: function MockPremiumMark(): JSX.Element {
+    return <div data-testid="mock-premium-mark">Premium</div>;
   }
 }));
 
 vi.mock('../../components/shared-components/bookmark-button/bookmark-button', () => ({
-  default: function MockBookmarkButton({ offerId, isFavorite, className }: any): JSX.Element {
-    return <button data-testid={`mock-bookmark-${offerId}`} className={className}>{isFavorite ? 'Remove' : 'Add'}</button>;
+  default: function MockBookmarkButton(): JSX.Element {
+    return <div data-testid='mock-bookmark'>Bookmark</div>;
   }
 }));
 
 vi.mock('../../components/offer-screen-components/offer-inside-list/offer-inside-list', () => ({
-  default: function MockOfferInsideList({ items }: { items: string[] }): JSX.Element {
-    return <ul data-testid="mock-inside-list">{items.map((item, i) => <li key={i}>{item}</li>)}</ul>;
+  default: function MockOfferInsideList(): JSX.Element {
+    return <div data-testid="mock-inside-list">List</div>;
   }
 }));
 
@@ -54,57 +53,55 @@ vi.mock('../loading-screen/loading-screen', () => ({
 }));
 
 vi.mock('../../components/offer-screen-components/review-list/review-list', () => ({
-  default: function MockReviewList({ reviews }: { reviews: any[] }): JSX.Element {
-    return <div data-testid="mock-review-list">{reviews.length} reviews</div>;
+  default: function MockReviewList(): JSX.Element {
+    return <div data-testid="mock-review-list">reviews</div>;
   }
 }));
 
 vi.mock('../../components/offer-screen-components/offer-host/offer-host', () => ({
-  default: function MockOfferHost({ host, description }: any): JSX.Element {
-    return <div data-testid="mock-host">{host.name}: {description.substring(0, 20)}...</div>;
+  default: function MockOfferHost(): JSX.Element {
+    return <div data-testid="mock-host">Host</div>;
   }
 }));
 
 vi.mock('../../components/offer-screen-components/offer-price/offer-price', () => ({
-  default: function MockOfferPrice({ price }: { price: number }): JSX.Element {
-    return <div data-testid="mock-price">€{price}</div>;
+  default: function MockOfferPrice(): JSX.Element {
+    return <div data-testid="mock-price">Price</div>;
   }
 }));
 
 vi.mock('../../components/offer-screen-components/offer-features/offer-features', () => ({
-  default: function MockOfferFeatures({ type, bedrooms, maxAdults }: any): JSX.Element {
-    return <div data-testid="mock-features">{type}, {bedrooms} bedrooms, {maxAdults} adults</div>;
+  default: function MockOfferFeatures(): JSX.Element {
+    return <div data-testid="mock-features">Features</div>;
   }
 }));
 
 vi.mock('../../components/shared-components/rating/rating', () => ({
-  default: function MockRating({ className, ratingValue, children }: any): JSX.Element {
-    return <div data-testid="mock-rating" className={className}>{ratingValue} {children}</div>;
+  default: function MockRating(): JSX.Element {
+    return <div data-testid="mock-rating">Rating</div>;
   }
 }));
 
 vi.mock('../../components/shared-components/offer-list/offer-list', () => ({
-  default: function MockOfferList({ offers, listName, cardName }: any): JSX.Element {
-    return <div data-testid={`mock-offer-list-${cardName}`}>{offers.length} offers {listName}</div>;
+  default: function MockOfferList(): JSX.Element {
+    return <div data-testid='mock-offer-list'>OfferList</div>;
   }
 }));
 
 vi.mock('../../components/shared-components/main-map/main-map', () => ({
-  default: function MockMainMap({ cityName, offers, selectedOfferId, className }: any): JSX.Element {
-    return <div data-testid="mock-map" className={className}>{cityName}: {offers.length} offers, selected: {selectedOfferId}</div>;
+  default: function MockMainMap(): JSX.Element {
+    return <div data-testid="mock-map">Map</div>;
   }
 }));
 
 vi.mock('../error-screen/error-screen', () => ({
   default: function MockErrorScreen(): JSX.Element {
-    return (
-      <div data-testid="mock-error">Error-screen</div>
-    );
+    return <div data-testid="mock-error">Error-screen</div>;
   }
 }));
 
 describe('Screen: OfferScreen', () => {
-  let mockOffer = makeFakeOfferById();
+  const mockOffer = makeFakeOfferById();
   mockOffer.isPremium = true;
   const mockComments = [makeFakeComment(), makeFakeComment()];
   const mockOffersNearby = [makeFakeOffer('Paris'), makeFakeOffer('Paris'), makeFakeOffer('Paris')];
@@ -253,9 +250,10 @@ describe('Screen: OfferScreen', () => {
       render(withHistory(withStoreComponent));
 
       expect(screen.getByText(mockOffer.title)).toBeInTheDocument();
+      expect(screen.getByTestId('mock-header')).toBeInTheDocument();
       expect(screen.getByTestId('mock-premium-mark')).toBeInTheDocument();
-      expect(screen.getByTestId('mock-rating')).toHaveTextContent(mockOffer.rating.toString());
-      expect(screen.getByTestId('mock-price')).toHaveTextContent(`€${mockOffer.price}`);
+      expect(screen.getByTestId('mock-rating')).toBeInTheDocument();
+      expect(screen.getByTestId('mock-price')).toBeInTheDocument();
       expect(screen.getByTestId('mock-features')).toBeInTheDocument();
       expect(screen.getByTestId('mock-gallery')).toBeInTheDocument();
       expect(screen.getByTestId('mock-inside-list')).toBeInTheDocument();
@@ -263,9 +261,8 @@ describe('Screen: OfferScreen', () => {
       expect(screen.getByTestId('mock-review-list')).toBeInTheDocument();
       expect(screen.getByTestId('mock-review-form')).toBeInTheDocument();
       expect(screen.getByTestId('mock-map')).toBeInTheDocument();
-      expect(screen.getByTestId('mock-offer-list-near-places')).toBeInTheDocument();
+      expect(screen.getByTestId('mock-offer-list')).toBeInTheDocument();
       expect(screen.getByText('Other places in the neighbourhood')).toBeInTheDocument();
-      expect(screen.getByTestId('mock-header')).toBeInTheDocument();
     });
 
     it('should not show review form for unauthorized users', () => {

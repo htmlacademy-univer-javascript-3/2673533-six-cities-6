@@ -4,13 +4,13 @@ import { makeFakeComment } from '../../../utils/mocks';
 
 vi.mock('../../shared-components/rating/rating', () => ({
   default: function MockRating(): JSX.Element {
-    return <div data-testid='mock-rating'>Rating</div>
+    return <div data-testid='mock-rating'>Rating</div>;
   }
 }));
 
 vi.mock('../review-user/review-user', () => ({
   default: function MockReviewUser(): JSX.Element {
-    return <div data-testid='mock-user'>Review User</div>
+    return <div data-testid='mock-user'>Review User</div>;
   }
 }));
 

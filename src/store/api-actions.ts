@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosError, AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { AppDispatch, State } from '../types/state';
 import { OfferFullDTO, Offers } from '../types/offer';
 import { APIRoute, AppRoute } from '../const';
@@ -71,9 +71,8 @@ export const fetchOfferByIdAction = createAsyncThunk<OfferFullDTO, string, {
       const { data } = await api.get<OfferFullDTO>(APIRoute.OfferById.replace(':id', offerId));
       return data;
     } catch (error) {
-      const axiosError = error as any;
-      if (axiosError?.isAxiosError && axiosError.response) {
-        return rejectWithValue(axiosError.response.status);
+      if (axios.isAxiosError(error) && error.response) {
+        return rejectWithValue(error.response.status);
       }
       return rejectWithValue(undefined);
     }

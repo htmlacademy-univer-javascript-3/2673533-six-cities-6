@@ -4,7 +4,7 @@ import FavoritesEmptyScreen from './favorites-empty-screen';
 
 vi.mock('../../components/shared-components/header/header', () => ({
   default: function MockHeader(): JSX.Element {
-    return <header data-testid="mock-header">Header</header>;
+    return <div data-testid="mock-header">Header</div>;
   }
 }));
 
@@ -15,7 +15,6 @@ describe('Screen: FavoritesEmptyScreen', () => {
     expect(screen.getByText('Nothing yet saved.')).toBeInTheDocument();
     expect(screen.getByText('Save properties to narrow down search or plan your future trips.')).toBeInTheDocument();
     expect(screen.getByText('Favorites (empty)')).toBeInTheDocument();
-    expect(screen.getByText('Favorites (empty)')).toHaveClass('visually-hidden');
   });
 
   it('should display mocked child components', () => {

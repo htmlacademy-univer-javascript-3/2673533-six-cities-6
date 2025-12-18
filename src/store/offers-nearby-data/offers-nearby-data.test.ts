@@ -1,6 +1,6 @@
-import { makeFakeOffer } from "../../utils/mocks";
-import { fetchOffersNearbyAction } from "../api-actions";
-import { clearOffersNearby, offersNearbyData } from "./offers-nearby-data";
+import { makeFakeOffer } from '../../utils/mocks';
+import { fetchOffersNearbyAction } from '../api-actions';
+import { clearOffersNearby, offersNearbyData } from './offers-nearby-data';
 
 describe('OffersNearbyData Slice', () => {
   describe('checkInitialState', () => {

@@ -4,7 +4,7 @@ import { makeFakeComment } from '../../../utils/mocks';
 
 vi.mock('../review-list-item/review-list-item', () => ({
   default: function MockReviewListItem(): JSX.Element {
-    return <div data-testid='mock-review-item'>Review List Item</div>
+    return <div data-testid='mock-review-item'>Review List Item</div>;
   }
 }));
 

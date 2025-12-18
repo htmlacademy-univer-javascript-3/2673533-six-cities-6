@@ -6,13 +6,13 @@ import HeaderNav from './header-nav';
 
 vi.mock('../email/email', () => ({
   default: function MockEmail(): JSX.Element {
-    return <div data-testid='mock-email'>Email</div>
+    return <div data-testid='mock-email'>Email</div>;
   }
 }));
 
 vi.mock('../log-in-out-button/log-in-out-button', () => ({
   default: function MockButton(): JSX.Element {
-    return <div data-testid='mock-button'>Button</div>
+    return <div data-testid='mock-button'>Button</div>;
   }
 }));
 
@@ -23,7 +23,7 @@ describe('Component: HeaderNav', () => {
         authorizationStatus: AuthorizationStatus.Auth,
         userData: null,
       }
-    })
+    });
     const {withStoreComponent} = withStore(<HeaderNav />, initialState);
     render(withStoreComponent);
 
@@ -37,7 +37,7 @@ describe('Component: HeaderNav', () => {
         authorizationStatus: AuthorizationStatus.NoAuth,
         userData: null,
       }
-    })
+    });
     const {withStoreComponent} = withStore(<HeaderNav />, initialState);
     render(withStoreComponent);
 

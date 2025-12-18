@@ -1,9 +1,9 @@
 import { configureMockStore } from '@jedmao/redux-mock-store';
-import { createAPI } from "../services/api";
+import { Action } from 'redux';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
+import { createAPI } from '../services/api';
 import { State } from '../types/state';
-import { Action } from 'redux';
 import { AppThunkDispatch, extractActionsTypes, makeFakeComment, makeFakeOffer, makeFakeOfferById } from '../utils/mocks';
 import { APIRoute } from '../const';
 import { checkAuthAction, fetchCommentsAction, fetchFavoritesAction, fetchOfferByIdAction, fetchOffersAction, fetchOffersNearbyAction, loginAction, logoutAction, postCommentAction, postFavoriteStatusAction } from './api-actions';

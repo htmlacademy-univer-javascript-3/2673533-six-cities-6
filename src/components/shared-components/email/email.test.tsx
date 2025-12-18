@@ -12,7 +12,7 @@ describe('Component: Email', () => {
         favoritesCount: 3,
         isFavoritesDataLoading: false,
         isFavoriteStatusUpdating: false,
-        isStatusUpdateSuccess: false, 
+        isStatusUpdateSuccess: false,
         hasError: false,
       },
       USER: {
@@ -31,7 +31,7 @@ describe('Component: Email', () => {
 
     expect(screen.getByText(initialState.FAVORITES_DATA.favoritesCount)).toBeInTheDocument();
     expect(screen.getByText(initialState.USER.userData!.email)).toBeInTheDocument();
-    
+
     const img = screen.getByRole('img');
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute('src', initialState.USER.userData!.avatarUrl);

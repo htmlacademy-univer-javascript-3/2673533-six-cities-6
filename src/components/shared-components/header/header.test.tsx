@@ -3,13 +3,13 @@ import Header from './header';
 
 vi.mock('../header-logo/header-logo', () => ({
   default: function MockLogo(): JSX.Element {
-    return <div data-testid='mock-logo'>Logo</div>
+    return <div data-testid='mock-logo'>Logo</div>;
   }
 }));
 
 vi.mock('../header-nav/header-nav', () => ({
   default: function MockNav(): JSX.Element {
-    return <div data-testid='mock-nav'>Nav</div>
+    return <div data-testid='mock-nav'>Nav</div>;
   }
 }));
 

@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import LoginScreen from './login-screen';
-import { vi } from 'vitest';
 import { withHistory, withStore } from '../../utils/mock-component';
 
 vi.mock('../../components/shared-components/header-logo/header-logo', () => ({

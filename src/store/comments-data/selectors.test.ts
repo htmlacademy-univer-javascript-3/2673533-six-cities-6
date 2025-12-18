@@ -1,12 +1,12 @@
-import { NameSpace } from "../../const";
-import { makeFakeComment } from "../../utils/mocks";
-import { getComments, getCommentsDataLoadingStatus, getCommentsErrorStatus } from "./selectors";
+import { NameSpace } from '../../const';
+import { makeFakeComment } from '../../utils/mocks';
+import { getComments, getCommentsDataLoadingStatus, getCommentsErrorStatus } from './selectors';
 
 describe('CommentsData selectors', () => {
-  const comments = [makeFakeComment(), makeFakeComment(), makeFakeComment()];
+  const mockComments = [makeFakeComment(), makeFakeComment(), makeFakeComment()];
   const state = {
     [NameSpace.CommentsData]: {
-      comments: comments,
+      comments: mockComments,
       isCommentsDataLoading: true,
       hasError: true,
     }

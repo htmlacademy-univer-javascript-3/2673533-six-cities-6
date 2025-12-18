@@ -1,6 +1,6 @@
-import { makeFakeOfferById } from "../../utils/mocks";
-import { fetchOfferByIdAction } from "../api-actions";
-import { clearNotFound, clearOfferById, offerByIdData } from "./offer-by-id-data";
+import { makeFakeOfferById } from '../../utils/mocks';
+import { fetchOfferByIdAction } from '../api-actions';
+import { clearNotFound, clearOfferById, offerByIdData } from './offer-by-id-data';
 
 describe('OfferByIdData Slice', () => {
   describe('checkInitialState', () => {

@@ -1,6 +1,6 @@
-import { makeFakeOffer } from "../../utils/mocks";
-import { fetchOffersAction } from "../api-actions";
-import { offersData } from "./offers-data";
+import { makeFakeOffer } from '../../utils/mocks';
+import { fetchOffersAction } from '../api-actions';
+import { offersData } from './offers-data';
 
 describe('OffersData Slice', () => {
   describe('checkInitialState', () => {

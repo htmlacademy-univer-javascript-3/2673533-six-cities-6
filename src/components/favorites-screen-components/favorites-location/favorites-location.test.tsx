@@ -8,7 +8,7 @@ describe('Component: FavoritesLocation', () => {
 
     const { withStoreComponent } = withStore(<FavoritesLocation cityName={cityName} />);
     render(withHistory(withStoreComponent));
-    
+
     expect(screen.getByText(cityName)).toBeInTheDocument();
   });
 });

@@ -1,12 +1,12 @@
-import { NameSpace } from "../../const";
-import { makeFakeOffer } from "../../utils/mocks";
-import { getFavorites, getFavoritesCount, getFavoritesDataLoadingStatus, getFavoritesErrorStatus, getFavoriteStatusChecked, getFavoriteStatusUpdatingStatus } from "./selectors";
+import { NameSpace } from '../../const';
+import { makeFakeOffer } from '../../utils/mocks';
+import { getFavorites, getFavoritesCount, getFavoritesDataLoadingStatus, getFavoritesErrorStatus, getFavoriteStatusChecked, getFavoriteStatusUpdatingStatus } from './selectors';
 
 describe('FavoritesData selectors', () => {
-  const favorites = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Cologne')];
+  const mockFavorites = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Cologne')];
   const state = {
     [NameSpace.FavoritesData]: {
-      favorites: favorites,
+      favorites: mockFavorites,
       favoritesCount: 3,
       isFavoritesDataLoading: true,
       isFavoriteStatusUpdating: true,

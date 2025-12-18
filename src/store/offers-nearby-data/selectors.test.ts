@@ -1,12 +1,12 @@
-import { NameSpace } from "../../const";
-import { makeFakeOffer } from "../../utils/mocks";
-import { getOffersNearby, getOffersNearbyDataLoadingStatus, getOffersNearbyErrorStatus } from "./selectors";
+import { NameSpace } from '../../const';
+import { makeFakeOffer } from '../../utils/mocks';
+import { getOffersNearby, getOffersNearbyDataLoadingStatus, getOffersNearbyErrorStatus } from './selectors';
 
 describe('OffersNearbyData selectors', () => {
-  const offersNearby = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Cologne'),];
+  const mockOffersNearby = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Cologne'),];
   const state = {
     [NameSpace.OffersNearbyData]: {
-      offersNearby: offersNearby,
+      offersNearby: mockOffersNearby,
       isOffersNearbyDataLoading: false,
       hasError: false,
     }

@@ -8,7 +8,7 @@ describe('Component: ReviewUser', () => {
       name: 'Lulumba',
       avatarUrl: '',
       isPro: false,
-    }
+    };
     render(<ReviewUser user={mockUser} />);
 
     expect(screen.getByAltText('Reviews avatar')).toBeInTheDocument();

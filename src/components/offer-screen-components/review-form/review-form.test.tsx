@@ -4,19 +4,19 @@ import { withStore } from '../../../utils/mock-component';
 
 vi.mock('../review-help/review-help', () => ({
   default: function MockHelp(): JSX.Element {
-    return <div data-testid='mock-help'>Help</div>
+    return <div data-testid='mock-help'>Help</div>;
   }
 }));
 
 vi.mock('../review-star/review-star', () => ({
   default: function MockStar(): JSX.Element {
-    return <div data-testid='mock-star'>Star</div>
+    return <div data-testid='mock-star'>Star</div>;
   }
 }));
 
 vi.mock('../review-textarea/review-textarea', () => ({
   default: function MockTextarea(): JSX.Element {
-    return <div data-testid='mock-textarea'>Textarea</div>
+    return <div data-testid='mock-textarea'>Textarea</div>;
   }
 }));
 

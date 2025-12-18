@@ -1,12 +1,12 @@
-import { NameSpace } from "../../const";
-import { makeFakeOfferById } from "../../utils/mocks";
-import { getOfferById, getOfferByIdDataLoadingStatus, getOfferByIdErrorStatus, getOfferByIdNotFoundStatus } from "./selectors";
+import { NameSpace } from '../../const';
+import { makeFakeOfferById } from '../../utils/mocks';
+import { getOfferById, getOfferByIdDataLoadingStatus, getOfferByIdErrorStatus, getOfferByIdNotFoundStatus } from './selectors';
 
 describe('OfferByIdData selectors', () => {
-  const offerById = makeFakeOfferById();
+  const mockOfferById = makeFakeOfferById();
   const state = {
     [NameSpace.OfferByIdData]: {
-      offerById: offerById,
+      offerById: mockOfferById,
       isOfferByIdDataLoading: true,
       hasError: true,
       isNotFound: true,

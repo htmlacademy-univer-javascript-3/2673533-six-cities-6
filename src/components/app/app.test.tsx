@@ -1,43 +1,43 @@
 import { MemoryHistory, createMemoryHistory } from 'history';
-import { AppRoute, AuthorizationStatus } from "../../const";
-import { withHistory, withStore } from "../../utils/mock-component";
-import { makeFakeStore } from "../../utils/mocks";
 import { render, screen } from '@testing-library/react';
-import App from "./app";
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { withHistory, withStore } from '../../utils/mock-component';
+import { makeFakeStore } from '../../utils/mocks';
+import App from './app';
 
 vi.mock('../../pages/main-screen/main-screen', () => ({
   default: function MockMainScreen(): JSX.Element {
-    return <div data-testid='mock-main-screen'>MainScreen</div>
+    return <div data-testid='mock-main-screen'>MainScreen</div>;
   }
 }));
 
 vi.mock('../../pages/login-screen/login-screen', () => ({
   default: function MockLogInScreen(): JSX.Element {
-    return <div data-testid='mock-log-in-screen'>LogInScreen</div>
+    return <div data-testid='mock-log-in-screen'>LogInScreen</div>;
   }
 }));
 
 vi.mock('../../pages/offer-screen/offer-screen', () => ({
   default: function MockOfferScreen(): JSX.Element {
-    return <div data-testid='mock-offer-screen'>OfferScreen</div>
+    return <div data-testid='mock-offer-screen'>OfferScreen</div>;
   }
 }));
 
 vi.mock('../../pages/favorites-screen/favorites-screen', () => ({
   default: function MockFavoritesScreen(): JSX.Element {
-    return <div data-testid='mock-favorites-screen'>FavoritesScreen</div>
+    return <div data-testid='mock-favorites-screen'>FavoritesScreen</div>;
   }
 }));
 
 vi.mock('../../pages/not-found-screen/not-found-screen', () => ({
   default: function MockNotFoundScreen(): JSX.Element {
-    return <div data-testid='mock-not-found-screen'>NotFoundScreen</div>
+    return <div data-testid='mock-not-found-screen'>NotFoundScreen</div>;
   }
 }));
 
 vi.mock('../../pages/loading-screen/loading-screen', () => ({
   default: function MockLoadingScreen(): JSX.Element {
-    return <div data-testid='mock-loading-screen'>LoadingScreen</div>
+    return <div data-testid='mock-loading-screen'>LoadingScreen</div>;
   }
 }));
 

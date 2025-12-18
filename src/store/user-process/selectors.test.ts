@@ -1,6 +1,6 @@
-import { AuthorizationStatus, NameSpace } from "../../const";
-import { makeFakeUserData } from "../../utils/mocks";
-import { getAuthCheckedStatus, getAuthorizationStatus, getUserData } from "./selectors";
+import { AuthorizationStatus, NameSpace } from '../../const';
+import { makeFakeUserData } from '../../utils/mocks';
+import { getAuthCheckedStatus, getAuthorizationStatus, getUserData } from './selectors';
 
 describe('UserProcess selectors', () => {
   const state = {

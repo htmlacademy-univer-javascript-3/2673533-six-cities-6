@@ -1,16 +1,16 @@
-import { filterOffersByCity, sortOffers } from "../../cities-logic";
-import { NameSpace, SortType } from "../../const";
-import { makeFakeOffer } from "../../utils/mocks";
-import { getOffers, getOffersDataLoadingStatus, getOffersErrorStatus, selectOffersByCity, selectSortedOffersByCity } from "./selectors";
-import * as citiesLogic from '../../cities-logic.ts'
+import { filterOffersByCity, sortOffers } from '../../cities-logic';
+import { NameSpace, SortType } from '../../const';
+import { makeFakeOffer } from '../../utils/mocks';
+import { getOffers, getOffersDataLoadingStatus, getOffersErrorStatus, selectOffersByCity, selectSortedOffersByCity } from './selectors';
+import * as citiesLogic from '../../cities-logic.ts';
 
 describe('OffersData selectors', () => {
-  const offers = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Paris')];
+  const mockOffers = [makeFakeOffer('Paris'), makeFakeOffer('Amsterdam'), makeFakeOffer('Paris')];
 
   describe('normal selectors', () => {
     const state = {
       [NameSpace.OffersData]: {
-        offers: offers,
+        offers: mockOffers,
         isOffersDataLoading: true,
         hasError: true,
       }
@@ -38,7 +38,7 @@ describe('OffersData selectors', () => {
   describe('memoized selectors', () => {
     const firstState = {
       [NameSpace.OffersData]: {
-        offers: offers,
+        offers: mockOffers,
         isOffersDataLoading: false,
         hasError: false,
       },
@@ -69,7 +69,7 @@ describe('OffersData selectors', () => {
 
       it('should filter offers by active city', () => {
         const result = selectOffersByCity(firstState);
-        const expectedOffers = offers.filter(offer => offer.city.name === 'Paris');
+        const expectedOffers = mockOffers.filter((offer) => offer.city.name === 'Paris');
 
         expect(result).toEqual(expectedOffers);
         expect(result).toHaveLength(expectedOffers.length);
@@ -93,7 +93,7 @@ describe('OffersData selectors', () => {
 
       it('should return filtered and sorted offers', () => {
         const result = selectSortedOffersByCity(firstState);
-        const filtered = filterOffersByCity(offers, 'Paris');
+        const filtered = filterOffersByCity(mockOffers, 'Paris');
         const expected = sortOffers(filtered, SortType.PriceLowToHigh);
         expect(result).toEqual(expected);
       });

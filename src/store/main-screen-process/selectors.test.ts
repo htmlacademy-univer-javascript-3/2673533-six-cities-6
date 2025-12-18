@@ -1,5 +1,5 @@
-import { NameSpace, SortType } from "../../const";
-import { getActiveCity, getActiveOfferId, getActiveSortType } from "./selectors";
+import { NameSpace, SortType } from '../../const';
+import { getActiveCity, getActiveOfferId, getActiveSortType } from './selectors';
 
 describe('MainScreenProcess selectors', () => {
   const state = {

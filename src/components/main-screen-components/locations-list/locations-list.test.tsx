@@ -5,9 +5,7 @@ import { CITIES } from '../../../const';
 
 describe('Component: LocationsList', () => {
   it('should render correctly', () => {
-    const cityName = 'Paris';
-
-    const { withStoreComponent } = withStore(<LocationsList activeCity={cityName} />);
+    const { withStoreComponent } = withStore(<LocationsList activeCity={'Paris'} />);
     render(withStoreComponent);
 
     CITIES.forEach((city) => {
