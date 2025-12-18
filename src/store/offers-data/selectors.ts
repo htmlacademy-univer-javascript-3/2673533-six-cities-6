@@ -6,9 +6,9 @@ import { getActiveCity, getActiveSortType } from '../main-screen-process/selecto
 import { filterOffersByCity, sortOffers } from '../../cities-logic';
 
 
-export const getOffers = (state: State): Offers => state[NameSpace.OffersData].offers;
-export const getOffersDataLoadingStatus = (state: State): boolean => state[NameSpace.OffersData].isOffersDataLoading;
-export const getOffersErrorStatus = (state: State): boolean => state[NameSpace.OffersData].hasError;
+export const getOffers = (state: Pick<State, NameSpace.OffersData>): Offers => state[NameSpace.OffersData].offers;
+export const getOffersDataLoadingStatus = (state: Pick<State, NameSpace.OffersData>): boolean => state[NameSpace.OffersData].isOffersDataLoading;
+export const getOffersErrorStatus = (state: Pick<State, NameSpace.OffersData>): boolean => state[NameSpace.OffersData].hasError;
 
 export const selectOffersByCity = createSelector(
   [getOffers, getActiveCity],

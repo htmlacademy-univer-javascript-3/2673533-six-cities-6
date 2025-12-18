@@ -2,15 +2,13 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import { FormEvent, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { AppRoute } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { AppRoute, CITIES } from '../../const';
 import { loginAction } from '../../store/api-actions';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
-import { getActiveCity } from '../../store/main-screen-process/selectors';
 import { checkPassword } from '../../cities-logic';
 
 function LoginScreen(): JSX.Element {
-  const currentCity = useAppSelector(getActiveCity);
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -63,7 +61,7 @@ function LoginScreen(): JSX.Element {
           <section className="locations locations--login locations--current">
             <div className="locations__item">
               <Link className="locations__item-link" to={AppRoute.Main}>
-                <span>{currentCity}</span>
+                <span>{CITIES[Math.floor(Math.random() * CITIES.length)].name}</span>
               </Link>
             </div>
           </section>
