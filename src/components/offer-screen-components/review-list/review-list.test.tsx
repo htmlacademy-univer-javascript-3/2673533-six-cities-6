@@ -26,4 +26,18 @@ describe('Component: ReviewList', () => {
 
     expect(screen.queryByTestId('mock-review-item')).not.toBeInTheDocument();
   });
+
+  it('should render not more than 10', () => {
+    const mockComments = [makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment(),
+      makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment(), makeFakeComment()];
+
+    render(<ReviewList reviews={mockComments}/>);
+
+    const result = screen.getAllByTestId('mock-review-item');
+    expect(result.length).toEqual(10);
+    expect(result.length).not.toEqual(mockComments.length);
+    result.forEach((item) => {
+      expect(item).toBeInTheDocument();
+    });
+  });
 });
