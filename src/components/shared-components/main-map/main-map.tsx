@@ -30,27 +30,32 @@ function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps)
   };
 
   useEffect(() => {
-    if (map) {
-      clearMarkers();
-      offers.forEach((offer) => {
-        const marker = leaflet
-          .marker({
-            lat: offer.location.latitude,
-            lng: offer.location.longitude,
-          }, {
-            icon: (offer.id === activeOfferId) ? ACTIVE_PIN : DEFAULT_PIN,
-          })
-          .addTo(map);
-        markersRef.current.push(marker);
-      });
-    }
-  }, [map, offers, activeOfferId]);
+    let isMounted = true;
 
-  useEffect(() => () => {
-    if (map) {
-      clearMarkers();
+    if (isMounted) {
+      if (map) {
+        clearMarkers();
+        offers.forEach((offer) => {
+          const marker = leaflet
+            .marker({
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
+            }, {
+              icon: (offer.id === activeOfferId) ? ACTIVE_PIN : DEFAULT_PIN,
+            })
+            .addTo(map);
+          markersRef.current.push(marker);
+        });
+      }
     }
-  }, [map]);
+
+    return () => {
+      if (map) {
+        isMounted = false;
+        clearMarkers();
+      }
+    };
+  }, [map, offers, activeOfferId]);
 
   return (
     <section className={`${className}__map map`} ref={mapRef} data-testid='map' />

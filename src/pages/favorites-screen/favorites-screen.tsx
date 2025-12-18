@@ -19,13 +19,21 @@ function FavoritesScreen(): JSX.Element {
   const hasError = useAppSelector(getFavoritesErrorStatus);
 
   useEffect(() => {
-    dispatch(fetchFavoritesAction());
-    setRestart(false);
+    let isMounted = true;
+
+    if (isMounted) {
+      dispatch(fetchFavoritesAction());
+      setRestart(false);
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch, restart]);
 
   if (hasError) {
     return (
-      <ErrorScreen restarter={() => setRestart(true)}/>
+      <ErrorScreen restarter={() => setRestart(true)} />
     );
   }
 
