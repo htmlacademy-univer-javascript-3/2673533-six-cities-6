@@ -24,7 +24,7 @@ function ReviewForm({ offerId } : ReviewFormProps): JSX.Element {
 
   const handleOnSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (rating || reviewText.length >= 50) {
+    if (rating && reviewText.length >= 50 && reviewText.length <= 300) {
       dispatch(postCommentAction({
         comment: reviewText,
         rating: Number(rating),
@@ -51,7 +51,7 @@ function ReviewForm({ offerId } : ReviewFormProps): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={!rating || reviewText.length < 50}
+          disabled={!rating || reviewText.length < 50 || reviewText.length > 300}
         >
           Submit
         </button>
