@@ -7,11 +7,13 @@ import { AppRoute, CITIES } from '../../const';
 import { loginAction } from '../../store/api-actions';
 import HeaderLogo from '../../components/shared-components/header-logo/header-logo';
 import { checkPassword } from '../../cities-logic';
+import { setActiveCity } from '../../store/main-screen-process/main-screen-process';
 
 function LoginScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const randomCity = CITIES[Math.floor(Math.random() * CITIES.length)].name;
 
   const handleOnSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -60,8 +62,8 @@ function LoginScreen(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link className="locations__item-link" to={AppRoute.Main}>
-                <span>{CITIES[Math.floor(Math.random() * CITIES.length)].name}</span>
+              <Link className="locations__item-link" to={AppRoute.Main} onClick={() => dispatch(setActiveCity(randomCity))}>
+                <span>{randomCity}</span>
               </Link>
             </div>
           </section>
