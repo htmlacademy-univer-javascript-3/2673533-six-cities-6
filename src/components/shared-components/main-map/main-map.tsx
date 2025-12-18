@@ -53,7 +53,7 @@ function MainMap({ cityName, offers, selectedOfferId, className }: MainMapProps)
   }, [map]);
 
   return (
-    <section className={`${className}__map map`} ref={mapRef} />
+    <section className={`${className}__map map`} ref={mapRef} data-testid='map' />
   );
 }
 

@@ -80,7 +80,7 @@ export const makeFakeComment = (): Comment => ({
     avatarUrl: faker.image.avatar(),
     isPro: faker.datatype.boolean(),
   },
-  comment: faker.lorem.paragraphs(faker.datatype.number({ min: 1, max: 3 })),
+  comment: faker.lorem.paragraphs(1),
   rating: faker.datatype.number({ min: 1, max: 5 }),
 });
 
