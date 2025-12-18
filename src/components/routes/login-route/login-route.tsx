@@ -1,21 +1,12 @@
 import {Navigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../../const';
-import { useAppSelector } from '../../../hooks';
-import LoadingScreen from '../../../pages/loading-screen/loading-screen';
-import { getAuthCheckedStatus, getAuthorizationStatus } from '../../../store/user-process/selectors';
 
 type LoginRouteProps = {
+  authorizationStatus: AuthorizationStatus;
   children: JSX.Element;
 }
 
-function LoginRoute({children}: LoginRouteProps): JSX.Element {
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
-  const isAuthChecked = useAppSelector(getAuthCheckedStatus);
-
-  if (!isAuthChecked) {
-    return <LoadingScreen />;
-  }
-
+function LoginRoute({authorizationStatus, children}: LoginRouteProps): JSX.Element {
   return (
     authorizationStatus === AuthorizationStatus.NoAuth
       ? children

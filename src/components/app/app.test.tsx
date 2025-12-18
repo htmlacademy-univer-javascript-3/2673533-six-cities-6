@@ -71,14 +71,30 @@ describe('Application Routing', () => {
     expect(screen.getByTestId('mock-main-screen')).toBeInTheDocument();
   });
 
-  it('should render "AuthScreen" when user navigate to "/login"', () => {
+  it('should render "LoginScreen", not "MainScreen" when user navigate to "/login" and NoAuth', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
-    const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore());
+    const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore({
+      USER: { authorizationStatus: AuthorizationStatus.NoAuth, userData: null }
+    }));
     mockHistory.push(AppRoute.Login);
 
     render(withStoreComponent);
 
-    expect(screen.getByTestId('mock-log-in-screen')).toBeInTheDocument();
+    expect(screen.queryByTestId('mock-log-in-screen')).toBeInTheDocument();
+    expect(screen.queryByTestId('mock-main-screen')).not.toBeInTheDocument();
+  });
+
+  it('should render "MainScreen", not "LoginScreen" when user navigate to "/login" and Auth', () => {
+    const withHistoryComponent = withHistory(<App />, mockHistory);
+    const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore({
+      USER: { authorizationStatus: AuthorizationStatus.Auth, userData: null }
+    }));
+    mockHistory.push(AppRoute.Login);
+
+    render(withStoreComponent);
+
+    expect(screen.queryByTestId('mock-main-screen')).toBeInTheDocument();
+    expect(screen.queryByTestId('mock-log-in-screen')).not.toBeInTheDocument();
   });
 
   it('should render "OfferScreen" when user navigate to "/offer/:id"', () => {

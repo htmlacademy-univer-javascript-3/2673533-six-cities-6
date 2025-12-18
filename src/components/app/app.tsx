@@ -32,7 +32,7 @@ function App(): JSX.Element {
       <Route
         path={AppRoute.Login}
         element={
-          <LoginRoute>
+          <LoginRoute authorizationStatus={authorizationStatus}>
             <LoginScreen />
           </LoginRoute>
         }
