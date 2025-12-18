@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { postFavoriteStatusAction } from '../../../store/api-actions';
+import { fetchFavoritesAction, postFavoriteStatusAction } from '../../../store/api-actions';
 import { addToFavoritesCount } from '../../../store/favorites-data/favorites-data';
 import { getAuthorizationStatus } from '../../../store/user-process/selectors';
 import { AppRoute, AuthorizationStatus } from '../../../const';
@@ -12,9 +12,10 @@ type BookmarkButtonProps = {
   className: string;
   width: string;
   height: string;
+  fetchFavoritesIsNeeded?: boolean;
 }
 
-function BookmarkButton({ offerId, isFavorite, className, width, height }: BookmarkButtonProps): JSX.Element {
+function BookmarkButton({ offerId, isFavorite, className, width, height, fetchFavoritesIsNeeded = false }: BookmarkButtonProps): JSX.Element {
   const [currentIsFavorite, setCurrentIsFavorite] = useState(isFavorite);
   const [isUpdating, setIsUpdating] = useState(false);
   const dispatch = useAppDispatch();
@@ -34,12 +35,15 @@ function BookmarkButton({ offerId, isFavorite, className, width, height }: Bookm
         .then(() => {
           dispatch(addToFavoritesCount(currentIsFavorite ? -1 : 1));
           setCurrentIsFavorite((prev) => !prev);
+          if (fetchFavoritesIsNeeded) {
+            dispatch(fetchFavoritesAction());
+          }
         })
         .finally(() => {
           setIsUpdating(false);
         });
     }
-  }, [dispatch, offerId, currentIsFavorite, isUpdating, authorizationStatus, navigate]);
+  }, [dispatch, offerId, currentIsFavorite, isUpdating, authorizationStatus, navigate, fetchFavoritesIsNeeded]);
 
   const newClassName = `${className}__bookmark-button ${currentIsFavorite ? `${className}__bookmark-button--active` : ''} button`;
 
