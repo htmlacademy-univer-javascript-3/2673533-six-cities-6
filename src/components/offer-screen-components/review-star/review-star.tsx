@@ -2,10 +2,11 @@ type ReviewStarProps = {
   rating: string;
   title: string;
   selected: string;
+  disabled: boolean;
   onRatingChange: (newRating: string) => void;
 }
 
-function ReviewStar({ rating, title, selected, onRatingChange } : ReviewStarProps): JSX.Element {
+function ReviewStar({ rating, title, selected, disabled, onRatingChange } : ReviewStarProps): JSX.Element {
   return (
     <>
       <input
@@ -16,6 +17,7 @@ function ReviewStar({ rating, title, selected, onRatingChange } : ReviewStarProp
         type="radio"
         checked={selected === rating}
         onChange={() => onRatingChange(rating)}
+        disabled={disabled}
       />
       <label htmlFor={`${rating}-stars`} className="reviews__rating-label form__rating-label" title={title}>
         <svg className="form__star-image" width="37" height="33">

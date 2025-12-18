@@ -7,7 +7,7 @@ describe('Component: ReviewStar', () => {
     const mockTitle = 'perfect';
     const mockSelected = '5';
 
-    render(<ReviewStar rating={mockRating} title={mockTitle} selected={mockSelected} onRatingChange={vi.fn()} />);
+    render(<ReviewStar rating={mockRating} title={mockTitle} selected={mockSelected} onRatingChange={vi.fn()} disabled={false} />);
 
     const inputElement = screen.getByRole('radio');
     expect(inputElement).toBeInTheDocument();

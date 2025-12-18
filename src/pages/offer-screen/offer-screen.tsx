@@ -47,17 +47,25 @@ function OfferScreen(): JSX.Element {
   const offerId = params.id;
 
   useEffect(() => {
-    dispatch(clearNotFound());
-    if (offerId) {
-      dispatch(fetchOfferByIdAction(offerId));
-      dispatch(fetchCommentsAction(offerId));
-      dispatch(fetchOffersNearbyAction(offerId));
-    } else {
-      dispatch(clearOfferById());
-      dispatch(clearComments());
-      dispatch(clearOffersNearby());
+    let isMounted = true;
+
+    if (isMounted) {
+      dispatch(clearNotFound());
+      if (offerId) {
+        dispatch(fetchOfferByIdAction(offerId));
+        dispatch(fetchCommentsAction(offerId));
+        dispatch(fetchOffersNearbyAction(offerId));
+      } else {
+        dispatch(clearOfferById());
+        dispatch(clearComments());
+        dispatch(clearOffersNearby());
+      }
+      setRestart(false);
     }
-    setRestart(false);
+
+    return () => {
+      isMounted = false;
+    };
   }, [offerId, dispatch, restart]);
 
   if (isCurrentOfferLoading || isCurrentReviewsDataLoading || isOffersNearbyDataLoading) {
@@ -65,7 +73,7 @@ function OfferScreen(): JSX.Element {
   } else if (isNotFound) {
     return <NotFoundScreen />;
   } else if (offerByIdHasError || commentsHasError || offersNearbyHasError || !currentOfferFull) {
-    return <ErrorScreen restarter={() => setRestart(true)}/>;
+    return <ErrorScreen restarter={() => setRestart(true)} />;
   }
 
   const { id, isPremium, price, isFavorite, rating, title, type, images, goods, bedrooms, maxAdults, host, description } = currentOfferFull;

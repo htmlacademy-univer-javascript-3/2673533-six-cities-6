@@ -25,13 +25,21 @@ function MainScreen(): JSX.Element {
   const hasError = useAppSelector(getOffersErrorStatus);
 
   useEffect(() => {
-    dispatch(fetchOffersAction());
-    setRestart(false);
+    let isMounted = true;
+
+    if (isMounted) {
+      dispatch(fetchOffersAction());
+      setRestart(false);
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch, activeCity, authorizationStatus, restart]);
 
   if (hasError) {
     return (
-      <ErrorScreen restarter={() => setRestart(true)}/>
+      <ErrorScreen restarter={() => setRestart(true)} />
     );
   }
 

@@ -4,6 +4,9 @@ import { City } from './types/city';
 export const SERVER_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;
 
+export const MIN_REVIEW_LENGTH = 50;
+export const MAX_REVIEW_LENGTH = 300;
+
 export const INITIAL_CITY = 'Paris';
 
 export enum AppRoute {
